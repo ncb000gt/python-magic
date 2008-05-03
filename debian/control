@@ -1,0 +1,54 @@
+Source: file
+Section: utils
+Priority: standard
+Maintainer: Michael Piefel <piefel@debian.org>
+Build-Depends: debhelper (>= 5.0.37.2), zlib1g-dev, autotools-dev, libtool, python (>= 2.3.5-7), python-all-dev
+Standards-Version: 3.7.2
+XS-Python-Version: all
+
+Package: file
+Architecture: any
+Depends: libmagic1 (= ${Source-Version}), ${shlibs:Depends}
+Description: Determines file type using "magic" numbers
+ File tests each argument in an attempt to classify it.  There are three
+ sets of tests, performed in this order: filesystem tests, magic number
+ tests, and language tests.  The first test that succeeds causes the
+ file type to be printed.
+ .
+ Starting with version 4, the file command is not much more than a wrapper
+ around the "magic" library.
+
+Package: libmagic1
+Section: libs
+Architecture: any
+Depends: ${shlibs:Depends}
+Suggests: file
+Conflicts: file (<= 4)
+Description: File type determination library using "magic" numbers
+ This library can be used to classify files according to magic number
+ tests. It implements the core functionality of the file command.
+
+Package: libmagic-dev
+Section: libdevel
+Priority: optional
+Architecture: any
+Depends: libmagic1 (= ${Source-Version})
+Suggests: file
+Description: File type determination library (development)
+ This library can be used to classify files according to magic number
+ tests. It implements the core functionality of the file command.
+ .
+ This package contains the development files.
+
+Package: python-magic
+Section: python
+Architecture: any
+Priority: extra
+Depends: ${python:Depends}, ${shlibs:Depends}
+Provides: ${python:Provides}
+Conflicts: python2.3-magic, python2.4-magic
+Replaces: python2.3-magic, python2.4-magic
+XB-Python-Version: ${python:Versions}
+Description: Python binding for the magic library
+ This Python library can be use to query /etc/magic
+ information for a given file in Python.
