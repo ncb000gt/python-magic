@@ -1,5 +1,5 @@
 #!/bin/sh /usr/share/dpatch/dpatch-run
-## 102-magic-remove-bzip.dpatch by Michael Piefel <piefel@debian.org>
+## 103-magic-remove-bzip.dpatch by Michael Piefel <piefel@debian.org>
 ##
 ## DP: Disabled bzip detection (closes: #277648).
 

@@ -1,3 +1,13 @@
+file (4.20-5) unstable; urgency=low
+
+  * Added patch from Ralph Amissah <ralph.amissah@gmail.com> to update magic for
+    SiSU Markup Language.
+  * Added patch from Josh Triplett <josh@freedesktop.org> to disable magic for
+    Bennet Yee's face format (Closes: #420855).
+  * Updated copyright file (Closes: #398453).
+
+ -- Daniel Baumann <daniel@debian.org>  Thu, 26 Apr 2007 08:13:00 +0200
+
 file (4.20-4) unstable; urgency=low
 
   * Rediffed some patches, now having always the same format of adding new

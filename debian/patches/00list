@@ -1,10 +1,11 @@
 101-magic-remove-awk.dpatch
-102-magic-remove-bzip.dpatch
-103-magic-remove-cgm.dpatch
-104-magic-remove-com.dpatch
-105-magic-remove-emf.dpatch
-106-magic-remove-msi.dpatch
-107-magic-remove-quicktime.dpatch
+102-magic-remove-bennet.dpatch
+103-magic-remove-bzip.dpatch
+104-magic-remove-cgm.dpatch
+105-magic-remove-com.dpatch
+106-magic-remove-emf.dpatch
+107-magic-remove-msi.dpatch
+108-magic-remove-quicktime.dpatch
 201-magic-update-avi.dpatch
 202-magic-update-blender.dpatch
 203-magic-update-cow.dpatch

@@ -1,5 +1,5 @@
 #!/bin/sh /usr/share/dpatch/dpatch-run
-## 106-magic-remove-msi.dpatch by Michael Piefel <piefel@debian.org>
+## 107-magic-remove-msi.dpatch by Michael Piefel <piefel@debian.org>
 ##
 ## DP: Disable second MS Installer entry (closes: #409895).
 

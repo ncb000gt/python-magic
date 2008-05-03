@@ -1,5 +1,5 @@
 #!/bin/sh /usr/share/dpatch/dpatch-run
-## 103-magic-remove-cgm.dpatch by Michael Piefel <piefel@debian.org>
+## 104-magic-remove-cgm.dpatch by Michael Piefel <piefel@debian.org>
 ##
 ## DP: FIXME
 

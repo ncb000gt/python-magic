@@ -1,5 +1,5 @@
 #!/bin/sh /usr/share/dpatch/dpatch-run
-## 105-magic-remove-emf.dpatch by Michael Piefel <piefel@debian.org>
+## 106-magic-remove-emf.dpatch by Michael Piefel <piefel@debian.org>
 ##
 ## DP: Disabled EMF detection as it not only caused false positives, which might
 ## DP: have been acceptible, but a segmentation fault (closes: #333502).

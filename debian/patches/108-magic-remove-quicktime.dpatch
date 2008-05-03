@@ -1,5 +1,5 @@
 #!/bin/sh /usr/share/dpatch/dpatch-run
-## 107-magic-remove-quicktime.dpatch by Michael Piefel <piefel@debian.org>
+## 108-magic-remove-quicktime.dpatch by Michael Piefel <piefel@debian.org>
 ##
 ## DP: Disabled some QuickTime entries (ASCII words, closes: #366986, #308394).
 

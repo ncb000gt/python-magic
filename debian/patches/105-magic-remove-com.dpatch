@@ -1,5 +1,5 @@
 #!/bin/sh /usr/share/dpatch/dpatch-run
-## 104-magic-remove-com.dpatch by Michael Piefel <piefel@debian.org>
+## 105-magic-remove-com.dpatch by Michael Piefel <piefel@debian.org>
 ##
 ## DP: Disable one-byte magic for COM (closes: #393775, #339618).
 
