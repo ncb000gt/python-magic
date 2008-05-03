@@ -1,5 +1,5 @@
 #!/bin/sh /usr/share/dpatch/dpatch-run
-## 99-conglomeration.dpatch by Michael Piefel <piefel@debian.org>
+## 999-conglomeration.dpatch by Michael Piefel <piefel@debian.org>
 ##
 ## DP: Needs to be broken out (FIXME).
 

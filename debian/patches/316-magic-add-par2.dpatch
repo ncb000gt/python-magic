@@ -1,0 +1,18 @@
+#!/bin/sh /usr/share/dpatch/dpatch-run
+## 316-magic-add-par2.dpatch by Daniel van Eeden <daniel_e@dds.nl>
+##
+## DP: New magic for PAR2 archive files (Closes: #294070).
+
+@DPATCH@
+
+diff -Naur file-4.20.orig/magic/Magdir/archive file-4.20/magic/Magdir/archive
+--- file-4.20.orig/magic/Magdir/archive	2007-01-19 19:30:53.000000000 +0000
++++ file-4.20/magic/Magdir/archive	2007-04-03 16:03:14.000000000 +0000
+@@ -723,3 +723,7 @@
+ >14	byte	0x54		end slice
+ >14	beshort	0x4e4e		multi-part
+ >14	beshort	0x4e53		multi-part, with -S
++
++# Type: Parity Archive
++# From: Daniel van Eeden <daniel_e@dds.nl>
++0	string	PAR2	Parity Archive Volume Set

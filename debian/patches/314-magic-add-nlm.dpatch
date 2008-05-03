@@ -1,0 +1,37 @@
+#!/bin/sh /usr/share/dpatch/dpatch-run
+## 314-magic-add-nlm.dpatch by Mads Martin Joergensen <mmj@suse.de>
+##
+## DP: New magic for NetWare Loadable Modules (NLMs).
+
+@DPATCH@
+
+diff -Naur file-4.20.orig/magic/Magdir/netware file-4.20/magic/Magdir/netware
+--- file-4.20.orig/magic/Magdir/netware	1970-01-01 00:00:00.000000000 +0000
++++ file-4.20/magic/Magdir/netware	2007-04-03 14:28:28.000000000 +0000
+@@ -0,0 +1,4 @@
++# Type: NetWare Loadable Modules (NLMs)
++# From: Mads Martin Joergensen <mmj@suse.de>
++
++0	string	NetWare\ Loadable\ Module	NetWare Loadable Module
+diff -Naur file-4.20.orig/magic/Makefile.am file-4.20/magic/Makefile.am
+--- file-4.20.orig/magic/Makefile.am	2007-04-03 14:26:17.000000000 +0000
++++ file-4.20/magic/Makefile.am	2007-04-03 14:26:54.000000000 +0000
+@@ -141,6 +141,7 @@
+ Magdir/ncr \
+ Magdir/netbsd \
+ Magdir/netscape \
++Magdir/netware \
+ Magdir/news \
+ Magdir/nitpicker \
+ Magdir/ocaml \
+diff -Naur file-4.20.orig/magic/Makefile.in file-4.20/magic/Makefile.in
+--- file-4.20.orig/magic/Makefile.in	2007-04-03 14:26:17.000000000 +0000
++++ file-4.20/magic/Makefile.in	2007-04-03 14:27:04.000000000 +0000
+@@ -281,6 +281,7 @@
+ Magdir/ncr \
+ Magdir/netbsd \
+ Magdir/netscape \
++Magdir/netware \
+ Magdir/news \
+ Magdir/nitpicker \
+ Magdir/ocaml \

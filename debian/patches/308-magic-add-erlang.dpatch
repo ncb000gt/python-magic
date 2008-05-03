@@ -1,0 +1,49 @@
+#!/bin/sh /usr/share/dpatch/dpatch-run
+## 308-magic-add-erlang.dpatch
+##
+## DP: New magic for Erlang BEAM and JAM files (Closes: #388356).
+
+@DPATCH@
+
+diff -Naur file-4.20.orig/magic/Magdir/erlang file-4.20/magic/Magdir/erlang
+--- file-4.20.orig/magic/Magdir/erlang	1970-01-01 00:00:00.000000000 +0000
++++ file-4.20/magic/Magdir/erlang	2007-04-03 15:36:54.000000000 +0000
+@@ -0,0 +1,16 @@
++# Type: Erlang JAM and BEAM files
++# URL:  http://www.erlang.org/faq/x779.html#AEN812
++
++# OTP R3-R4
++0	string	\0177BEAM!	Old Erlang BEAM file
++>6	short	>0		- version %d
++
++# OTP R5 and onwards
++0	string	FOR1
++>8	string	BEAM		Erlang BEAM file
++
++# 4.2 version may have a copyright notice!
++4	string	Tue Jan 22 14:32:44 MET 1991	Erlang JAM file - version 4.2
++79	string	Tue Jan 22 14:32:44 MET 1991	Erlang JAM file - version 4.2
++
++4	string	1.0 Fri Feb 3 09:55:56 MET 1995	Erlang JAM file - version 4.3
+diff -Naur file-4.20.orig/magic/Makefile.am file-4.20/magic/Makefile.am
+--- file-4.20.orig/magic/Makefile.am	2006-11-25 18:36:10.000000000 +0000
++++ file-4.20/magic/Makefile.am	2007-04-03 15:33:45.000000000 +0000
+@@ -80,6 +80,7 @@
+ Magdir/elf \
+ Magdir/encore \
+ Magdir/epoc \
++Magdir/erlang \
+ Magdir/esri \
+ Magdir/fcs \
+ Magdir/filesystems \
+diff -Naur file-4.20.orig/magic/Makefile.in file-4.20/magic/Makefile.in
+--- file-4.20.orig/magic/Makefile.in	2007-03-01 23:21:09.000000000 +0000
++++ file-4.20/magic/Makefile.in	2007-04-03 15:33:57.000000000 +0000
+@@ -220,6 +220,7 @@
+ Magdir/elf \
+ Magdir/encore \
+ Magdir/epoc \
++Magdir/erlang \
+ Magdir/esri \
+ Magdir/fcs \
+ Magdir/filesystems \

@@ -1,5 +1,5 @@
 #!/bin/sh /usr/share/dpatch/dpatch-run
-## 91-file-elf.dpatch by Alessandro Rubini <rubini@gnudd.com>
+## 901-file-elf.dpatch by Alessandro Rubini <rubini@gnudd.com>
 ##
 ## DP: Revert ELF file-reading (closes: #345089).
 

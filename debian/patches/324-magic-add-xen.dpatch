@@ -1,0 +1,21 @@
+#!/bin/sh /usr/share/dpatch/dpatch-run
+## 324-magic-add-xen.dpatch by Radek Vokal <rvokal@redhat.com>
+##
+## DP: xen patch, recognizes Xen saved domain
+
+@DPATCH@
+
+diff -Naur file-4.20.orig/magic/Magdir/linux file-4.20/magic/Magdir/linux
+--- file-4.20.orig/magic/Magdir/linux	2006-11-25 18:36:10.000000000 +0000
++++ file-4.20/magic/Magdir/linux	2007-04-03 13:49:17.000000000 +0000
+@@ -236,3 +236,10 @@
+ >20	lelong	1			MLS
+ >24	lelong	x			%d symbols
+ >28	lelong	x			%d ocons
++
++# Type: Xen, the virtual machine monitor
++# From: Radek Vokal <rvokal@redhat.com>
++0	string		LinuxGuestRecord	Xen saved domain
++#>2	regex		\(name\ [^)]*\)		%s
++>20	search/256	(name			(name
++>>&1	string		x			%s...)

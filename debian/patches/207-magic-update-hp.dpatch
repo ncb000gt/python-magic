@@ -1,5 +1,5 @@
 #!/bin/sh /usr/share/dpatch/dpatch-run
-## 25-magic-update-hp.dpatch by Michael Piefel <piefel@debian.org>
+## 207-magic-update-hp.dpatch by Michael Piefel <piefel@debian.org>
 ##
 ## DP: Updated HP 38/39/40/48/49 magic (closes: #326680).
 
@@ -7,7 +7,7 @@
 
 diff -Naur file-4.20.orig/magic/Magdir/hp file-4.20/magic/Magdir/hp
 --- file-4.20.orig/magic/Magdir/hp	2003-02-08 18:30:39.000000000 +0000
-+++ file-4.20/magic/Magdir/hp	2007-03-27 12:23:14.000000000 +0000
++++ file-4.20/magic/Magdir/hp	2007-04-03 12:48:02.000000000 +0000
 @@ -203,33 +203,36 @@
  >8	long		>0		%d messages
  
@@ -96,10 +96,10 @@ diff -Naur file-4.20.orig/magic/Magdir/hp file-4.20/magic/Magdir/hp
  # hpBSD magic numbers
  0	beshort		200		hp200 (68010) BSD
  >2	beshort		0407		impure binary
-@@ -390,6 +410,3 @@
- >>>>>>>>>0xC4	belong	33		- received SIGXCPU
+@@ -391,5 +411,5 @@
  >>>>>>>>>0xC4	belong	34		- received SIGXFSZ
  
--# From: AMAKAWA Shuhei <sa264@cam.ac.uk>
+ # From: AMAKAWA Shuhei <sa264@cam.ac.uk>
 -0	string	HPHP49-			HP49 binary
--
++#0	string	HPHP49-			HP49 binary
+ 

@@ -1,5 +1,5 @@
 #!/bin/sh /usr/share/dpatch/dpatch-run
-## 11-magic-remove-awk.dpatch by Michael Piefel <piefel@debian.org>
+## 101-magic-remove-awk.dpatch by Michael Piefel <piefel@debian.org>
 ##
 ## DP: Remove AWK detection by regular expression testing just for 'BEGIN:';
 ## DP: this caused a lot of false guesses (and problems with naughty programs

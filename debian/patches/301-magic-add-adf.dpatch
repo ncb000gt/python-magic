@@ -7,14 +7,13 @@
 
 diff -Naur file-4.20.orig/magic/Magdir/database file-4.20/magic/Magdir/database
 --- file-4.20.orig/magic/Magdir/database	2007-01-22 06:40:00.000000000 +0000
-+++ file-4.20/magic/Magdir/database	2007-03-27 17:29:50.000000000 +0000
-@@ -210,3 +210,9 @@
++++ file-4.20/magic/Magdir/database	2007-04-03 12:54:46.000000000 +0000
+@@ -210,3 +210,8 @@
  16	string		MIT-MAGIC-COOKIE-1	X11 Xauthority data
  17	string		MIT-MAGIC-COOKIE-1	X11 Xauthority data
  18	string		MIT-MAGIC-COOKIE-1	X11 Xauthority data
 +
-+#----------------------------------------------------------------------
-+# ADF: file(1) magic for Advanced Data Format (ADF) databases
-+#
-+# Computational Fluid Dynamics (see http://www.grc.nasa.gov/WWW/cgns/adf)
-+>0	string		@(#)ADF\ Database	CGNS Advanced Data Format
++# Type: Advanced Data Format (ADF) database
++# URL:  http://www.grc.nasa.gov/WWW/cgns/adf/
++# From: Nicolas Chauvat <nicolas.chauvat@logilab.fr>
++0	string	@(#)ADF\ Database	CGNS Advanced Data Format

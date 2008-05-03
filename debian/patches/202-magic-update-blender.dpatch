@@ -1,5 +1,5 @@
 #!/bin/sh /usr/share/dpatch/dpatch-run
-## 21-magic-update-blender.dpatch by Josh Babcock <jbabcock@atlantech.net>
+## 202-magic-update-blender.dpatch by Josh Babcock <jbabcock@atlantech.net>
 ##
 ## DP: Adds magic for Blender python scripts (Closes: #323291).
 

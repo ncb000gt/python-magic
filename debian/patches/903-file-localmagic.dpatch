@@ -1,5 +1,5 @@
 #!/bin/sh /usr/share/dpatch/dpatch-run
-## 93-magic-local.dpatch by Michael Piefel <piefel@debian.org>
+## 903-magic-local.dpatch by Michael Piefel <piefel@debian.org>
 ##
 ## DP: No longer includes Localstuff in /usr/share/misc/magic. Local definitions
 ## DP: should go to /etc/magic.

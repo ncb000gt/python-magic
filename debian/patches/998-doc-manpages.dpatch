@@ -1,13 +1,13 @@
 #!/bin/sh /usr/share/dpatch/dpatch-run
-## 95-doc-manpages.dpatch by Michael Piefel <piefel@debian.org>
+## 905-doc-manpages.dpatch by Michael Piefel <piefel@debian.org>
 ##
-## DP: FIXME
+## DP: FIXME, and #417511.
 
 @DPATCH@
 
 diff -Naur file-4.20.orig/doc/file.man file-4.20/doc/file.man
 --- file-4.20.orig/doc/file.man	2007-01-25 21:05:46.000000000 +0000
-+++ file-4.20/doc/file.man	2007-03-27 12:23:14.000000000 +0000
++++ file-4.20/doc/file.man	2007-04-03 17:57:01.000000000 +0000
 @@ -47,9 +47,8 @@
  or non-printable).
  Exceptions are well-known file formats (core files, tar archives)
@@ -20,6 +20,28 @@ diff -Naur file-4.20.orig/doc/file.man file-4.20/doc/file.man
  .Em "preserve these keywords" .
  People depend on knowing that all the readable files in a directory
  have the word 
+@@ -76,17 +75,17 @@
+ implement them)
+ are intuited if they are defined in
+ the system header file
+-.In sys/stat.h .
++.Pa sys/stat.h .
+ .Pp
+ The magic number tests are used to check for files with data in
+ particular fixed formats.
+ The canonical example of this is a binary executable (compiled program)
+ .Dv a.out
+ file, whose format is defined in 
+-.In elf.h ,
+-.In a.out.h
++.Pa elf.h ,
++.Pa a.out.h
+ and possibly
+-.In exec.h
++.Pa exec.h
+ in the standard include directory.
+ These files have a 
+ .Sq "magic number"
 @@ -99,12 +98,14 @@
  has been applied by extension to data files.
  Any file with some invariant identifier at a small fixed
@@ -37,6 +59,15 @@ diff -Naur file-4.20.orig/doc/file.man file-4.20/doc/file.man
  .Nm
  will look in
  .Pa $HOME/.magic.mgc ,
+@@ -144,7 +145,7 @@
+ it will
+ attempt to determine in what language the file is written.
+ The language tests look for particular strings (cf
+-.In names.h
++.Pa names.h
+ that can appear anywhere in the first few blocks of a file.
+ For example, the keyword
+ .Em .br
 @@ -161,7 +162,8 @@
  archives).
  .Pp
@@ -116,7 +147,7 @@ diff -Naur file-4.20.orig/doc/file.man file-4.20/doc/file.man
 +and mirrors).
 diff -Naur file-4.20.orig/doc/libmagic.man file-4.20/doc/libmagic.man
 --- file-4.20.orig/doc/libmagic.man	2007-01-25 21:04:08.000000000 +0000
-+++ file-4.20/doc/libmagic.man	2007-03-27 12:23:14.000000000 +0000
++++ file-4.20/doc/libmagic.man	2007-04-03 17:56:16.000000000 +0000
 @@ -39,7 +39,7 @@
  .Nm magic_load
  .Nd Magic number recognition library.
@@ -128,7 +159,7 @@ diff -Naur file-4.20.orig/doc/libmagic.man file-4.20/doc/libmagic.man
  .Ft magic_t
 diff -Naur file-4.20.orig/doc/magic.man file-4.20/doc/magic.man
 --- file-4.20.orig/doc/magic.man	2007-01-12 17:38:27.000000000 +0000
-+++ file-4.20/doc/magic.man	2007-03-27 12:23:14.000000000 +0000
++++ file-4.20/doc/magic.man	2007-04-03 17:56:16.000000000 +0000
 @@ -65,7 +65,7 @@
  .Dq c
  flag, specifies case insensitive matching: lowercase

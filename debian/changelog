@@ -1,3 +1,40 @@
+file (4.20-4) unstable; urgency=low
+
+  * Rediffed some patches, now having always the same format of adding new
+    magics.
+  * Added patch from Ralph Amissah <ralph.amissah@gmail.com> to add magic for
+    SiSU Markup Language.
+  * Added patch from Radek Vokal <rvokal@redhat.com> to add magic for
+    Xen saved domains.
+  * Added patch from Radek Vokal <rvokal@redhat.com> to add magic for
+    Apple Emulator 2IMG format.
+  * Added patch from Aaron Botsis <redhat@digitalmafia.org> to add magic for
+    Oracle Clustered Filesytem.
+  * Added patch from Werner Fink <werner@suse.de> to update pcp magics.
+  * Added patch from Mads Martin Joergensen <mmj@suse.de> to add magic for
+    NetWare Loadable Modules (NLMs).
+  * Added patch from Reuben Thomas <rrt@sc3d.org> to add magic for
+    Inform interactive fiction language (Closes: #394522).
+  * Added patch to add magic for Erlang BEAM and JAM files (Closes: #388356).
+  * Added patch from David Newgas <david@newgas.net> to add magic for
+    AVG vault files (Closes: #381053).
+  * Added patch from root <ap@insysnet.ru> to add magic for detecting
+    H.264 video in AVI files (Closes: #347263).
+  * Added patch from Seo Sanghyeon <tinuviel@sparcs.kaist.ac.kr> to update
+    lua magic with Lua bytecode (Closes: #335036).
+  * Added patch from Daniel van Eeden <daniel_e@dds.nl> to add magic for
+    PAR2 archive files (Closes: #294070).
+  * Added patch from Mario Lang <mlang@debian.org> to add magic for
+    SuperCollider 3 Synth Definition File Format (Closes: #284803).
+  * Added patch from Russell Coker <russell@coker.com.au> to add magic for
+    Adaptive Multi-Rate Codec files (Closes: #279322).
+  * Added patch from Phil Endecott <phil05@chezphil.org> to add magic for
+    GEDCOME genealogical data files (Closes: #277339).
+  * Added patch from Nicolas François <nicolas.francois@centraliens.net>to
+    fix wrong formating in manpage (Closes: #417511).
+
+ -- Daniel Baumann <daniel@debian.org>  Tue,  3 Apr 2007 14:25:00 +0200
+
 file (4.20-3) unstable; urgency=low
 
   * Added patch from Josh Triplett <josh@freedesktop.org> to add magic for

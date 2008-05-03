@@ -1,0 +1,32 @@
+#!/bin/sh /usr/share/dpatch/dpatch-run
+## 315-magic-add-ocfs.dpatch by Aaron Botsis <redhat@digitalmafia.org>
+##
+## DP: New magic for the Oracle Clustered Filesystem.
+
+@DPATCH@
+
+diff -Naur file-4.20.orig/magic/Magdir/filesystems file-4.20/magic/Magdir/filesystems
+--- file-4.20.orig/magic/Magdir/filesystems	2007-01-25 16:08:39.000000000 +0000
++++ file-4.20/magic/Magdir/filesystems	2007-04-03 14:11:24.000000000 +0000
+@@ -1185,6 +1185,21 @@
+ >>>>>>>>&0      bedate          =0                      full dump
+ >>>>>>>>&0      bedate          !0                      incremental since: %s
+ 
++# Type: Oracle Clustered Filesystem
++# From: Aaron Botsis <redhat@digitalmafia.org>
++8	string	OracleCFS	Oracle Clustered Filesystem,
++>4	long	x		rev %d
++>0	long	x		\b.%d,
++>560	string	x		label: %.64s,
++>136	string	x		mountpoint: %.128s
++
++# Type: Oracle ASM tagged volume
++# From: Aaron Botsis <redhat@digitalmafia.org>
++32	string	ORCLDISK	Oracle ASM Volume,
++>40	string	x		Disk Name: %0.12s
++32	string	ORCLCLRD	Oracle ASM Volume (cleared),
++>40	string	x		Disk Name: %0.12s
++
+ # VMS backup savesets - gerardo.cacciari@gmail.com
+ # had to comment out GEM Image and G3 raw data  entries due to conflict
+ #0            byte    x

@@ -1,5 +1,5 @@
 #!/bin/sh /usr/share/dpatch/dpatch-run
-## 308-magic-add-scummvm.dpatch by Sven Hartge <debian@ds9.argh.org>
+## 319-magic-add-scummvm.dpatch by Sven Hartge <debian@ds9.argh.org>
 ##
 ## DP: New magic for scummVM savegame files (Closes: #263488).
 
@@ -7,12 +7,13 @@
 
 diff -Naur file-4.20.orig/magic/Magdir/console file-4.20/magic/Magdir/console
 --- file-4.20.orig/magic/Magdir/console	2007-03-01 20:17:26.000000000 +0000
-+++ file-4.20/magic/Magdir/console	2007-03-27 17:20:57.000000000 +0000
-@@ -168,3 +168,7 @@
++++ file-4.20/magic/Magdir/console	2007-04-03 13:24:22.000000000 +0000
+@@ -168,3 +168,8 @@
  # From Gürkan Sengün <gurkan@linuks.mine.nu>, www.linuks.mine.nu
  0	string		GBS		Nintendo Gameboy Music/Audio Data
  12	string		GameBoy\ Music\ Module	Nintendo Gameboy Music Module
 +
-+# From Sven Hartge <debian@ds9.argh.org>
-+0	string		SCVM		scummVM savegame
-+>12	string		>\0		"%s"
++# Type: scummVM savegame files
++# From: Sven Hartge <debian@ds9.argh.org>
++0	string	SCVM	scummVM savegame
++>12	string	>\0	"%s"

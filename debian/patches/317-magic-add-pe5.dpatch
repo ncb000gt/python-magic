@@ -1,5 +1,5 @@
 #!/bin/sh /usr/share/dpatch/dpatch-run
-## 34-magic-add-pe5.dpatch by Simon Horman <horms@debian.org>
+## 317-magic-add-pe5.dpatch by Simon Horman <horms@debian.org>
 ##
 ## DP: New magic for the Ulead Photo Explorer5 image format (Closes: #339397).
 
@@ -13,7 +13,7 @@ diff -Naur file-4.20.orig/magic/Magdir/images file-4.20/magic/Magdir/images
  # http://www.xara.com/ for Windows and as GPL application for
  0	string	XARA\243\243	Xara graphics file
 +
++# Type: Ulead Photo Explorer5 (.pe5)
++# URL:  http://www.jisyo.com/cgibin/view.cgi?EXT=pe5 (Japanese)
 +# From: Simon Horman <horms@debian.org>
-+# Ulead Photo Explorer5 (.pe5)
-+# Source: http://www.jisyo.com/cgibin/view.cgi?EXT=pe5 (Japanese)
-+0	string	IIO2H		Ulead Photo Explorer5
++0	string	IIO2H	Ulead Photo Explorer5

@@ -1,5 +1,5 @@
 #!/bin/sh /usr/share/dpatch/dpatch-run
-## 34-magic-add-openrisc.dpatch by Robert Millan <rmh@aybabtu.com>
+## 206-magic-update-elf-b.dpatch by Robert Millan <rmh@aybabtu.com>
 ##
 ## DP: New magic for OpenRISC binary format (Closes: #316076).
 

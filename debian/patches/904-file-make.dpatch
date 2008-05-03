@@ -1,5 +1,5 @@
 #!/bin/sh /usr/share/dpatch/dpatch-run
-## 94-file-make.dpatch by Michael Piefel <piefel@debian.org>
+## 904-file-make.dpatch by Michael Piefel <piefel@debian.org>
 ##
 ## DP: FIXME
 

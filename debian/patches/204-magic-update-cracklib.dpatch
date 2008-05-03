@@ -1,5 +1,5 @@
 #!/bin/sh /usr/share/dpatch/dpatch-run
-## 23-magic-update-cracklib.dpatch by Michael Piefel <piefel@debian.org>
+## 204-magic-update-cracklib.dpatch by Michael Piefel <piefel@debian.org>
 ##
 ## DP: Improved over-confident 64bit-cracklib rule (closes: #343504).
 

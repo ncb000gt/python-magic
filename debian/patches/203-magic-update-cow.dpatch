@@ -1,5 +1,5 @@
 #!/bin/sh /usr/share/dpatch/dpatch-run
-## 22-magic-update-cow.dpatch by Matthew Palmer <mpalmer@debian.org>
+## 203-magic-update-cow.dpatch by Matthew Palmer <mpalmer@debian.org>
 ##
 ## DP: Update COW magic from 2.0 to 3.0 (Closes: #283515, #319128).
 

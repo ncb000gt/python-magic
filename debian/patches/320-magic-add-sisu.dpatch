@@ -1,0 +1,48 @@
+#!/bin/sh /usr/share/dpatch/dpatch-run
+## 320-magic-add-sisu.dpatch by Ralph Amissah <ralph.amissah@gmail.com>
+##
+## DP: New magic for SiSU Markup Language.
+
+@DPATCH@
+
+diff -Naur file-4.20.orig/magic/Magdir/sisu file-4.20/magic/Magdir/sisu
+--- file-4.20.orig/magic/Magdir/sisu	1970-01-01 00:00:00.000000000 +0000
++++ file-4.20/magic/Magdir/sisu	2007-04-03 13:36:58.000000000 +0000
+@@ -0,0 +1,15 @@
++# Type: SiSU Markup Language
++# URL:  http://www.sisudoc.org/
++# From: Ralph Amissah <ralph.amissah@gmail.com>
++
++0	regex	\^%?[\ \t]*SiSU[\ \t]+insert	SiSU text insert
++>5	regex	[0-9.]+				%s
++
++0	regex	\^%?[\ \t]*SiSU[\ \t]+master	SiSU text master
++>5	regex	[0-9.]+				%s
++
++0	regex	\^%?[\ \t]*SiSU([\ \t]+text)?	SiSU text
++>5	regex	[0-9.]+				%s
++
++0	regex	\^%*[\ \t]*sisu-[0-9.]+		SiSU text
++>5	regex	[0-9.]+				%s
+diff -Naur file-4.20.orig/magic/Makefile.am file-4.20/magic/Makefile.am
+--- file-4.20.orig/magic/Makefile.am	2006-11-25 18:36:10.000000000 +0000
++++ file-4.20/magic/Makefile.am	2007-04-03 13:37:12.000000000 +0000
+@@ -176,6 +176,7 @@
+ Magdir/sgml \
+ Magdir/sharc \
+ Magdir/sinclair \
++Magdir/sisu \
+ Magdir/sketch \
+ Magdir/smalltalk \
+ Magdir/sniffer \
+diff -Naur file-4.20.orig/magic/Makefile.in file-4.20/magic/Makefile.in
+--- file-4.20.orig/magic/Makefile.in	2007-03-01 23:21:09.000000000 +0000
++++ file-4.20/magic/Makefile.in	2007-04-03 13:37:29.000000000 +0000
+@@ -316,6 +316,7 @@
+ Magdir/sgml \
+ Magdir/sharc \
+ Magdir/sinclair \
++Magdir/sisu \
+ Magdir/sketch \
+ Magdir/smalltalk \
+ Magdir/sniffer \

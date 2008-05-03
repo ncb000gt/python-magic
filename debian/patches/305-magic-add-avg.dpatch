@@ -1,0 +1,18 @@
+#!/bin/sh /usr/share/dpatch/dpatch-run
+## 305-magic-add-avg.dpatch by David Newgas <david@newgas.net>
+##
+## DP: New magic for the AVG vault files (Closes: #381053).
+
+@DPATCH@
+
+diff -Naur file-4.20.orig/magic/Magdir/fsav file-4.20/magic/Magdir/fsav
+--- file-4.20.orig/magic/Magdir/fsav	2006-03-02 22:10:26.000000000 +0000
++++ file-4.20/magic/Magdir/fsav	2007-04-03 15:42:06.000000000 +0000
+@@ -58,3 +58,7 @@
+ >>>>769	string		ustar\0		\b, tared
+ >512	string		\037\213	\b, gzipped
+ >769	string		ustar\0		\b, tared
++
++# Type: Grisoft AVG AntiVirus
++# From: David Newgas <david@newgas.net>
++0	string	AVG7_ANTIVIRUS_VAULT_FILE	AVG 7 Antivirus vault file data

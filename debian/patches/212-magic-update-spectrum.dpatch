@@ -1,5 +1,5 @@
 #!/bin/sh /usr/share/dpatch/dpatch-run
-## 29-magic-update-spectrum.dpatch by Philip Kendall <pak21@srcf.ucam.org>
+## 212-magic-update-spectrum.dpatch by Philip Kendall <pak21@srcf.ucam.org>
 ##
 ## DP: Adding additional magics (Closes: #296202).
 

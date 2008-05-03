@@ -1,5 +1,5 @@
 #!/bin/sh /usr/share/dpatch/dpatch-run
-## 13-magic-remove-cgm.dpatch by Michael Piefel <piefel@debian.org>
+## 103-magic-remove-cgm.dpatch by Michael Piefel <piefel@debian.org>
 ##
 ## DP: FIXME
 
@@ -7,7 +7,7 @@
 
 diff -Naur file-4.20.orig/magic/Magdir/images file-4.20/magic/Magdir/images
 --- file-4.20.orig/magic/Magdir/images	2007-01-19 19:31:46.000000000 +0000
-+++ file-4.20/magic/Magdir/images	2007-03-27 12:23:14.000000000 +0000
++++ file-4.20/magic/Magdir/images	2007-04-03 12:28:49.000000000 +0000
 @@ -130,8 +130,8 @@
  # CGM image files
  0	string		BEGMF		clear text Computer Graphics Metafile
@@ -19,13 +19,12 @@ diff -Naur file-4.20.orig/magic/Magdir/images file-4.20/magic/Magdir/images
  
  # MGR bitmaps  (Michael Haardt, u31b3hs@pool.informatik.rwth-aachen.de)
  0	string	yz	MGR bitmap, modern format, 8-bit aligned
-@@ -505,9 +505,6 @@
- # http://www.djvuzone.org/
+@@ -506,7 +506,7 @@
  0	string	AT&TFORM		DjVu Image file
  
--# From: Jason Bacon <bacon@smithers.neuro.mcw.edu>
+ # From: Jason Bacon <bacon@smithers.neuro.mcw.edu>
 -0	beshort	0x3020			character Computer Graphics Metafile
--
++#0	beshort	0x3020			character Computer Graphics Metafile
+ 
  # From Marc Espie
  0	lelong	20000630		OpenEXR image data
- 

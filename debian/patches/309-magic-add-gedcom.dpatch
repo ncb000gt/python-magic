@@ -1,0 +1,22 @@
+#!/bin/sh /usr/share/dpatch/dpatch-run
+## 309-magic-add-gedcom.dpatch by Phil Endecott <phil05@chezphil.org>
+##
+## DP: New magic for GEDCOME genealogical data files (Closes: #277339).
+
+@DPATCH@
+
+diff -Naur file-4.20.orig/magic/Magdir/scientific file-4.20/magic/Magdir/scientific
+--- file-4.20.orig/magic/Magdir/scientific	2005-08-18 15:52:56.000000000 +0000
++++ file-4.20/magic/Magdir/scientific	2007-04-03 16:29:26.000000000 +0000
+@@ -58,3 +58,11 @@
+ >1104	ulong	>0		%d x
+ >1108	ulong	>0		%d,
+ >1120	ulong	>0		%d bits/pixel
++
++# Type: GEDCOME genealogical (family history) data
++# From: Phil Endecott <phil05@chezphil.org>
++0	string	0\ HEAD								GEDCOM text
++0	string	\000\060\000\040\000\110\000\105\000\101\000\104		GEDCOM text
++0	string	\060\000\040\000\110\000\105\000\101\000\104\000		GEDCOM text
++0	string	\376\377\000\060\000\040\000\110\000\105\000\101\000\104	GEDCOM text
++0	string	\377\376\060\000\040\000\110\000\105\000\101\000\104\000	GEDCOM text

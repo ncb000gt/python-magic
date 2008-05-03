@@ -1,5 +1,5 @@
 #!/bin/sh /usr/share/dpatch/dpatch-run
-## 24-magic-update-elf.dpatch by Michael Piefel <piefel@debian.org>
+## 205-magic-update-elf-a.dpatch by Michael Piefel <piefel@debian.org>
 ##
 ## DP: FIXME
 

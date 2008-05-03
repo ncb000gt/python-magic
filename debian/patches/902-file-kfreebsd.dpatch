@@ -1,5 +1,5 @@
 #!/bin/sh /usr/share/dpatch/dpatch-run
-## 92-file-kfreebsd.dpatch by Robert Millan <rmh@aybabtu.com>
+## 902-file-kfreebsd.dpatch by Robert Millan <rmh@aybabtu.com>
 ##
 ## DP: Detect GNU/kFreeBSD binaries (closes: #307475).
 

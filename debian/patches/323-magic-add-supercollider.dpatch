@@ -1,0 +1,20 @@
+#!/bin/sh /usr/share/dpatch/dpatch-run
+## 323-magic-add-supercollider.dpatch by Mario Lang <mlang@debian.org>
+##
+## DP: Adds new magic for SuperCollider 3 Synth Definition File Format
+## DP: (Closes: #284803).
+
+@DPATCH@
+
+diff -Naur file-4.20.orig/magic/Magdir/audio file-4.20/magic/Magdir/audio
+--- file-4.20.orig/magic/Magdir/audio	2007-04-03 16:21:12.000000000 +0000
++++ file-4.20/magic/Magdir/audio	2007-04-03 16:21:57.000000000 +0000
+@@ -570,3 +570,8 @@
+ # URL:  http://filext.com/detaillist.php?extdetail=AMR
+ # From: Russell Coker <russell@coker.com.au>
+ 0	string	#!AMR	Adaptive Multi-Rate Codec (GSM telephony)
++
++# Type: SuperCollider 3 Synth Definition File Format
++# From: Mario Lang <mlang@debian.org>
++0	string	SCgf	SuperCollider3 Synth Definition file,
++>4	belong	x	version %d
