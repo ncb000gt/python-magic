@@ -1,3 +1,18 @@
+file (4.21-4) unstable; urgency=low
+
+  * Bumping to new policy.
+  * Using new homepage field in control.
+  * Using ${binary:Version} in all depends.
+  * Added patch from Josh Triplett <josh@freedesktop.org> to add new magic for
+    Mozilla XUL fastload files (XUL.mfasl and XPC.mfasl).
+  * Added patch from Seo Sanghyeon <tinuviel@sparcs.kaist.ac.kr> to add new
+    magic for Mercurial bundles (Closes: #451067).
+  * Correct wrong applied patch for SNES sound files (Closes: #410847).
+  * Added patch from Mathias Brodala <info@noctus.net> to add new magic for
+    X11 cursor files (Closes: #51246).
+
+ -- Daniel Baumann <daniel@debian.org>  Sun, 23 Dec 2007 18:09:00 +0100
+
 file (4.21-3) unstable; urgency=low
 
   * Including extra headers in /usr/include/file (Closes: #397307).

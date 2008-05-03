@@ -1,0 +1,19 @@
+#!/bin/sh /usr/share/dpatch/dpatch-run
+## 325-magic-add-subversion.dpatch by Michael Piefel <piefel@debian.org>
+##
+## DP: New magic for SVN dumps (closes: #256652).
+
+@DPATCH@
+
+diff -Naur file-4.21.orig/magic/Magdir/revision file-4.21/magic/Magdir/revision
+--- file-4.21.orig/magic/Magdir/revision	2007-12-23 17:25:39.000000000 +0000
++++ file-4.21/magic/Magdir/revision	2007-12-23 17:26:34.000000000 +0000
+@@ -17,3 +17,8 @@
+ 0	string	HG10		Mercurial bundle,
+ >4	string	UN		uncompressed
+ >4	string	BZ		bzip2 compressed
++
++# Type:	Subversion (SVN) dumps
++# From:	Uwe Zeisberger <zeisberg@informatik.uni-freiburg.de>
++0	string	SVN-fs-dump-format-version:	Subversion dumpfile
++>28	string	>\0				(version: %s)

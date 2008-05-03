@@ -3,7 +3,8 @@ Section: utils
 Priority: standard
 Maintainer: Daniel Baumann <daniel@debian.org>
 Build-Depends: debhelper (>= 5.0.37.2), dpatch, autotools-dev, libtool, python, python-all-dev, python-all-dbg, zlib1g-dev
-Standards-Version: 3.7.2
+Standards-Version: 3.7.3
+Homepage: http://www.darwinsys.com/file/
 XS-Python-Version: all
 
 Package: file
@@ -19,8 +20,6 @@ Description: Determines file type using "magic" numbers
  .
  Starting with version 4, the file command is not much more than a wrapper
  around the "magic" library.
- .
-  Homepage: <http://www.darwinsys.com/file/>
 
 Package: libmagic1
 Section: libs
@@ -31,8 +30,6 @@ Suggests: file
 Description: File type determination library using "magic" numbers
  This library can be used to classify files according to magic number tests. It
  implements the core functionality of the file command.
- .
-  Homepage: <http://www.darwinsys.com/file/>
 
 Package: libmagic-dev
 Section: libdevel
@@ -43,8 +40,6 @@ Suggests: file
 Description: File type determination library using "magic" numbers (development)
  This library can be used to classify files according to magic number tests. It
  implements the core functionality of the file command.
- .
-  Homepage: <http://www.darwinsys.com/file/>
  .
  This package contains the development files.
 
@@ -60,8 +55,6 @@ Description: File type determination library using "magic" numbers (python bindi
  This library can be used to classify files according to magic number tests. It
  implements the core functionality of the file command.
  .
-  Homepage: <http://www.darwinsys.com/file/>
- .
  This package contains the python bindings to query /etc/magic information for a
  given file in Python.
 
@@ -69,12 +62,10 @@ Package: python-magic-dbg
 Section: python
 Architecture: any
 Priority: extra
-Depends: python-magic (= ${Source-Version}), python-dbg, ${shlibs:Depends}
+Depends: python-magic (= ${binary:Version}), python-dbg, ${shlibs:Depends}
 Description: File type determination library using "magic" numbers (python bindings/debug)
  This library can be used to classify files according to magic number tests. It
  implements the core functionality of the file command.
- .
-  Homepage: <http://www.darwinsys.com/file/>
  .
  This package contains the python bindings to query /etc/magic information for a
  given file in Python, built for the python debug interpreter.

@@ -107,9 +107,9 @@ install: build
 	install -D -m 0644 debian/bug/control debian/libmagic-dev/usr/share/bug/libmagic-dev/control
 
 	# Installing lintian overrides
-	for LINTIAN in debian/lintian/*; \
+	set -e; for LINTIAN in debian/lintian/*; \
 	do \
-		install -D -m 0644 $$LINTIAN debian/`basename $$LINTIAN`/usr/share/lintian/overrides/`basename $$LINTIAN` || exit 1; \
+		install -D -m 0644 $$LINTIAN debian/`basename $$LINTIAN`/usr/share/lintian/overrides/`basename $$LINTIAN`; \
 	done
 
 binary-indep: build install

@@ -1,9 +1,13 @@
 This package was debianized by Daniel Baumann <daniel@debian.org> on
 Tue, 27 Mar 2007 13:28:00 +0100.
 
-It was downloaded from <ftp://ftp.astron.com/pub/file/>.
+It was downloaded from:
 
-Upstream Author: Christos Zoulas <christos@zoulas.com>
+	<ftp://ftp.astron.com/pub/file/>
+
+Upstream Author:
+
+	Christos Zoulas <christos@zoulas.com>
 
 License:
 
@@ -75,4 +79,4 @@ License (magic/Magdir/os9):
 	POSSIBILITY OF SUCH DAMAGE.
 
 The Debian packaging is (C) 2007, Daniel Baumann <daniel@debian.org> and
-is licensed under the GPL, see `/usr/share/common-licenses/GPL'.
+is licensed under the GPL, see `/usr/share/common-licenses/GPL-2'.

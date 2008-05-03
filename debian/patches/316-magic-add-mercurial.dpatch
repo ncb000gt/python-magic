@@ -1,0 +1,20 @@
+#!/bin/sh /usr/share/dpatch/dpatch-run
+## 315-magic-add-mercurial.dpatch by Seo Sanghyeon <tinuviel@sparcs.kaist.ac.kr>
+##
+## DP: New magic for Mercurial bundles (Closes: #451067).
+
+@DPATCH@
+
+diff -Naur file-4.21.orig/magic/Magdir/revision file-4.21/magic/Magdir/revision
+--- file-4.21.orig/magic/Magdir/revision	2007-12-23 17:25:09.000000000 +0000
++++ file-4.21/magic/Magdir/revision	2007-12-23 17:24:59.000000000 +0000
+@@ -11,3 +11,9 @@
+ # Type: Git bundles (git-bundle)
+ # From: Josh Triplett <josh@freedesktop.org>
+ 0	string	#\ v2\ git\ bundle\n	Git bundle
++
++# Type:	Mercurial bundles
++# From:	Seo Sanghyeon <tinuviel@sparcs.kaist.ac.kr>
++0	string	HG10		Mercurial bundle,
++>4	string	UN		uncompressed
++>4	string	BZ		bzip2 compressed
