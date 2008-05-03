@@ -1,3 +1,10 @@
+file (4.23-2) unstable; urgency=low
+
+  * Applied patch from Neil Williams <codehelp@debian.org> to add crossbuild
+    support to debian/rules (Closes: #465111).
+
+ -- Daniel Baumann <daniel@debian.org>  Sun, 10 Feb 2008 20:16:00 +0100
+
 file (4.23-1) unstable; urgency=low
 
   * New upstream release:
@@ -16,12 +23,12 @@ file (4.21-4) unstable; urgency=low
   * Using new homepage field in control.
   * Using ${binary:Version} in all depends.
   * Added patch from Josh Triplett <josh@freedesktop.org> to add new magic for
-    Mozilla XUL fastload files (XUL.mfasl and XPC.mfasl).
+    Mozilla XUL fastload files (XUL.mfasl and XPC.mfasl; Closes: #452354).
   * Added patch from Seo Sanghyeon <tinuviel@sparcs.kaist.ac.kr> to add new
     magic for Mercurial bundles (Closes: #451067).
   * Correct wrong applied patch for SNES sound files (Closes: #410847).
   * Added patch from Mathias Brodala <info@noctus.net> to add new magic for
-    X11 cursor files (Closes: #51246).
+    X11 cursor files (Closes: #451246).
 
  -- Daniel Baumann <daniel@debian.org>  Sun, 23 Dec 2007 18:09:00 +0100
 
