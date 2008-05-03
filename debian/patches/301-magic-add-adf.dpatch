@@ -1,0 +1,20 @@
+#!/bin/sh /usr/share/dpatch/dpatch-run
+## 301-magic-add-adf.dpatch by Nicolas Chauvat <nicolas.chauvat@logilab.fr>
+##
+## DP: New magic for the CGNS Advnaced Data Format (Closes: #242644).
+
+@DPATCH@
+
+diff -Naur file-4.20.orig/magic/Magdir/database file-4.20/magic/Magdir/database
+--- file-4.20.orig/magic/Magdir/database	2007-01-22 06:40:00.000000000 +0000
++++ file-4.20/magic/Magdir/database	2007-03-27 17:29:50.000000000 +0000
+@@ -210,3 +210,9 @@
+ 16	string		MIT-MAGIC-COOKIE-1	X11 Xauthority data
+ 17	string		MIT-MAGIC-COOKIE-1	X11 Xauthority data
+ 18	string		MIT-MAGIC-COOKIE-1	X11 Xauthority data
++
++#----------------------------------------------------------------------
++# ADF: file(1) magic for Advanced Data Format (ADF) databases
++#
++# Computational Fluid Dynamics (see http://www.grc.nasa.gov/WWW/cgns/adf)
++>0	string		@(#)ADF\ Database	CGNS Advanced Data Format

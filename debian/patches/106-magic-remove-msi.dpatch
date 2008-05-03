@@ -1,0 +1,18 @@
+#!/bin/sh /usr/share/dpatch/dpatch-run
+## 16-magic-remove-msi.dpatch by Michael Piefel <piefel@debian.org>
+##
+## DP: Disable second MS Installer entry (closes: #409895).
+
+@DPATCH@
+
+diff -Naur file-4.20.orig/magic/Magdir/msdos file-4.20/magic/Magdir/msdos
+--- file-4.20.orig/magic/Magdir/msdos	2007-01-19 19:35:20.000000000 +0000
++++ file-4.20/magic/Magdir/msdos	2007-03-27 12:23:14.000000000 +0000
+@@ -617,5 +620,6 @@
+ 0	lelong	0x02468ace			Bochs Sparse disk image
+ 
+ # from http://filext.com by Derek M Jones <derek@knosof.co.uk>
+-0	string	\xD0\xCF\x11\xE0\xA1\xB1\x1A\xE1\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x3E\x00\x03\x00\xFE\xFF	Microsoft Installer
++# False positive with PPT
++#0	string	\xD0\xCF\x11\xE0\xA1\xB1\x1A\xE1\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x3E\x00\x03\x00\xFE\xFF	Microsoft Installer
+ 0	string	\320\317\021\340\241\261\032\341	Microsoft Office Document

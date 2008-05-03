@@ -1,0 +1,52 @@
+#!/bin/sh /usr/share/dpatch/dpatch-run
+## 93-magic-local.dpatch by Michael Piefel <piefel@debian.org>
+##
+## DP: No longer includes Localstuff in /usr/share/misc/magic. Local definitions
+## DP: should go to /etc/magic.
+
+@DPATCH@
+
+diff -Naur file-4.20.orig/magic/magic.local file-4.20/magic/magic.local
+--- file-4.20.orig/magic/magic.local	1970-01-01 00:00:00.000000000 +0000
++++ file-4.20/magic/magic.local	2007-03-27 12:23:14.000000000 +0000
+@@ -0,0 +1,3 @@
++# Magic local data for file(1) command.
++# Insert here your local magic data. Format is described in magic(5).
++
+diff -Naur file-4.20.orig/src/Makefile.am file-4.20/src/Makefile.am
+--- file-4.20.orig/src/Makefile.am	2007-01-12 17:40:53.000000000 +0000
++++ file-4.20/src/Makefile.am	2007-03-27 12:23:14.000000000 +0000
+@@ -5,7 +5,7 @@
+ 
+ bin_PROGRAMS = file
+ 
+-AM_CPPFLAGS = -DMAGIC='"$(MAGIC)"'
++AM_CPPFLAGS = -DMAGIC='"/etc/magic:$(MAGIC)"'
+ 
+ libmagic_la_SOURCES = magic.c apprentice.c softmagic.c ascmagic.c \
+ 	compress.c is_tar.c readelf.c print.c fsmagic.c \
+diff -Naur file-4.20.orig/src/Makefile.in file-4.20/src/Makefile.in
+--- file-4.20.orig/src/Makefile.in	2007-03-01 23:21:09.000000000 +0000
++++ file-4.20/src/Makefile.in	2007-03-27 12:23:14.000000000 +0000
+@@ -196,7 +196,7 @@
+ lib_LTLIBRARIES = libmagic.la
+ include_HEADERS = magic.h
+ EXTRA_DIST = test.c
+-AM_CPPFLAGS = -DMAGIC='"$(MAGIC)"'
++AM_CPPFLAGS = -DMAGIC='"/etc/magic:$(MAGIC)"'
+ libmagic_la_SOURCES = magic.c apprentice.c softmagic.c ascmagic.c \
+ 	compress.c is_tar.c readelf.c print.c fsmagic.c \
+ 	funcs.c file.h names.h patchlevel.h readelf.h tar.h apptype.c
+diff -Naur file-4.20.orig/magic/Header file-4.20/magic/Header
+--- file-4.20.orig/magic/Header	2000-08-05 17:36:46.000000000 +0000
++++ file-4.20/magic/Header	2007-03-27 12:23:14.000000000 +0000
+@@ -1,5 +1,5 @@
+-# Magic
+ # Magic data for file(1) command.
+-# Machine-generated from src/cmd/file/magdir/*; edit there only!
+-# Format is described in magic(files), where:
+-# files is 5 on V7 and BSD, 4 on SV, and ?? in the SVID.
++# Format is described in magic(5).
++# Don't edit this file, edit /etc/magic or send your suggested inclusions to
++# this file as a wishlist bug against file (using the reportbug utility).
++

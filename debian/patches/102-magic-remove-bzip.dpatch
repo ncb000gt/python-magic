@@ -1,0 +1,41 @@
+#!/bin/sh /usr/share/dpatch/dpatch-run
+## 12-magic-remove-bzip.dpatch by Michael Piefel <piefel@debian.org>
+##
+## DP: Disabled BZIP detection (closes: #277648).
+
+@DPATCH@
+
+diff -Naur file-4.20.orig/magic/Magdir/compress file-4.20/magic/Magdir/compress
+--- file-4.20.orig/magic/Magdir/compress	2006-03-02 22:10:26.000000000 +0000
++++ file-4.20/magic/Magdir/compress	2007-03-27 12:23:14.000000000 +0000
+@@ -101,18 +101,18 @@
+ 
+ # bzip	a block-sorting file compressor
+ #	by Julian Seward <sewardj@cs.man.ac.uk> and others
+-#
+-0	string		BZ		bzip compressed data
+->2	byte		x		\b, version: %c
+->3	string		=1		\b, compression block size 100k
+->3	string		=2		\b, compression block size 200k
+->3	string		=3		\b, compression block size 300k
+->3	string		=4		\b, compression block size 400k
+->3	string		=5		\b, compression block size 500k
+->3	string		=6		\b, compression block size 600k
+->3	string		=7		\b, compression block size 700k
+->3	string		=8		\b, compression block size 800k
+->3	string		=9		\b, compression block size 900k
++# Disabled because it is too weak (MPi)
++#0	string		BZ		bzip compressed data
++#>2	byte		x		\b, version: %c
++#>3	string		=1		\b, compression block size 100k
++#>3	string		=2		\b, compression block size 200k
++#>3	string		=3		\b, compression block size 300k
++#>3	string		=4		\b, compression block size 400k
++#>3	string		=5		\b, compression block size 500k
++#>3	string		=6		\b, compression block size 600k
++#>3	string		=7		\b, compression block size 700k
++#>3	string		=8		\b, compression block size 800k
++#>3	string		=9		\b, compression block size 900k
+ 
+ # lzop from <markus.oberhumer@jk.uni-linz.ac.at>
+ 0	string		\x89\x4c\x5a\x4f\x00\x0d\x0a\x1a\x0a	lzop compressed data

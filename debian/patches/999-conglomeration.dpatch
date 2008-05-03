@@ -1,0 +1,161 @@
+#!/bin/sh /usr/share/dpatch/dpatch-run
+## 99-conglomeration.dpatch by Michael Piefel <piefel@debian.org>
+##
+## DP: Needs to be broken out (FIXME).
+
+@DPATCH@
+
+diff -Naur file-4.20.orig/magic/magic.mime file-4.20/magic/magic.mime
+--- file-4.20.orig/magic/magic.mime	2007-01-25 22:10:35.000000000 +0000
++++ file-4.20/magic/magic.mime	2007-03-27 12:23:14.000000000 +0000
+@@ -156,9 +156,7 @@
+ 
+ # Creative Labs AUDIO stuff
+ #					Standard MIDI data
+-0	string	MThd			audio/unknown
+-#>9 	byte	>0			(format %d)
+-#>11	byte	>1			using %d channels
++0	string	MThd			audio/midi
+ #					Creative Music (CMF) data
+ 0	string	CTMF			audio/unknown
+ #					SoundBlaster instrument data
+@@ -273,7 +271,7 @@
+ 0       string          #!/usr/bin/awk          application/x-awk
+ 0       string          #!\ /usr/bin/awk        application/x-awk
+ # update to distinguish from *.vcf files by Joerg Jenderek: joerg dot jenderek at web dot de
+-0	regex		BEGIN[[:space:]]*[{]	application/x-awk
++#0	regex		BEGIN[[:space:]]*[{]	application/x-awk
+ 
+ # For Larry Wall's perl language.  The ``eval'' line recognizes an
+ # outrageously clever hack for USG systems.
+@@ -298,7 +296,7 @@
+ # because it tries to uncompress it to figure out what's inside.
+ 
+ # standard unix compress
+-0	string		\037\235	application/x-compress
++#0	string		\037\235	application/x-compress
+ 
+ # gzip (GNU zip, not to be confused with [Info-ZIP/PKWARE] zip archiver)
+ 0       string          \037\213        application/x-gzip
+@@ -400,18 +398,15 @@
+ #------------------------------------------------------------------------------
+ # html:  file(1) magic for HTML (HyperText Markup Language) docs
+ #
+-# from Daniel Quinlan <quinlan@yggdrasil.com>
++# from Michael Piefel <piefel@debian.org>
+ #
+-0	string		\<HEAD	text/html
+-0	string		\<head	text/html
+-0	string		\<TITLE	text/html
+-0	string		\<title	text/html
+-0       string          \<html	text/html
+-0       string          \<HTML	text/html
++0	string/cB	\<!DOCTYPE\ html	text/html
++0	string/cb	\<head	text/html
++0	string/cb	\<title	text/html
++0       string/bc	\<html	text/html
+ 0	string		\<!--	text/html
+-0	string		\<h1	text/html
+-0	string		\<H1	text/html
+-0	string/c	\<!doctype\ html	text/html
++0	string/c	\<h1	text/html
++
+ 
+ #------------------------------------------------------------------------------
+ # images:  file(1) magic for image formats (see also "c-lang" for XPM bitmaps)
+@@ -474,7 +469,7 @@
+ 0	beshort		0xffd8		image/jpeg
+ 
+ # PC bitmaps (OS/2, Windoze BMP files)  (Greg Roelofs, newt@uchicago.edu)
+-0	string		BM		image/bmp
++0	string		BM		image/x-ms-bmp
+ #>14	byte		12		(OS/2 1.x format)
+ #>14	byte		64		(OS/2 2.x format)
+ #>14	byte		40		(Windows 3.x format)
+@@ -706,8 +701,10 @@
+ #------------------------------------------------------------------------------
+ # Hierarchical Data Format, used to facilitate scientific data exchange
+ # specifications at http://hdf.ncsa.uiuc.edu/
+-0	belong		0x0e031301	Hierarchical Data Format (version 4) data
+-0	string		\211HDF\r\n\032	Hierarchical Data Format (version 5) data
++#Hierarchical Data Format (version 4) data
++0	belong		0x0e031301		application/x-hdf
++#Hierarchical Data Format (version 5) data
++0	string		\211HDF\r\n\032		application/x-hdf
+ 
+ # Adobe Photoshop
+ 0	string		8BPS			image/x-photoshop
+@@ -777,21 +774,25 @@
+ # Debian has entries for the old PGP formats:
+ # pgp:  file(1) magic for Pretty Good Privacy
+ # see http://lists.gnupg.org/pipermail/gnupg-devel/1999-September/016052.html
+-0       beshort         0x9900                  text/PGP key public ring
+-0       beshort         0x9501                  text/PGP key security ring
+-0       beshort         0x9500                  text/PGP key security ring
+-0       beshort         0xa600                  text/PGP encrypted data
+-0       string          -----BEGIN\040PGP       text/PGP armored data
+->15     string          PUBLIC\040KEY\040BLOCK- public key block
+->15     string          MESSAGE-                message
+->15     string          SIGNED\040MESSAGE-      signed message
+->15     string          PGP\040SIGNATURE-       signature
+-0       beshort         0x8501                  data
++#text/PGP key public ring
++0	beshort		0x9900			application/pgp
++#text/PGP key security ring
++0	beshort		0x9501			application/pgp
++#text/PGP key security ring
++0	beshort		0x9500			application/pgp
++#text/PGP encrypted data
++0	beshort		0xa600			application/pgp-encrypted
++#text/PGP armored data
++##public key block
++2	string	---BEGIN\ PGP\ PUBLIC\ KEY\ BLOCK-	application/pgp-keys
++0	string	-----BEGIN\040PGP\40MESSAGE-			application/pgp
++0	string	-----BEGIN\040PGP\40SIGNATURE-			application/pgp-signature
+ #
+ # GnuPG Magic:
+-#
+-0       beshort         0x9901                  text/GnuPG key public ring
+-0       beshort         0x8501                  text/OpenPGP data
++#text/GnuPG key public ring
++0	beshort		0x9901			application/pgp
++#text/OpenPGP data
++0	beshort		0x8501			application/pgp-encrypted	
+ 
+ # flash:        file(1) magic for Macromedia Flash file format
+ #
+@@ -951,3 +952,9 @@
+ 
+ # 
+ 128	string		DICM		application/dicom
++
++# Gnumeric spreadsheet
++# This entry is only semi-helpful, as Gnumeric compresses its files, so
++# they will ordinarily reported as "compressed", but at least -z helps
++39      string          =<gmr:Workbook           application/x-gnumeric
++
+diff -Naur file-4.20.orig/src/file.c file-4.20/src/file.c
+--- file-4.20.orig/src/file.c	2007-01-25 21:05:46.000000000 +0000
++++ file-4.20/src/file.c	2007-03-27 12:23:14.000000000 +0000
+@@ -352,7 +352,7 @@
+ 	}
+ 
+ 	magic_close(magic);
+-	return 0;
++	return magic->haderr ? -1 : 0;
+ }
+ 
+ 
+diff -Naur file-4.20.orig/src/fsmagic.c file-4.20/src/fsmagic.c
+--- file-4.20.orig/src/fsmagic.c	2007-01-12 17:40:53.000000000 +0000
++++ file-4.20/src/fsmagic.c	2007-03-27 12:23:14.000000000 +0000
+@@ -92,7 +92,8 @@
+ 		if (file_printf(ms, "cannot open `%s' (%s)",
+ 		    fn, strerror(errno)) == -1)
+ 			return -1;
+-		return 1;
++		ms->haderr++;
++		return -1;
+ 	}
+ 
+ 	if ((ms->flags & MAGIC_MIME) != 0) {

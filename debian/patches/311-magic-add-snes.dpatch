@@ -1,0 +1,24 @@
+#!/bin/sh /usr/share/dpatch/dpatch-run
+## 35-magic-add-snes.dpatch by Josh Triplett <josh@freedesktop.org>
+##
+## DP: New magic for SNES SPC700 sound files (Closes: #410847).
+
+@DPATCH@
+
+diff -Naur file-4.20.orig/magic/Magdir/audio file-4.20/magic/Magdir/audio
+--- file-4.20.orig/magic/Magdir/audio	2007-01-19 19:26:35.000000000 +0000
++++ file-4.20/magic/Magdir/audio	2007-03-27 15:25:56.000000000 +0000
+@@ -268,6 +268,13 @@
+ >122	byte&0x1	=1		PAL
+ >122	byte&0x1	=0		NTSC
+ 
++# SNES SPC700 sound files
++>&0	string	0.30	\b, version %s
++>>0x23	byte	0x1B	\b, without ID666 tag
++>>0x23	byte	0x1A	\b, with ID666 tag
++>>>0x2E	string	>\0	\b, song "%.32s"
++>>>0x4E	string	>\0	\b, game "%.32s"
++
+ # Impulse tracker module (audio/x-it)
+ 0	string		IMPM		Impulse Tracker module sound data -
+ >4	string		>\0		"%s"

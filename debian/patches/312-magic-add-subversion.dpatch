@@ -1,0 +1,20 @@
+#!/bin/sh /usr/share/dpatch/dpatch-run
+## 36-magic-add-subversion.dpatch by Michael Piefel <piefel@debian.org>
+##
+## DP: New magic for SVN dumps (closes: #256652).
+
+@DPATCH@
+
+diff -Naur file-4.20.orig/magic/Magdir/revision file-4.20/magic/Magdir/revision
+--- file-4.20.orig/magic/Magdir/revision	2003-05-25 23:04:55.000000000 +0000
++++ file-4.20/magic/Magdir/revision	2007-03-27 12:23:14.000000000 +0000
+@@ -3,3 +3,9 @@
+ # file(1) magic for revision control files
+ # From Hendrik Scholz <hendrik@scholz.net>
+ 0   string /1\ :pserver:    cvs password text file
++
++
++# Subversion (SVN) dumps
++# Uwe Zeisberger <zeisberg@informatik.uni-freiburg.de>
++0       string  SVN-fs-dump-format-version:     Subversion dumpfile
++>28     string  >\0                             (version: %s)

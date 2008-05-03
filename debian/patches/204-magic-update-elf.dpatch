@@ -1,0 +1,19 @@
+#!/bin/sh /usr/share/dpatch/dpatch-run
+## 24-magic-update-elf.dpatch by Michael Piefel <piefel@debian.org>
+##
+## DP: FIXME
+
+@DPATCH@
+
+diff -Naur file-4.20.orig/magic/Magdir/elf file-4.20/magic/Magdir/elf
+--- file-4.20.orig/magic/Magdir/elf	2006-12-18 14:14:34.000000000 +0000
++++ file-4.20/magic/Magdir/elf	2007-03-27 12:23:14.000000000 +0000
+@@ -51,7 +51,7 @@
+ >>>>36  lelong&0xf0000000	0x20000000	MIPS-III
+ >>>>36  lelong&0xf0000000	0x30000000	MIPS-IV
+ >>>>36  lelong&0xf0000000	0x40000000	MIPS-V
+->>>>36  lelong&0xf0000000	0x60000000	MIPS32
++>>>>36  lelong&0xf0000000	0x5fffffff	MIPS32
+ >>>>36  lelong&0xf0000000	0x70000000	MIPS64
+ >>>>36  lelong&0xf0000000	0x80000000	MIPS32 rel2
+ >>>>36  lelong&0xf0000000	0x90000000	MIPS64 rel2

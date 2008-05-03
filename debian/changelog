@@ -1,3 +1,40 @@
+file (4.20-3) unstable; urgency=low
+
+  * Added patch from Josh Triplett <josh@freedesktop.org> to add magic for
+    SNES SPC700 sound files (Closes: #410847).
+  * Added patch from Reuben Thomas <rrt@sc3d.org> to add magic for the
+    Lua scripting language (Closes: #394524).
+  * Added patch from Nigel McNie <nigel@mcnie.name> to detect m4v files as m4v
+    instead of mp4 (Closes: #384018).
+  * Added patch from Mark Hindley <mark@hindley.org.uk> to update
+    sh scripts identifier (Closes: #368613).
+  * Added patch from Robert Millan <rmh@aybabtu.com> to add magic for the
+    LZMA compression format (Closes: #364260).
+  * Added patch from Simon Horman <horms@debian.org> to add magic for the
+    Ulead Photo Explorer5 image format (Closes: #339397).
+  * Added patch from Robert Millan <rmh@aybabtu.com> to add magic for the
+    Monkey's audio format (Closes: #334862).
+  * Added patch from Josh Babcock <jbabcock@atlantech.net> to updated magic for
+    Blender (Closes: #323291).
+  * Added patch from Matthew Palmer <mpalmer@debian.org> to update magic for
+    COW from 2.0 to 3.0 (Closes: #283515, #319128).
+  * Added patch from Robert Millan <rmh@aybabtu.com> to add magic for the
+    OpenRISC binary format (Closes: #316076).
+  * Added patch from Philip Kendall <pak21@srcf.ucam.org> to update the
+    spectrum magics (Closes: #296202).
+  * Added patch from Al Stone <ahs3@debian.org> to add magic for the
+    LLVM byte-codes (Closes: #293427).
+  * Added patch from Julien Blache <jblache@debian.org> to add magic for
+    Clarion files (Closes: #282680).
+  * Added patch from Sven Hartge <debian@ds9.argh.org> to add magic for
+    scummVM savegame files (Closes: #263488).
+  * Added patch from Nicolas Chauvat <nicolas.chauvat@logilab.fr> to add magic
+    for CGNS Advnaced Data Format files (Closes: #242644).
+  * Added patch from Edward Betts <edward@debian.org> to add magic for
+    pmenu (Closes: #38543).
+
+ -- Daniel Baumann <daniel@debian.org>  Tue, 27 Mar 2007 17:51:00 +0100
+
 file (4.20-2) unstable; urgency=low
 
   * New maintainer (Closes: #416263).

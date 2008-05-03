@@ -1,0 +1,140 @@
+#!/bin/sh /usr/share/dpatch/dpatch-run
+## 95-doc-manpages.dpatch by Michael Piefel <piefel@debian.org>
+##
+## DP: FIXME
+
+@DPATCH@
+
+diff -Naur file-4.20.orig/doc/file.man file-4.20/doc/file.man
+--- file-4.20.orig/doc/file.man	2007-01-25 21:05:46.000000000 +0000
++++ file-4.20/doc/file.man	2007-03-27 12:23:14.000000000 +0000
+@@ -47,9 +47,8 @@
+ or non-printable).
+ Exceptions are well-known file formats (core files, tar archives)
+ that are known to contain binary data.
+-When modifying the file
+-.Pa __MAGIC__
+-or the program itself, make sure to
++When adding local definitions to
++.Pa /etc/magic ,
+ .Em "preserve these keywords" .
+ People depend on knowing that all the readable files in a directory
+ have the word 
+@@ -99,12 +98,14 @@
+ has been applied by extension to data files.
+ Any file with some invariant identifier at a small fixed
+ offset into the file can usually be described in this way.
+-The information identifying these files is read from the compiled
++The information identifying these files is read from
++.Pa /etc/magic
++and the compiled
+ magic file
+ .Pa __MAGIC__.mgc ,
+ or 
+ .Pa __MAGIC__
+-if the compile file does not exist. In addition
++if the compiled file does not exist. In addition
+ .Nm
+ will look in
+ .Pa $HOME/.magic.mgc ,
+@@ -161,7 +162,8 @@
+ archives).
+ .Pp
+ Any file that cannot be identified as having been written
+-in any of the character sets listed above is simply said to be ``data''.
++in any of the character sets listed above is simply said to be
++.Dq data .
+ .Sh OPTIONS
+ .Bl -tag -width indent
+ .It Fl b , -brief
+@@ -239,7 +241,12 @@
+ .Dq FILES
+ section, below).
+ .It Fl k , -keep-going
+-Don't stop at the first match, keep going.
++Don't stop at the first match, keep going. Subsequent matches will be
++prepended by
++.Dq "\[rs]012\- ".
++(If you want a newline, see 
++.Dq "\-r"
++option.)
+ .It Fl L , -dereference
+ option causes symlinks to be followed, as the like-named option in
+ .Xr ls 1
+@@ -252,7 +259,8 @@
+ This can be a single file, or a colon-separated list of files.
+ If a compiled magic file is found alongside, it will be used instead.
+ With the 
+-.Fl i or 
++.Fl i
++or 
+ .Fl "mime"
+ option, the program adds
+ .Dq .mime
+@@ -339,6 +347,11 @@
+ and/or
+ .Dq .mgc
+ to the value of this variable as appropriate.
++However,
++.Pa file
++has to exist in order for
++.Pa file.mime
++to be considered.
+ The environment variable
+ .Dv POSIXLY_CORRECT
+ controls (on systems that support symbolic links), if
+@@ -413,12 +426,6 @@
+ The order of entries in the magic file is significant.
+ Depending on what system you are using, the order that
+ they are put together may be incorrect.
+-If your old
+-.Nm
+-command uses a magic file,
+-keep the old magic file around for comparison purposes
+-(rename it to 
+-.Pa __MAGIC__.orig ).
+ .Sh EXAMPLES
+ .Bd -literal -offset indent 
+ $ file file.c file /dev/{wd0a,hda}
+@@ -586,9 +593,17 @@
+ The new support for multiple character codes makes it even slower.
+ .Pp
+ This manual page, and particularly this section, is too long.
++.Sh RETURN CODE
++.Nm
++almost always returns 0. It returns a different code if it cannot open a file.
+ .Sh AVAILABILITY
+ You can obtain the original author's latest version by anonymous FTP
+ on
+ .Dv ftp.astron.com
+ in the directory
+ .Dv /pub/file/file-X.YZ.tar.gz
++.Pp
++This Debian version adds a number of new magix entries. It can be
++obtained from every site carrying a Debian distribution (that is
++.Dv ftp.debian.org
++and mirrors).
+diff -Naur file-4.20.orig/doc/libmagic.man file-4.20/doc/libmagic.man
+--- file-4.20.orig/doc/libmagic.man	2007-01-25 21:04:08.000000000 +0000
++++ file-4.20/doc/libmagic.man	2007-03-27 12:23:14.000000000 +0000
+@@ -39,7 +39,7 @@
+ .Nm magic_load
+ .Nd Magic number recognition library.
+ .Sh LIBRARY
+-.Lb libmagic
++.Lb libmagic1
+ .Sh SYNOPSIS
+ .In magic.h
+ .Ft magic_t
+diff -Naur file-4.20.orig/doc/magic.man file-4.20/doc/magic.man
+--- file-4.20.orig/doc/magic.man	2007-01-12 17:38:27.000000000 +0000
++++ file-4.20/doc/magic.man	2007-03-27 12:23:14.000000000 +0000
+@@ -65,7 +65,7 @@
+ .Dq c
+ flag, specifies case insensitive matching: lowercase
+ characters in the magic match both lower and upper case characters in the
+-targer, whereas upper case characters in the magic, only much uppercase
++target, whereas upper case characters in the magic, only much uppercase
+ characters in the target.
+ .It Dv pstring
+ A pascal style string where the first byte is interpreted as the an

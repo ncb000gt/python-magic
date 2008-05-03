@@ -1,0 +1,36 @@
+#!/bin/sh /usr/share/dpatch/dpatch-run
+## 92-file-kfreebsd.dpatch by Robert Millan <rmh@aybabtu.com>
+##
+## DP: Detect GNU/kFreeBSD binaries (closes: #307475).
+
+@DPATCH@
+
+diff -Naur file-4.20.orig/src/readelf.c file-4.20/src/readelf.c
+--- file-4.20.orig/src/readelf.c	2007-01-18 05:45:35.000000000 +0000
++++ file-4.20/src/readelf.c	2007-03-27 12:23:14.000000000 +0000
+@@ -396,6 +396,14 @@
+ 			if (file_printf(ms, "Solaris") == -1)
+ 				return size;
+ 			break;
++		case GNU_OS_KFREEBSD:
++			if (file_printf(ms, "kFreeBSD") == -1)
++				return size;
++			break;
++		case GNU_OS_KNETBSD:
++			if (file_printf(ms, "kNetBSD") == -1)
++				return size;
++			break;
+ 		default:
+ 			if (file_printf(ms, "<unknown>") == -1)
+ 				return size; 
+diff -Naur file-4.20.orig/src/readelf.h file-4.20/src/readelf.h
+--- file-4.20.orig/src/readelf.h	2007-01-12 17:40:53.000000000 +0000
++++ file-4.20/src/readelf.h	2007-03-27 12:23:14.000000000 +0000
+@@ -232,5 +232,7 @@
+ #define GNU_OS_LINUX	0
+ #define GNU_OS_HURD	1
+ #define GNU_OS_SOLARIS	2
++#define GNU_OS_KFREEBSD	3
++#define GNU_OS_KNETBSD	4
+ 
+ #endif

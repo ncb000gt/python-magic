@@ -1,0 +1,62 @@
+#!/bin/sh /usr/share/dpatch/dpatch-run
+## 302-magic-add-clarion.dpatch by Julien Blache <jblache@debian.org>
+##
+## DP: New magic for the Clarion files (Closes: #282680).
+
+@DPATCH@
+
+diff -Naur file-4.20.orig/magic/Magdir/clarion file-4.20/magic/Magdir/clarion
+--- file-4.20.orig/magic/Magdir/clarion	1970-01-01 00:00:00.000000000 +0000
++++ file-4.20/magic/Magdir/clarion	2007-03-27 17:07:02.000000000 +0000
+@@ -0,0 +1,29 @@
++#
++# Magic numbers for the Clarion Personal/Professional Developer (v2 and above) files
++#
++# Julien BLACHE <jb@jblache.org>
++#
++
++#### Database and associated files
++
++### Database files
++## signature
++0	leshort		0x3343	Clarion Personal/Professional Developer (v2 and above) data file
++## interesting attributes
++>2	leshort		&0x0001	\b, locked
++>2	leshort		&0x0004	\b, encrypted
++>2	leshort		&0x0008	\b, memo file exists
++>2	leshort		&0x0010	\b, compressed
++>2	leshort		&0x0040	\b, read only
++## number of records
++>5	lelong		x	\b, %ld records
++
++### Memo files
++0	leshort		0x334d	Clarion Personal/Professional Developer (v2 and above) memo data
++
++### Key/Index files
++## No magic ? :(
++
++
++#### Help files
++0	leshort		0x49e0	Clarion Personal/Professional Developer (v2 and above) help data
+diff -Naur file-4.20.orig/magic/Makefile.am file-4.20/magic/Makefile.am
+--- file-4.20.orig/magic/Makefile.am	2006-11-25 18:36:10.000000000 +0000
++++ file-4.20/magic/Makefile.am	2007-03-27 17:07:26.000000000 +0000
+@@ -60,6 +60,7 @@
+ Magdir/cisco \
+ Magdir/citrus \
+ Magdir/claris \
++Magdir/clarion \
+ Magdir/clipper \
+ Magdir/cracklib \
+ Magdir/spec \
+diff -Naur file-4.20.orig/magic/Makefile.in file-4.20/magic/Makefile.in
+--- file-4.20.orig/magic/Makefile.in	2007-03-01 23:21:09.000000000 +0000
++++ file-4.20/magic/Makefile.in	2007-03-27 17:07:32.000000000 +0000
+@@ -200,6 +200,7 @@
+ Magdir/cisco \
+ Magdir/citrus \
+ Magdir/claris \
++Magdir/clarion \
+ Magdir/clipper \
+ Magdir/cracklib \
+ Magdir/spec \

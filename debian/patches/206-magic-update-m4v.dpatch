@@ -1,0 +1,29 @@
+#!/bin/sh /usr/share/dpatch/dpatch-run
+## 26-magic-update-m4v.dpatch by Nigel McNie <nigel@mcnie.name>
+##
+## DP: Detect m4v files as m4v instead of mp4 (Closes: #384018).
+
+@DPATCH@
+
+diff -Naur file-4.20.orig/magic/Magdir/animation file-4.20/magic/Magdir/animation
+--- file-4.20.orig/magic/Magdir/animation	2007-01-14 18:47:21.000000000 +0000
++++ file-4.20/magic/Magdir/animation	2007-03-27 15:42:27.000000000 +0000
+@@ -36,6 +36,7 @@
+ >8	string		mmp4		\b, MPEG v4 system, 3GPP Mobile
+ >8	string		avc1		\b, MPEG v4 system, 3GPP JVT AVC
+ >8	string/B	M4A		\b, MPEG v4 system, iTunes AAC-LC
++>8	string/B	M4V		\b, MPEG v4 system, iTunes AVC-LC
+ >8	string/B	M4P		\b, MPEG v4 system, iTunes AES encrypted
+ >8	string/B	M4B		\b, MPEG v4 system, iTunes bookmarked
+ >8	string/B	qt		\b, Apple QuickTime movie
+diff -Naur file-4.20.orig/magic/magic.mime file-4.20/magic/magic.mime
+--- file-4.20.orig/magic/magic.mime	2007-01-25 22:10:35.000000000 +0000
++++ file-4.20/magic/magic.mime	2007-03-27 15:42:27.000000000 +0000
+@@ -643,6 +643,7 @@
+ >8      string          avc1          video/3gpp
+ >8	string		mmp4	      video/mp4
+ >8	string/B	M4A	      audio/mp4
++>8	string/B	M4V	      video/mp4
+ >8	string/B	qt	      video/quicktime
+ # The contributor claims:
+ #   I couldn't find a real magic number for these, however, this

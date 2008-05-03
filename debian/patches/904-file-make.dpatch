@@ -1,0 +1,19 @@
+#!/bin/sh /usr/share/dpatch/dpatch-run
+## 94-file-make.dpatch by Michael Piefel <piefel@debian.org>
+##
+## DP: FIXME
+
+@DPATCH@
+
+diff -Naur file-4.20.orig/src/Makefile.in file-4.20/src/Makefile.in
+--- file-4.20.orig/src/Makefile.in	2007-03-01 23:21:09.000000000 +0000
++++ file-4.20/src/Makefile.in	2007-03-27 12:23:14.000000000 +0000
+@@ -296,7 +296,7 @@
+ 	done
+ file$(EXEEXT): $(file_OBJECTS) $(file_DEPENDENCIES) 
+ 	@rm -f file$(EXEEXT)
+-	$(LINK) $(file_LDFLAGS) $(file_OBJECTS) $(file_LDADD) $(LIBS)
++	$(LINK) $(file_LDFLAGS) $(file_OBJECTS) $(file_LDADD)
+ 
+ mostlyclean-compile:
+ 	-rm -f *.$(OBJEXT)

@@ -1,0 +1,19 @@
+#!/bin/sh /usr/share/dpatch/dpatch-run
+## 28-magic-update-sh.dpatch by Mark Hindley <mark@hindley.org.uk>
+##
+## DP: Changing sh identifier from Bourne to POSIX (Closes: #368613).
+
+@DPATCH@
+
+diff -Naur file-4.20.orig/magic/Magdir/commands file-4.20/magic/Magdir/commands
+--- file-4.20.orig/magic/Magdir/commands	2007-01-19 19:28:01.000000000 +0000
++++ file-4.20/magic/Magdir/commands	2007-03-27 15:48:37.000000000 +0000
+@@ -3,7 +3,7 @@
+ # commands:  file(1) magic for various shells and interpreters
+ #
+ 0	string		:			shell archive or script for antique kernel text
+-0	string/b	#!\ /bin/sh		Bourne shell script text executable
++0	string/b	#!\ /bin/sh		POSIX shell script text executable
+ 0	string/b	#!\ /bin/csh		C shell script text executable
+ # korn shell magic, sent by George Wu, gwu@clyde.att.com
+ 0	string/b	#!\ /bin/ksh		Korn shell script text executable

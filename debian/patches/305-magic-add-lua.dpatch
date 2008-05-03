@@ -1,0 +1,60 @@
+#!/bin/sh /usr/share/dpatch/dpatch-run
+## 32-magic-add-lua.dpatch by Reuben Thomas <rrt@sc3d.org>
+##
+## DP: New magic for the Lua scripting language (Closes: #394524).
+
+@DPATCH@
+
+diff -Naur file-4.20.orig/magic/Magdir/lua file-4.20/magic/Magdir/lua
+--- file-4.20.orig/magic/Magdir/lua	1970-01-01 00:00:00.000000000 +0000
++++ file-4.20/magic/Magdir/lua	2007-03-27 17:56:43.000000000 +0000
+@@ -0,0 +1,10 @@
++
++#------------------------------------------------------------------------------
++# lua:  file(1) magic for Lua
++#
++# From: Reuben Thomas <rrt@sc3d.org>
++0	string/b	#!\ /usr/bin/lua	Lua script text executable
++0	string/b	#!\ /usr/local/bin/lua	Lua script text executable
++0	string		#!/usr/bin/env\ lua	Lua script text executable
++0	string		#!\ /usr/bin/env\ lua	Lua script text executable
++
+diff -Naur file-4.20.orig/magic/Makefile.am file-4.20/magic/Makefile.am
+--- file-4.20.orig/magic/Makefile.am	2007-03-27 17:56:21.000000000 +0000
++++ file-4.20/magic/Makefile.am	2007-03-27 17:56:57.000000000 +0000
+@@ -116,6 +116,7 @@
+ Magdir/linux \
+ Magdir/lisp \
+ Magdir/llvm \
++Magdir/lua \
+ Magdir/mach \
+ Magdir/macintosh \
+ Magdir/magic \
+diff -Naur file-4.20.orig/magic/Makefile.in file-4.20/magic/Makefile.in
+--- file-4.20.orig/magic/Makefile.in	2007-03-27 17:56:21.000000000 +0000
++++ file-4.20/magic/Makefile.in	2007-03-27 17:57:03.000000000 +0000
+@@ -256,6 +256,7 @@
+ Magdir/linux \
+ Magdir/lisp \
+ Magdir/llvm \
++Magdir/lua \
+ Magdir/mach \
+ Magdir/macintosh \
+ Magdir/magic \
+diff -Naur file-4.20.orig/magic/magic.mime file-4.20/magic/magic.mime
+--- file-4.20.orig/magic/magic.mime	2007-03-27 17:56:21.000000000 +0000
++++ file-4.20/magic/magic.mime	2007-03-27 17:56:43.000000000 +0000
+@@ -288,6 +288,13 @@
+ 0       string          #!\ /usr/local/bin/perl         application/x-perl
+ 0       string          eval\ "exec\ /usr/local/bin/perl application/x-perl
+ 
++# For the Lua scripting language (http://www.lua.org/)
++# Reuben Thomas <rrt@sc3d.org>
++0	string/B	#!\ /usr/bin/lua		application/x-lua
++0	string/B	#!\ /usr/local/bin/lua		application/x-lua
++0	string		#!/usr/bin/env\ lua		application/x-lua
++0	string		#!\ /usr/bin/env\ lua		application/x-lua
++
+ #------------------------------------------------------------------------------
+ # compress:  file(1) magic for pure-compression formats (no archives)
+ #

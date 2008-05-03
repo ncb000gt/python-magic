@@ -1,0 +1,17 @@
+#!/bin/sh /usr/share/dpatch/dpatch-run
+## 309-magic-add-pmenu.dpatch by Edward Betts <edward@debian.org>
+##
+## DP: New magic for pmenu (Closes: #38543).
+
+@DPATCH@
+
+diff -Naur file-4.20.orig/magic/Magdir/commands file-4.20/magic/Magdir/commands
+--- file-4.20.orig/magic/Magdir/commands	2007-01-19 19:28:01.000000000 +0000
++++ file-4.20/magic/Magdir/commands	2007-03-27 17:40:20.000000000 +0000
+@@ -54,3 +54,6 @@
+ 0	string		Zend\x00		PHP script Zend Optimizer data
+ 
+ 0	string		$!			DCL command file
++
++# pdmenu
++0	string		#!/usr/bin/pdmenu	Pdmenu configuration file text

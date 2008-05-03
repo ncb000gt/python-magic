@@ -1,0 +1,27 @@
+#!/bin/sh /usr/share/dpatch/dpatch-run
+## 22-magic-update-cow.dpatch by Matthew Palmer <mpalmer@debian.org>
+##
+## DP: Update COW magic from 2.0 to 3.0 (Closes: #283515, #319128).
+
+@DPATCH@
+
+diff -Naur file-4.20.orig/magic/Magdir/linux file-4.20/magic/Magdir/linux
+--- file-4.20.orig/magic/Magdir/linux	2006-11-25 18:36:10.000000000 +0000
++++ file-4.20/magic/Magdir/linux	2007-03-27 16:33:53.000000000 +0000
+@@ -109,10 +109,12 @@
+ 0	string	Begin3	Linux Software Map entry text
+ 0	string	Begin4	Linux Software Map entry text (new format)
+ 
+-# From Matt Zimmerman
+-0       belong  0x4f4f4f4d      User-mode Linux COW file
+->4      belong  x               \b, version %d
+->8      string  >\0             \b, backing file %s
++# From Matt Zimmerman, enhanced for v3 by Matthew Palmer
++0	belong	0x4f4f4f4d	User-mode Linux COW file
++>4	belong	<3		\b, version %d
++>>8	string	>\0		\b, backing file %s
++>4	belong	>2		\b, version %d
++>>32	string	>\0		\b, backing file %s
+ 
+ ############################################################################
+ # Linux kernel versions
