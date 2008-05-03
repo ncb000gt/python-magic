@@ -6,12 +6,12 @@
 @DPATCH@
 
 diff -Naur file-4.21.orig/magic/Magdir/revision file-4.21/magic/Magdir/revision
---- file-4.21.orig/magic/Magdir/revision	2007-04-09 16:33:07.000000000 +0000
-+++ file-4.21/magic/Magdir/revision	2007-06-01 18:52:52.000000000 +0000
-@@ -7,3 +7,8 @@
- # Conary changesets
- # From: Jonathan Smith <smithj@rpath.com>
- 0	belong	0xea3f81bb	Conary changeset data
+--- file-4.21.orig/magic/Magdir/revision	2007-08-26 08:06:34.000000000 +0000
++++ file-4.21/magic/Magdir/revision	2007-08-26 08:06:05.000000000 +0000
+@@ -11,3 +11,8 @@
+ # Type: Git bundles (git-bundle)
+ # From: Josh Triplett <josh@freedesktop.org>
+ 0	string	#\ v2\ git\ bundle\n	Git bundle
 +
 +# Type: Subversion (SVN) dumps
 +# From: Uwe Zeisberger <zeisberg@informatik.uni-freiburg.de>

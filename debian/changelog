@@ -1,3 +1,19 @@
+file (4.21-3) unstable; urgency=low
+
+  * Including extra headers in /usr/include/file (Closes: #397307).
+  * Added patch from Eduardo Sabbatella <eduardo_sabbatella@yahoo.com.ar> to
+    add magic for SGF Smart Game Format (Closes: #428605).
+  * Added patch from Josh Triplett <josh@freedesktop.org> to add magic for git
+    bundles (Closes: #430070).
+  * Added patch from Mathieu Malaterre <mathieu.malaterre@gmail.com> to extend
+    JPEG 2000 magic (Closes: #439005).
+  * Added patch from Daniele Sempione <scrows@oziosi.org> to add magic for
+    Microsoft Document Imaging Format (.mdi) (Closes: #430548).
+  * Added patch from Nicolas Collignon <tsointsoin@gmail.com> to add magics
+    for OpenSSH and OpenSSL certificates/key files (Closes: #439537).
+
+ -- Daniel Baumann <daniel@debian.org>  Sun, 26 Aug 2007 09:51:00 +0200
+
 file (4.21-2) unstable; urgency=low
 
   * Applied patch from Michael Casadevall <sonicmctails@gmail.com> to fix

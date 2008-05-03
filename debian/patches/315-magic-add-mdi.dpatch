@@ -1,0 +1,19 @@
+#!/bin/sh /usr/share/dpatch/dpatch-run
+## 315-magic-add-mdi.dpatch by Daniele Sempione <scrows@oziosi.org>
+##
+## DP: New magic for Microsoft Document Imaging Format (.mdi) (Closes: #430548).
+
+@DPATCH@
+
+diff -Naur file-4.21.orig/magic/Magdir/msdos file-4.21/magic/Magdir/msdos
+--- file-4.21.orig/magic/Magdir/msdos	2007-08-26 08:16:22.000000000 +0000
++++ file-4.21/magic/Magdir/msdos	2007-08-26 08:18:07.000000000 +0000
+@@ -636,3 +636,8 @@
+ >16	lelong	>0			%hd x
+ >12	lelong	>0			%hd,
+ >84	string	x			%.4s
++
++# Type: Microsoft Document Imaging Format (.mdi)
++# URL:  http://en.wikipedia.org/wiki/Microsoft_Document_Imaging_Format
++# From: Daniele Sempione <scrows@oziosi.org>
++0	short	0x5045			Microsoft Document Imaging Format

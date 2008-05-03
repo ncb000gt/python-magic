@@ -61,8 +61,8 @@ clean: unpatch
 	rm -f build-stamp
 
 	# Cleaning package
-	-$(MAKE) clean
-	-$(MAKE) distclean
+	[ ! -f Makefile ] || $(MAKE) clean
+	[ ! -f Makefile ] || $(MAKE) distclean
 	rm -rf python/build
 
 	dh_clean
@@ -95,6 +95,10 @@ install: build
 	done
 	find debian/python-*-dbg ! -type d ! -name '*.so' | xargs rm -f
 	find debian/python-*-dbg -depth -empty -exec rmdir {} \;
+
+	# Installing additional headers
+	mkdir -p debian/libmagic-dev/usr/include/file
+	cp src/file.h src/patchlevel.h debian/libmagic-dev/usr/include/file
 
 	# Installing bug congtrols
 	install -D -m 0644 debian/bug/presubj debian/file/usr/share/bug/file/presubj
