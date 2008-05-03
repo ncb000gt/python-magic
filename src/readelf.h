@@ -44,7 +44,7 @@ typedef uint16_t	Elf32_Half;
 typedef uint32_t	Elf32_Word;
 typedef uint8_t		Elf32_Char;
 
-#if SIZEOF_UINT64_T != 8
+#if SIZEOF_LONG_LONG != 8
 #define USE_ARRAY_FOR_64BIT_TYPES
 typedef	uint32_t 	Elf64_Addr[2];
 typedef	uint32_t 	Elf64_Off[2];
@@ -96,6 +96,7 @@ typedef struct {
 } Elf64_Ehdr;
 
 /* e_type */
+#define ET_REL		1
 #define ET_EXEC		2
 #define ET_DYN		3
 #define ET_CORE		4
@@ -229,5 +230,7 @@ typedef struct {
 #define GNU_OS_LINUX	0
 #define GNU_OS_HURD	1
 #define GNU_OS_SOLARIS	2
+#define GNU_OS_KFREEBSD	3
+#define GNU_OS_KNETBSD	4
 
 #endif

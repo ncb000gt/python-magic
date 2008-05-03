@@ -27,7 +27,7 @@
  */
 /*
  * file.h - definitions for file(1) program
- * @(#)$File: file.h,v 1.92 2007/11/08 00:31:37 christos Exp $
+ * @(#)$File: file.h,v 1.103 2008/03/01 22:21:49 rrt Exp $
  */
 
 #ifndef __file_h__
@@ -50,6 +50,7 @@
 #include <sys/types.h>
 /* Do this here and now, because struct stat gets re-defined on solaris */
 #include <sys/stat.h>
+#include <stdarg.h>
 
 #define ENABLE_CONDITIONALS
 
@@ -83,16 +84,21 @@
 #define	MIN(a,b)	(((a) < (b)) ? (a) : (b))
 #endif
 
+#ifndef MAX
+#define	MAX(a,b)	(((a) > (b)) ? (a) : (b))
+#endif
+
 #ifndef HOWMANY
 # define HOWMANY (256 * 1024)	/* how much of the file to look at */
 #endif
-#define MAXMAGIS 8192		/* max entries in /etc/magic */
-#define MAXDESC	64		/* max leng of text description */
+#define MAXMAGIS 8192		/* max entries in any one magic file
+				   or directory */
+#define MAXDESC	64		/* max leng of text description/MIME type */
 #define MAXstring 32		/* max leng of "string" types */
 
 #define MAGICNO		0xF11E041C
-#define VERSIONNO	4
-#define FILE_MAGICSIZE	(32 * 4)
+#define VERSIONNO	5
+#define FILE_MAGICSIZE	(32 * 6)
 
 #define	FILE_LOAD	0
 #define FILE_CHECK	1
@@ -101,18 +107,23 @@
 struct magic {
 	/* Word 1 */
 	uint16_t cont_level;	/* level of ">" */
-	uint8_t nospflag;	/* supress space character */
 	uint8_t flag;
-#define INDIR		1	/* if '(...)' appears */
-#define OFFADD		2	/* if '>&' or '>...(&' appears */
-#define INDIROFFADD	4	/* if '>&(' appears */
-#define	UNSIGNED	8	/* comparison is unsigned */
+#define INDIR		0x01	/* if '(...)' appears */
+#define OFFADD		0x02	/* if '>&' or '>...(&' appears */
+#define INDIROFFADD	0x04	/* if '>&(' appears */
+#define UNSIGNED	0x08	/* comparison is unsigned */
+#define NOSPACE		0x10	/* suppress space character before output */
+#define BINTEST		0x20	/* test is for a binary type (set only
+                                   for top-level tests) */
+#define TEXTTEST	0	/* for passing to file_softmagic */
+
+	uint8_t dummy1;
 
 	/* Word 2 */
 	uint8_t reln;		/* relation (0=eq, '>'=gt, etc) */
 	uint8_t vallen;		/* length of string value, if any */
-	uint8_t type;		/* int, short, long or string. */
-	uint8_t in_type;	/* type of indirrection */
+	uint8_t type;		/* comparison type (FILE_*) */
+	uint8_t in_type;	/* type of indirection */
 #define 			FILE_INVALID	0
 #define 			FILE_BYTE	1
 #define				FILE_SHORT	2
@@ -175,10 +186,10 @@ struct magic {
 	uint8_t mask_op;	/* operator for mask */
 #ifdef ENABLE_CONDITIONALS
 	uint8_t cond;		/* conditional type */
-	uint8_t dummy1;	
-#else
-	uint8_t dummy1;	
 	uint8_t dummy2;	
+#else
+	uint8_t dummy2;	
+	uint8_t dummy3;	
 #endif
 
 #define				FILE_OPS	"&|^+-*/%"
@@ -219,7 +230,7 @@ struct magic {
 		} _s;		/* for use with string types */
 	} _u;
 #define num_mask _u._mask
-#define str_count _u._s._count
+#define str_range _u._s._count
 #define str_flags _u._s._flags
 
 	/* Words 9-16 */
@@ -237,6 +248,8 @@ struct magic {
 	} value;		/* either number or string */
 	/* Words 17..31 */
 	char desc[MAXDESC];	/* description */
+	/* Words 32..47 */
+	char mimetype[MAXDESC]; /* MIME type */
 };
 
 #define BIT(A)   (1 << (A))
@@ -251,6 +264,7 @@ struct magic {
 #define CHAR_IGNORE_UPPERCASE		'C'
 #define CHAR_REGEX_OFFSET_START		's'
 #define STRING_IGNORE_CASE		(STRING_IGNORE_LOWERCASE|STRING_IGNORE_UPPERCASE)
+#define STRING_DEFAULT_RANGE		100
 
 
 /* list of magic entries */
@@ -277,14 +291,8 @@ struct magic_set {
 		} *li;
 	} c;
 	struct out {
-		/* Accumulation buffer */
-		char *buf;
-		char *ptr;
-		size_t left;
-		size_t size;
-		/* Printable buffer */
-		char *pbuf;
-		size_t psize;
+		char *buf;		/* Accumulation buffer */
+		char *pbuf;		/* Printable buffer */
 	} o;
 	uint32_t offset;
 	int error;
@@ -301,8 +309,13 @@ struct magic_set {
 		size_t rm_len;		/* match length */
 	} search;
 
+	/* FIXME: Make the string dynamically allocated so that e.g.
+	   strings matched in files can be longer than MAXstring */
 	union VALUETYPE ms_value;	/* either number or string */
 };
+
+/* Type for Unicode characters */
+typedef unsigned long unichar;
 
 struct stat;
 protected const char *file_fmttime(uint32_t, int);
@@ -318,7 +331,7 @@ protected int file_zmagic(struct magic_set *, int, const char *,
     const unsigned char *, size_t);
 protected int file_ascmagic(struct magic_set *, const unsigned char *, size_t);
 protected int file_is_tar(struct magic_set *, const unsigned char *, size_t);
-protected int file_softmagic(struct magic_set *, const unsigned char *, size_t);
+protected int file_softmagic(struct magic_set *, const unsigned char *, size_t, int);
 protected struct mlist *file_apprentice(struct magic_set *, const char *, int);
 protected uint64_t file_signextend(struct magic_set *, struct magic *,
     uint64_t);
@@ -335,6 +348,7 @@ protected size_t file_mbswidth(const char *);
 protected const char *file_getbuffer(struct magic_set *);
 protected ssize_t sread(int, void *, size_t, int);
 protected int file_check_mem(struct magic_set *, unsigned int);
+protected int file_looks_utf8(const unsigned char *, size_t, unichar *, size_t *);
 
 #ifndef COMPILE_ONLY
 extern const char *file_names[];
@@ -352,8 +366,11 @@ extern char *sys_errlist[];
 #define strtoul(a, b, c)	strtol(a, b, c)
 #endif
 
-#ifndef HAVE_SNPRINTF
-int snprintf(char *, size_t, const char *, ...);
+#ifndef HAVE_VASPRINTF
+int vasprintf(char **ptr, const char *format_string, va_list vargs);
+#endif
+#ifndef HAVE_ASPRINTF
+int asprintf(char **ptr, const char *format_string, ...);
 #endif
 
 #if defined(HAVE_MMAP) && defined(HAVE_SYS_MMAN_H) && !defined(QUICK)
@@ -364,6 +381,9 @@ int snprintf(char *, size_t, const char *, ...);
 #define O_BINARY	0
 #endif
 
+#ifdef __GNUC__
+static const char *rcsid(const char *) __attribute__((__used__));
+#endif
 #define FILE_RCSID(id) \
 static const char *rcsid(const char *p) { \
 	return rcsid(p = id); \

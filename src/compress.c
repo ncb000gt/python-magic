@@ -56,13 +56,13 @@
 
 
 #ifndef lint
-FILE_RCSID("@(#)$File: compress.c,v 1.54 2007/12/02 00:28:10 christos Exp $")
+FILE_RCSID("@(#)$File: compress.c,v 1.56 2008/02/07 00:58:52 christos Exp $")
 #endif
 
-private struct {
-	const char *magic;
+private const struct {
+	const char magic[8];
 	size_t maglen;
-	const char *const argv[3];
+	const char *argv[3];
 	int silent;
 } compr[] = {
 	{ "\037\235", 2, { "gzip", "-cdq", NULL }, 1 },		/* compressed */
@@ -374,6 +374,7 @@ uncompressbuf(struct magic_set *ms, int fd, size_t method,
 	int r;
 
 #ifdef BUILTIN_DECOMPRESS
+        /* FIXME: This doesn't cope with bzip2 */
 	if (method == 2)
 		return uncompressgzipped(ms, old, newch, n);
 #endif

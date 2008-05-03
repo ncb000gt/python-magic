@@ -63,8 +63,17 @@
 #include "patchlevel.h"
 
 #ifndef	lint
-FILE_RCSID("@(#)$File: magic.c,v 1.45 2007/12/27 16:35:59 christos Exp $")
+FILE_RCSID("@(#)$File: magic.c,v 1.50 2008/02/19 00:58:59 rrt Exp $")
 #endif	/* lint */
+
+#ifndef PIPE_BUF 
+/* Get the PIPE_BUF from pathconf */
+#ifdef _PC_PIPE_BUF
+#define PIPE_BUF pathconf(".", _PC_PIPE_BUF)
+#else
+#define PIPE_BUF 512
+#endif
+#endif
 
 #ifdef __EMX__
 private char *apptypeName = NULL;
@@ -94,20 +103,14 @@ magic_open(int flags)
 
 	if (magic_setflags(ms, flags) == -1) {
 		errno = EINVAL;
-		goto free1;
+		goto free;
 	}
 
-	ms->o.ptr = ms->o.buf = malloc(ms->o.left = ms->o.size = 1024);
-	if (ms->o.buf == NULL)
-		goto free1;
-
-	ms->o.pbuf = malloc(ms->o.psize = 1024);
-	if (ms->o.pbuf == NULL)
-		goto free2;
+	ms->o.buf = ms->o.pbuf = NULL;
 
 	ms->c.li = malloc((ms->c.len = 10) * sizeof(*ms->c.li));
 	if (ms->c.li == NULL)
-		goto free3;
+		goto free;
 	
 	ms->haderr = 0;
 	ms->error = -1;
@@ -115,11 +118,7 @@ magic_open(int flags)
 	ms->file = "unknown";
 	ms->line = 0;
 	return ms;
-free3:
-	free(ms->o.pbuf);
-free2:
-	free(ms->o.buf);
-free1:
+free:
 	free(ms);
 	return NULL;
 }
@@ -218,6 +217,7 @@ close_and_restore(const struct magic_set *ms, const char *name, int fd,
 		 */
 #ifdef HAVE_UTIMES
 		struct timeval  utsbuf[2];
+		(void)memset(utsbuf, 0, sizeof(utsbuf));
 		utsbuf[0].tv_sec = sb->st_atime;
 		utsbuf[1].tv_sec = sb->st_mtime;
 
@@ -225,6 +225,7 @@ close_and_restore(const struct magic_set *ms, const char *name, int fd,
 #elif defined(HAVE_UTIME_H) || defined(HAVE_SYS_UTIME_H)
 		struct utimbuf  utbuf;
 
+		(void)memset(utbuf, 0, sizeof(utbuf));
 		utbuf.actime = sb->st_atime;
 		utbuf.modtime = sb->st_mtime;
 		(void) utime(name, &utbuf); /* don't care if loses */
@@ -296,10 +297,12 @@ file_or_fd(struct magic_set *ms, const char *inname, int fd)
 		errno = 0;
 		if ((fd = open(inname, flags)) < 0) {
 #ifdef __CYGWIN__
+			/* FIXME: Do this with EXEEXT from autotools */
 			char *tmp = alloca(strlen(inname) + 5);
 			(void)strcat(strcpy(tmp, inname), ".exe");
 			if ((fd = open(tmp, flags)) < 0) {
 #endif
+				fprintf(stderr, "couldn't open file\n");
 				if (info_from_stat(ms, sb.st_mode) == -1)
 					goto done;
 				rv = 0;
