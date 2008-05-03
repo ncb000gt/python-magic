@@ -269,7 +269,7 @@ file (4.17-3) unstable; urgency=low
     a magic.mime file if the base magic file exists (closes: #382057)
   * Remove AWK detection by regular expression testing just for ‘BEGIN:’;
     this caused a lot of false guesses (and problems with naughty programs
-    reading other programs’ files), this closes: #308305, #375403 and makes 
+    reading other programs’ files), this closes: #308305, #375403 and makes
     others disappear (for the time being, for example, it closes: #375722)
   * Added Python 2.5 byte-compiled (closes: #376711)
   * Fix some bad MIME types (closes: #379042, thanks to Moritz Naumann)
@@ -471,7 +471,7 @@ file (4.03-1) unstable; urgency=low
   * New upstream
     - fixes Zsh bug (closes: #195583, #196163)
     - incorporates many Debian changes to magic entries
-    - also closes: #196162 (no more Broken HTML) 
+    - also closes: #196162 (no more Broken HTML)
   * Reformatted ancient changelog entries and made sure changelog
     is in UTF-8.
   * File depends on correct library version now (closes: #194697)
@@ -504,7 +504,7 @@ file (4.02-2) unstable; urgency=low
   * Changed Priority of libmagic-dev to optional (closes: #193254)
   * Add Conflicts of libmagic1 to older file (closes: #193236, #193238)
   * Use newer libtool (closes: #193152)
-    
+
  -- Michael Piefel <piefel@debian.org>  Wed, 14 May 2003 13:47:47 +0200
 
 file (4.02-1) unstable; urgency=low
@@ -567,7 +567,7 @@ file (3.39-1) unstable; urgency=low
 
   * NMU
   * New upstream version (closes: #148212, #151907)
-    - incorporates most Debian patches 
+    - incorporates most Debian patches
     - adds 9660 filesystem magic (closes: #157050; Upstream has
       a different magic than reporter.)
     - adds MNG magic (closes: #147264, see below)
@@ -938,7 +938,7 @@ file (3.24-1) unstable; urgency=low
 file (3.23-1) unstable; urgency=low
 
   * Added long version for the new option `-b' (`--brief'). Added long
-    option to manpage. Added the option to the usge message (`--help'). 
+    option to manpage. Added the option to the usge message (`--help').
   * Added GNU message catalog magic, contributed
     by Santiago Vila Doncel <sanvila@unex.es>, fixes bug #14743.
   * Removed duplcated entry for romfs, fixes bug #13977.
