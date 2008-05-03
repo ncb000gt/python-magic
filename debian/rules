@@ -107,6 +107,15 @@ install: build
 	mkdir -p debian/libmagic-dev/usr/include/file
 	cp src/file.h src/patchlevel.h debian/libmagic-dev/usr/include/file
 
+	# Build plain magic files for compatibility
+	install -D -m 0644 debian/legacy/magic.mime debian/libmagic1/usr/share/file/magic.mime
+	cp magic/Header debian/libmagic1/usr/share/file/magic
+	cat magic/Localstuff >> debian/libmagic1/usr/share/file/magic
+	set -e; for FILE in magic/Magdir/*; \
+	do \
+		grep -v "^!:" $$FILE >> debian/libmagic1/usr/share/file/magic; \
+	done
+
 	# Installing bug congtrols
 	install -D -m 0644 debian/bug/presubj debian/file/usr/share/bug/file/presubj
 	install -D -m 0644 debian/bug/control debian/libmagic1/usr/share/bug/libmagic1/control
