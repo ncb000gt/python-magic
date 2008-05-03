@@ -1,3 +1,14 @@
+file (4.24-2) unstable; urgency=medium
+
+  * Adding plain magic files for compatibility.
+  * Using lintian debhelper to install lintian overrides.
+  * Removing watch file.
+  * Removing useless whitespaces in changelog file.
+  * Adding vcs fields in control file.
+  * Upgrading package to debhelper 6.
+
+ -- Daniel Baumann <daniel@debian.org>  Sat,  3 May 2008 14:09:00 +0200
+
 file (4.24-1) experimental; urgency=low
 
   * New upstream release:
