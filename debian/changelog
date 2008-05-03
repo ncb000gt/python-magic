@@ -1,3 +1,10 @@
+file (4.21-2) unstable; urgency=low
+
+  * Applied patch from Michael Casadevall <sonicmctails@gmail.com> to fix
+    FTBFS on hurd (Closes: #433716).
+
+ -- Daniel Baumann <daniel@debian.org>  Thu, 19 Jul 2007 08:27:00 +0200
+
 file (4.21-1) unstable; urgency=low
 
   * New upstream release.

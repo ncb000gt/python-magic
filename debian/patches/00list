@@ -53,5 +53,6 @@
 903-file-localmagic.dpatch
 904-file-make.dpatch
 905-file-segfault.dpatch
+906-file-hurd.dpatch
 998-doc-manpages.dpatch
 999-conglomeration.dpatch
