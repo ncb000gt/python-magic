@@ -5,14 +5,13 @@
 
 @DPATCH@
 
-diff -Naurp file-4.23.orig/magic/Magdir/archive file-4.23/magic/Magdir/archive
---- file-4.23.orig/magic/Magdir/archive	2007-12-27 16:18:28.000000000 +0000
-+++ file-4.23/magic/Magdir/archive	2008-01-12 17:33:01.000000000 +0000
-@@ -748,3 +748,7 @@
- # .kgb
- 0	string KGB_arch		KGB Archiver file
- >10	string x		with compression level %.1s
-+
+diff -Naurp file-4.24.orig/magic/Magdir/archive file-4.24/magic/Magdir/archive
+--- file-4.24.orig/magic/Magdir/archive	2008-02-28 18:57:34.000000000 +0000
++++ file-4.24/magic/Magdir/archive	2008-04-07 08:05:47.000000000 +0000
+@@ -803,3 +803,6 @@
+ >24	belong	1		SHA-1 checksum
+ >24	belong	2		MD5 checksum
+ 
 +# Type: Parity Archive
 +# From: Daniel van Eeden <daniel_e@dds.nl>
-+0	string	PAR2		Parity Archive Volume Set
++0	string	 PAR2		Parity Archive Volume Set

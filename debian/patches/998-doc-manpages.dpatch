@@ -5,95 +5,30 @@
 
 @DPATCH@
 
-diff -Naurp file-4.23.orig/doc/file.man file-4.23/doc/file.man
---- file-4.23.orig/doc/file.man	2007-10-23 19:58:59.000000000 +0000
-+++ file-4.23/doc/file.man	2008-01-12 18:06:28.000000000 +0000
-@@ -49,9 +49,8 @@ meaning anything else (data is usually 
+diff -Naurp file-4.24.orig/doc/file.man file-4.24/doc/file.man
+--- file-4.24.orig/doc/file.man	2008-03-07 15:00:07.000000000 +0000
++++ file-4.24/doc/file.man	2008-04-07 08:26:06.000000000 +0000
+@@ -51,7 +51,7 @@ meaning anything else (data is usually 
  or non-printable).
  Exceptions are well-known file formats (core files, tar archives)
  that are known to contain binary data.
--When modifying the file
--.Pa __MAGIC__
--or the program itself, make sure to
-+When adding local definitions to
-+.Pa /etc/magic ,
+-When modifying magic files or the program itself, make sure to
++When adding local definitions to /etc/magic, make sure to
  .Em "preserve these keywords" .
- People depend on knowing that all the readable files in a directory
+ Users depend on knowing that all the readable files in a directory
  have the word 
-@@ -78,17 +77,17 @@ Any known file types appropriate to the 
- implement them)
- are intuited if they are defined in
- the system header file
--.In sys/stat.h .
-+.Pa sys/stat.h .
- .Pp
- The magic number tests are used to check for files with data in
- particular fixed formats.
- The canonical example of this is a binary executable (compiled program)
- .Dv a.out
- file, whose format is defined in 
--.In elf.h ,
--.In a.out.h
-+.Pa elf.h ,
-+.Pa a.out.h
- and possibly
--.In exec.h
-+.Pa exec.h
- in the standard include directory.
- These files have a 
- .Sq "magic number"
-@@ -101,12 +100,14 @@ The concept of a
+@@ -95,7 +95,8 @@ The concept of a
  has been applied by extension to data files.
  Any file with some invariant identifier at a small fixed
  offset into the file can usually be described in this way.
 -The information identifying these files is read from the compiled
-+The information identifying these files is read from
-+.Pa /etc/magic
-+and the compiled
++The information identifying these files is read from /etc/magic
++and the the compiled
  magic file
  .Pa __MAGIC__.mgc ,
- or 
- .Pa __MAGIC__
--if the compile file does not exist. In addition
-+if the compiled file does not exist. In addition
- .Nm
- will look in
- .Pa $HOME/.magic.mgc ,
-@@ -146,7 +147,7 @@ has determined the character set used in
- it will
- attempt to determine in what language the file is written.
- The language tests look for particular strings (cf
--.In names.h
-+.Pa names.h
- that can appear anywhere in the first few blocks of a file.
- For example, the keyword
- .Em .br
-@@ -163,7 +164,8 @@ The language test routines also test for
- archives).
- .Pp
- Any file that cannot be identified as having been written
--in any of the character sets listed above is simply said to be ``data''.
-+in any of the character sets listed above is simply said to be
-+.Dq data .
- .Sh OPTIONS
- .Bl -tag -width indent
- .It Fl b , -brief
-@@ -244,7 +246,12 @@ Like
- .Fl i ,
- but print only the specified element(s).
- .It Fl k , -keep-going
--Don't stop at the first match, keep going.
-+Don't stop at the first match, keep going. Subsequent matches will be
-+prepended by
-+.Dq "\[rs]012\- ".
-+(If you want a newline, see
-+.Dq "\-r"
-+option.)
- .It Fl L , -dereference
- option causes symlinks to be followed, as the like-named option in
- .Xr ls 1
-@@ -345,6 +352,11 @@ adds
- and/or
+ or the files in the directory
+@@ -326,6 +327,11 @@ will not attempt to open
+ adds
  .Dq .mgc
  to the value of this variable as appropriate.
 +However,
@@ -103,8 +38,8 @@ diff -Naurp file-4.23.orig/doc/file.man file-4.23/doc/file.man
 +to be considered.
  The environment variable
  .Dv POSIXLY_CORRECT
- controls (on systems that support symbolic links), if
-@@ -419,12 +431,6 @@ will be distributed periodically.
+ controls (on systems that support symbolic links), whether
+@@ -401,12 +407,6 @@ will be distributed periodically.
  The order of entries in the magic file is significant.
  Depending on what system you are using, the order that
  they are put together may be incorrect.
@@ -117,16 +52,7 @@ diff -Naurp file-4.23.orig/doc/file.man file-4.23/doc/file.man
  .Sh EXAMPLES
  .Bd -literal -offset indent 
  $ file file.c file /dev/{wd0a,hda}
-@@ -591,9 +597,17 @@ This program is slower than some vendors
- The new support for multiple character codes makes it even slower.
- .Pp
- This manual page, and particularly this section, is too long.
-+.Sh RETURN CODE
-+.Nm
-+almost always returns 0. It returns a different code if it cannot open a file.
- .Sh AVAILABILITY
- You can obtain the original author's latest version by anonymous FTP
- on
+@@ -548,3 +548,8 @@ on
  .Dv ftp.astron.com
  in the directory
  .Dv /pub/file/file-X.YZ.tar.gz
@@ -135,27 +61,3 @@ diff -Naurp file-4.23.orig/doc/file.man file-4.23/doc/file.man
 +obtained from every site carrying a Debian distribution (that is
 +.Dv ftp.debian.org
 +and mirrors).
-diff -Naurp file-4.23.orig/doc/libmagic.man file-4.23/doc/libmagic.man
---- file-4.23.orig/doc/libmagic.man	2007-10-09 20:14:57.000000000 +0000
-+++ file-4.23/doc/libmagic.man	2008-01-12 18:04:15.000000000 +0000
-@@ -39,7 +39,7 @@
- .Nm magic_load
- .Nd Magic number recognition library.
- .Sh LIBRARY
--.Lb libmagic
-+.Lb libmagic1
- .Sh SYNOPSIS
- .In magic.h
- .Ft magic_t
-diff -Naurp file-4.23.orig/doc/magic.man file-4.23/doc/magic.man
---- file-4.23.orig/doc/magic.man	2007-11-08 00:31:37.000000000 +0000
-+++ file-4.23/doc/magic.man	2008-01-12 18:04:15.000000000 +0000
-@@ -69,7 +69,7 @@ Finally the
- .Dq c
- flag, specifies case insensitive matching: lowercase
- characters in the magic match both lower and upper case characters in the
--targer, whereas upper case characters in the magic, only much uppercase
-+target, whereas upper case characters in the magic, only much uppercase
- characters in the target.
- .It Dv pstring
- A pascal style string where the first byte is interpreted as the an

@@ -55,7 +55,7 @@ Description: File type determination library using "magic" numbers (Python bindi
  This library can be used to classify files according to magic number tests. It
  implements the core functionality of the file command.
  .
- This package contains the python bindings to query /etc/magic information for a
+ This package contains the Python bindings to query /etc/magic information for a
  given file in Python.
 
 Package: python-magic-dbg

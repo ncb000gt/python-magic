@@ -1,3 +1,27 @@
+file (4.24-1) experimental; urgency=low
+
+  * New upstream release:
+    - The following patches went upstream completely:
+      102-magic-remove-bennet, 103-magic-remove-bzip, 104-magic-remove-cgm,
+      105-magic-remove-com, 106-magic-remove-emf, 108-magic-remove-quicktime,
+      201-magic-update-avi, 203-magic-update-cow, 204-magic-update-cracklib,
+      206-magic-update-elf-b, 207-magic-update-elf-c, 208-magic-update-hp,
+      209-magic-update-jpeg, 210-magic-update-m4v, 211-magic-update-macintosh,
+      213-magic-update-pcp, 214-magic-update-perl, 215-magic-update-sh,
+      216-magic-update-spectrum, 301-magic-add-adf, 302-magic-add-apple2,
+      303-magic-add-arm, 304-magic-add-avg, 305-magic-add-clarion,
+      306-magic-add-dds, 307-magic-add-erlang, 308-magic-add-gedcom,
+      309-magic-add-git, 309-magic-add-inform, 310-magic-add-llvm,
+      311-magic-add-lua, 312-magic-add-luks, 313-magic-add-lzma,
+      314-magic-add-mathcad, 315-magic-add-mdi, 316-magic-add-mercurial,
+      317-magic-add-mozilla, 318-magic-add-nlm, and 332-magic-add-svg,
+      901-file-elf, 902-file-kfreebsd, and 905-file-segfault.
+    - The following patches went upstream almost completely:
+      998-doc-manpages and 999-conglomeration.
+    - Thanks to Reuben Thomas <rrt@sc3d.org> to merge them.
+
+ -- Daniel Baumann <daniel@debian.org>  Tue,  1 Apr 2008 11:30:00 +0200
+
 file (4.23-2) unstable; urgency=low
 
   * Applied patch from Neil Williams <codehelp@debian.org> to add crossbuild
