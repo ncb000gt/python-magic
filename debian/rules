@@ -48,6 +48,10 @@ build-stamp: config.status
 		(cd python && $$python setup.py build_ext \
 			-L$(CURDIR)/src/.libs); \
 	done
+	set -e; \
+	for python in $(PYTHON_VERSIONS); do \
+		(cd python && $$python-dbg setup.py build_ext -L$(CURDIR)/src/.libs); \
+	done
 
 	touch build-stamp
 
@@ -81,8 +85,16 @@ install: build
 	for python in $(PYTHON_VERSIONS); \
 	do \
 		(cd python && $$python setup.py install --no-compile \
-			--prefix=$(CURDIR)/debian/python-magic/usr); \
+			--root=$(CURDIR)/debian/python-magic); \
 	done
+
+	set -e; \
+	for python in $(PYTHON_VERSIONS); do \
+		(cd python && $$python-dbg setup.py install --no-compile \
+			--root=$(CURDIR)/debian/python-magic-dbg); \
+	done
+	find debian/python-*-dbg ! -type d ! -name '*.so' | xargs rm -f
+	find debian/python-*-dbg -depth -empty -exec rmdir {} \;
 
 	# Installing bug congtrols
 	install -D -m 0644 debian/bug/presubj debian/file/usr/share/bug/file/presubj
@@ -107,7 +119,14 @@ binary-arch: build install
 	dh_install --sourcedir=debian/tmp
 	dh_python
 	dh_link
-	dh_strip
+ifeq (,$(findstring -i, $(DH_OPTIONS)))
+	dh_strip -Npython-magic -Npython-magic-dbg
+	DH_OPTIONS= dh_strip -ppython-magic --dbg-package=python-magic-dbg
+
+	rm -rf debian/python-magic-dbg/usr/share/doc/python-magic-dbg
+	mkdir -p debian/python-magic-dbg/usr/share/doc
+	ln -s python-magic debian/python-magic-dbg/usr/share/doc/python-magic-dbg
+endif
 	dh_compress
 	dh_fixperms
 	dh_makeshlibs

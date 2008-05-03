@@ -2,7 +2,7 @@ Source: file
 Section: utils
 Priority: standard
 Maintainer: Daniel Baumann <daniel@debian.org>
-Build-Depends: debhelper (>= 5.0.37.2), dpatch, autotools-dev, libtool, python, python-all-dev, zlib1g-dev
+Build-Depends: debhelper (>= 5.0.37.2), dpatch, autotools-dev, libtool, python, python-all-dev, python-all-dbg, zlib1g-dev
 Standards-Version: 3.7.2
 XS-Python-Version: all
 
@@ -54,6 +54,7 @@ Priority: extra
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}, ${python:Depends}
 Provides: ${python:Provides}
+Suggests: python-magic-dbg
 XB-Python-Version: ${python:Versions}
 Description: File type determination library using "magic" numbers (python bindings)
  This library can be used to classify files according to magic number tests. It
@@ -63,3 +64,17 @@ Description: File type determination library using "magic" numbers (python bindi
  .
  This package contains the python bindings to query /etc/magic information for a
  given file in Python.
+
+Package: python-magic-dbg
+Section: python
+Architecture: any
+Priority: extra
+Depends: python-magic (= ${Source-Version}), python-dbg, ${shlibs:Depends}
+Description: File type determination library using "magic" numbers (python bindings/debug)
+ This library can be used to classify files according to magic number tests. It
+ implements the core functionality of the file command.
+ .
+  Homepage: <http://www.darwinsys.com/file/>
+ .
+ This package contains the python bindings to query /etc/magic information for a
+ given file in Python, built for the python debug interpreter.

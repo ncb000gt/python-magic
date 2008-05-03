@@ -1,3 +1,9 @@
+file (4.20-8) unstable; urgency=low
+
+  * Build a python-magic-dbg package.
+
+ -- Daniel Baumann <daniel@debian.org>  Thu, 17 May 2007 20:40:00 +0200
+
 file (4.20-7) unstable; urgency=medium
 
   * Replacing work around patch from Ubuntu with proper fix from
