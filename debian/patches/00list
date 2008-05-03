@@ -5,8 +5,7 @@
 105-magic-remove-com.dpatch
 106-magic-remove-emf.dpatch
 107-magic-remove-msi.dpatch
-108-magic-remove-os2rexx.dpatch
-109-magic-remove-quicktime.dpatch
+108-magic-remove-quicktime.dpatch
 201-magic-update-avi.dpatch
 202-magic-update-blender.dpatch
 203-magic-update-cow.dpatch
@@ -17,10 +16,11 @@
 208-magic-update-hp.dpatch
 209-magic-update-m4v.dpatch
 210-magic-update-macintosh.dpatch
-211-magic-update-pcp.dpatch
-212-magic-update-perl.dpatch
-213-magic-update-sh.dpatch
-214-magic-update-spectrum.dpatch
+211-magic-update-os2rexx.dpatch
+212-magic-update-pcp.dpatch
+213-magic-update-perl.dpatch
+214-magic-update-sh.dpatch
+215-magic-update-spectrum.dpatch
 301-magic-add-adf.dpatch
 302-magic-add-ape.dpatch
 303-magic-add-apple2.dpatch

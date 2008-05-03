@@ -1,3 +1,10 @@
+file (4.20-7) unstable; urgency=medium
+
+  * Replacing work around patch from Ubuntu with proper fix from
+    Werner Fink <werner@suse.de> of OpenSuse (CVE-2007-2026).
+
+ -- Daniel Baumann <daniel@debian.org>  Thu, 17 May 2007 19:57:00 +0200
+
 file (4.20-6) unstable; urgency=medium
 
   * Fixed clean: target in rule (Closes: #424269).

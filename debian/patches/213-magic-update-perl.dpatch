@@ -1,5 +1,5 @@
 #!/bin/sh /usr/share/dpatch/dpatch-run
-## 212-magic-update-perl.dpatch by Michael Piefel <piefel@debian.org>
+## 213-magic-update-perl.dpatch by Michael Piefel <piefel@debian.org>
 ##
 ## DP: Make Perl script entries consistent (closes: #394523).
 
