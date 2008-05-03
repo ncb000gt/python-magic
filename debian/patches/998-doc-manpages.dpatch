@@ -5,10 +5,10 @@
 
 @DPATCH@
 
-diff -Naur file-4.20.orig/doc/file.man file-4.20/doc/file.man
---- file-4.20.orig/doc/file.man	2007-01-25 21:05:46.000000000 +0000
-+++ file-4.20/doc/file.man	2007-04-03 17:57:01.000000000 +0000
-@@ -47,9 +47,8 @@
+diff -Naurp file-4.23.orig/doc/file.man file-4.23/doc/file.man
+--- file-4.23.orig/doc/file.man	2007-10-23 19:58:59.000000000 +0000
++++ file-4.23/doc/file.man	2008-01-12 18:06:28.000000000 +0000
+@@ -49,9 +49,8 @@ meaning anything else (data is usually 
  or non-printable).
  Exceptions are well-known file formats (core files, tar archives)
  that are known to contain binary data.
@@ -20,7 +20,7 @@ diff -Naur file-4.20.orig/doc/file.man file-4.20/doc/file.man
  .Em "preserve these keywords" .
  People depend on knowing that all the readable files in a directory
  have the word 
-@@ -76,17 +75,17 @@
+@@ -78,17 +77,17 @@ Any known file types appropriate to the 
  implement them)
  are intuited if they are defined in
  the system header file
@@ -42,7 +42,7 @@ diff -Naur file-4.20.orig/doc/file.man file-4.20/doc/file.man
  in the standard include directory.
  These files have a 
  .Sq "magic number"
-@@ -99,12 +98,14 @@
+@@ -101,12 +100,14 @@ The concept of a
  has been applied by extension to data files.
  Any file with some invariant identifier at a small fixed
  offset into the file can usually be described in this way.
@@ -59,7 +59,7 @@ diff -Naur file-4.20.orig/doc/file.man file-4.20/doc/file.man
  .Nm
  will look in
  .Pa $HOME/.magic.mgc ,
-@@ -144,7 +145,7 @@
+@@ -146,7 +147,7 @@ has determined the character set used in
  it will
  attempt to determine in what language the file is written.
  The language tests look for particular strings (cf
@@ -68,7 +68,7 @@ diff -Naur file-4.20.orig/doc/file.man file-4.20/doc/file.man
  that can appear anywhere in the first few blocks of a file.
  For example, the keyword
  .Em .br
-@@ -161,7 +162,8 @@
+@@ -163,7 +164,8 @@ The language test routines also test for
  archives).
  .Pp
  Any file that cannot be identified as having been written
@@ -78,31 +78,21 @@ diff -Naur file-4.20.orig/doc/file.man file-4.20/doc/file.man
  .Sh OPTIONS
  .Bl -tag -width indent
  .It Fl b , -brief
-@@ -239,7 +241,12 @@
- .Dq FILES
- section, below).
+@@ -244,7 +246,12 @@ Like
+ .Fl i ,
+ but print only the specified element(s).
  .It Fl k , -keep-going
 -Don't stop at the first match, keep going.
 +Don't stop at the first match, keep going. Subsequent matches will be
 +prepended by
 +.Dq "\[rs]012\- ".
-+(If you want a newline, see 
++(If you want a newline, see
 +.Dq "\-r"
 +option.)
  .It Fl L , -dereference
  option causes symlinks to be followed, as the like-named option in
  .Xr ls 1
-@@ -252,7 +259,8 @@
- This can be a single file, or a colon-separated list of files.
- If a compiled magic file is found alongside, it will be used instead.
- With the 
--.Fl i or 
-+.Fl i
-+or 
- .Fl "mime"
- option, the program adds
- .Dq .mime
-@@ -339,6 +347,11 @@
+@@ -345,6 +352,11 @@ adds
  and/or
  .Dq .mgc
  to the value of this variable as appropriate.
@@ -114,7 +104,7 @@ diff -Naur file-4.20.orig/doc/file.man file-4.20/doc/file.man
  The environment variable
  .Dv POSIXLY_CORRECT
  controls (on systems that support symbolic links), if
-@@ -413,12 +426,6 @@
+@@ -419,12 +431,6 @@ will be distributed periodically.
  The order of entries in the magic file is significant.
  Depending on what system you are using, the order that
  they are put together may be incorrect.
@@ -127,7 +117,7 @@ diff -Naur file-4.20.orig/doc/file.man file-4.20/doc/file.man
  .Sh EXAMPLES
  .Bd -literal -offset indent 
  $ file file.c file /dev/{wd0a,hda}
-@@ -586,9 +593,17 @@
+@@ -591,9 +597,17 @@ This program is slower than some vendors
  The new support for multiple character codes makes it even slower.
  .Pp
  This manual page, and particularly this section, is too long.
@@ -145,9 +135,9 @@ diff -Naur file-4.20.orig/doc/file.man file-4.20/doc/file.man
 +obtained from every site carrying a Debian distribution (that is
 +.Dv ftp.debian.org
 +and mirrors).
-diff -Naur file-4.20.orig/doc/libmagic.man file-4.20/doc/libmagic.man
---- file-4.20.orig/doc/libmagic.man	2007-01-25 21:04:08.000000000 +0000
-+++ file-4.20/doc/libmagic.man	2007-04-03 17:56:16.000000000 +0000
+diff -Naurp file-4.23.orig/doc/libmagic.man file-4.23/doc/libmagic.man
+--- file-4.23.orig/doc/libmagic.man	2007-10-09 20:14:57.000000000 +0000
++++ file-4.23/doc/libmagic.man	2008-01-12 18:04:15.000000000 +0000
 @@ -39,7 +39,7 @@
  .Nm magic_load
  .Nd Magic number recognition library.
@@ -157,10 +147,10 @@ diff -Naur file-4.20.orig/doc/libmagic.man file-4.20/doc/libmagic.man
  .Sh SYNOPSIS
  .In magic.h
  .Ft magic_t
-diff -Naur file-4.20.orig/doc/magic.man file-4.20/doc/magic.man
---- file-4.20.orig/doc/magic.man	2007-01-12 17:38:27.000000000 +0000
-+++ file-4.20/doc/magic.man	2007-04-03 17:56:16.000000000 +0000
-@@ -65,7 +65,7 @@
+diff -Naurp file-4.23.orig/doc/magic.man file-4.23/doc/magic.man
+--- file-4.23.orig/doc/magic.man	2007-11-08 00:31:37.000000000 +0000
++++ file-4.23/doc/magic.man	2008-01-12 18:04:15.000000000 +0000
+@@ -69,7 +69,7 @@ Finally the
  .Dq c
  flag, specifies case insensitive matching: lowercase
  characters in the magic match both lower and upper case characters in the

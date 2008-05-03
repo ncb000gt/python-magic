@@ -5,10 +5,10 @@
 
 @DPATCH@
 
-diff -Naur file-4.20.orig/src/print.c file-4.20/src/print.c
---- file-4.20.orig/src/print.c	2007-01-18 05:45:35.000000000 +0000
-+++ file-4.20/src/print.c	2007-05-17 16:39:17.000000000 +0000
-@@ -179,7 +179,10 @@
+diff -Naurp file-4.23.orig/src/print.c file-4.23/src/print.c
+--- file-4.23.orig/src/print.c	2007-12-27 16:35:59.000000000 +0000
++++ file-4.23/src/print.c	2008-01-12 17:57:26.000000000 +0000
+@@ -189,7 +189,10 @@ file_magwarn(struct magic_set *ms, const
  	/* cuz we use stdout for most, stderr here */
  	(void) fflush(stdout); 
  

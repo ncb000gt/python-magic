@@ -6,10 +6,10 @@
 
 @DPATCH@
 
-diff -Naur file-4.20.orig/magic/Magdir/msdos file-4.20/magic/Magdir/msdos
---- file-4.20.orig/magic/Magdir/msdos	2007-01-19 19:35:20.000000000 +0000
-+++ file-4.20/magic/Magdir/msdos	2007-04-03 12:39:57.000000000 +0000
-@@ -579,17 +579,17 @@
+diff -Naurp file-4.23.orig/magic/Magdir/msdos file-4.23/magic/Magdir/msdos
+--- file-4.23.orig/magic/Magdir/msdos	2007-12-28 15:14:13.000000000 +0000
++++ file-4.23/magic/Magdir/msdos	2008-01-12 16:33:00.000000000 +0000
+@@ -580,17 +580,17 @@
  # syntax available by some file commands you could write:
  # 0 lelong 1
  # &40 ulelong 0x464D4520 Windows Enhanced Metafile (EMF) image data

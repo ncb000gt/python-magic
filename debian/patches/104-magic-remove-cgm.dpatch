@@ -5,9 +5,9 @@
 
 @DPATCH@
 
-diff -Naur file-4.20.orig/magic/Magdir/images file-4.20/magic/Magdir/images
---- file-4.20.orig/magic/Magdir/images	2007-01-19 19:31:46.000000000 +0000
-+++ file-4.20/magic/Magdir/images	2007-04-03 12:28:49.000000000 +0000
+diff -Naurp file-4.23.orig/magic/Magdir/images file-4.23/magic/Magdir/images
+--- file-4.23.orig/magic/Magdir/images	2007-05-03 15:11:33.000000000 +0000
++++ file-4.23/magic/Magdir/images	2008-01-12 16:28:03.000000000 +0000
 @@ -130,8 +130,8 @@
  # CGM image files
  0	string		BEGMF		clear text Computer Graphics Metafile
@@ -19,7 +19,7 @@ diff -Naur file-4.20.orig/magic/Magdir/images file-4.20/magic/Magdir/images
  
  # MGR bitmaps  (Michael Haardt, u31b3hs@pool.informatik.rwth-aachen.de)
  0	string	yz	MGR bitmap, modern format, 8-bit aligned
-@@ -506,7 +506,7 @@
+@@ -510,7 +510,7 @@
  0	string	AT&TFORM		DjVu Image file
  
  # From: Jason Bacon <bacon@smithers.neuro.mcw.edu>

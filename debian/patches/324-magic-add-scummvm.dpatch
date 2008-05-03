@@ -5,14 +5,13 @@
 
 @DPATCH@
 
-diff -Naur file-4.21.orig/magic/Magdir/console file-4.21/magic/Magdir/console
---- file-4.21.orig/magic/Magdir/console	2007-03-18 21:45:28.000000000 +0000
-+++ file-4.21/magic/Magdir/console	2007-06-01 18:51:01.000000000 +0000
-@@ -191,3 +191,8 @@
- 0	string	PPF10			Playstation Patch File version 1.0
- >5	byte	0			\b, Simple Encoding
- >6	string	x			\b, description: %s
-+
+diff -Naurp file-4.23.orig/magic/Magdir/console file-4.23/magic/Magdir/console
+--- file-4.23.orig/magic/Magdir/console	2007-09-26 20:22:31.000000000 +0000
++++ file-4.23/magic/Magdir/console	2008-01-12 17:36:55.000000000 +0000
+@@ -252,3 +252,7 @@
+ # .w3m
+ 0	string HM3W				Warcraft III map file
+ 
 +# Type: scummVM savegame files
 +# From: Sven Hartge <debian@ds9.argh.org>
 +0	string	SCVM	scummVM savegame

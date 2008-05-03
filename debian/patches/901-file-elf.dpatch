@@ -5,10 +5,10 @@
 
 @DPATCH@
 
-diff -Naur file-4.20.orig/src/readelf.c file-4.20/src/readelf.c
---- file-4.20.orig/src/readelf.c	2007-01-18 05:45:35.000000000 +0000
-+++ file-4.20/src/readelf.c	2007-03-27 12:23:14.000000000 +0000
-@@ -907,29 +915,30 @@
+diff -Naurp file-4.23.orig/src/readelf.c file-4.23/src/readelf.c
+--- file-4.23.orig/src/readelf.c	2007-12-27 16:30:52.000000000 +0000
++++ file-4.23/src/readelf.c	2008-01-12 17:48:48.000000000 +0000
+@@ -919,29 +919,30 @@ file_tryelf(struct magic_set *ms, int fd
  	off_t fsize;
  	int flags = 0;
  

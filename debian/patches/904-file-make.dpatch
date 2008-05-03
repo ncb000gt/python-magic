@@ -5,15 +5,15 @@
 
 @DPATCH@
 
-diff -Naur file-4.20.orig/src/Makefile.in file-4.20/src/Makefile.in
---- file-4.20.orig/src/Makefile.in	2007-03-01 23:21:09.000000000 +0000
-+++ file-4.20/src/Makefile.in	2007-03-27 12:23:14.000000000 +0000
-@@ -296,7 +296,7 @@
+diff -Naurp file-4.23.orig/src/Makefile.in file-4.23/src/Makefile.in
+--- file-4.23.orig/src/Makefile.in	2008-01-12 17:55:24.000000000 +0000
++++ file-4.23/src/Makefile.in	2008-01-12 17:56:46.000000000 +0000
+@@ -300,7 +300,7 @@ clean-binPROGRAMS:
  	done
  file$(EXEEXT): $(file_OBJECTS) $(file_DEPENDENCIES) 
  	@rm -f file$(EXEEXT)
--	$(LINK) $(file_LDFLAGS) $(file_OBJECTS) $(file_LDADD) $(LIBS)
-+	$(LINK) $(file_LDFLAGS) $(file_OBJECTS) $(file_LDADD)
+-	$(LINK) $(file_OBJECTS) $(file_LDADD) $(LIBS)
++	$(LINK) $(file_OBJECTS) $(file_LDADD)
  
  mostlyclean-compile:
  	-rm -f *.$(OBJEXT)

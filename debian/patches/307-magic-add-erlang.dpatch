@@ -5,9 +5,9 @@
 
 @DPATCH@
 
-diff -Naur file-4.20.orig/magic/Magdir/erlang file-4.20/magic/Magdir/erlang
---- file-4.20.orig/magic/Magdir/erlang	1970-01-01 00:00:00.000000000 +0000
-+++ file-4.20/magic/Magdir/erlang	2007-04-03 15:36:54.000000000 +0000
+diff -Naurp file-4.23.orig/magic/Magdir/erlang file-4.23/magic/Magdir/erlang
+--- file-4.23.orig/magic/Magdir/erlang	1970-01-01 00:00:00.000000000 +0000
++++ file-4.23/magic/Magdir/erlang	2008-01-12 16:55:58.000000000 +0000
 @@ -0,0 +1,16 @@
 +# Type: Erlang JAM and BEAM files
 +# URL:  http://www.erlang.org/faq/x779.html#AEN812
@@ -25,10 +25,10 @@ diff -Naur file-4.20.orig/magic/Magdir/erlang file-4.20/magic/Magdir/erlang
 +79	string	Tue Jan 22 14:32:44 MET 1991	Erlang JAM file - version 4.2
 +
 +4	string	1.0 Fri Feb 3 09:55:56 MET 1995	Erlang JAM file - version 4.3
-diff -Naur file-4.20.orig/magic/Makefile.am file-4.20/magic/Makefile.am
---- file-4.20.orig/magic/Makefile.am	2006-11-25 18:36:10.000000000 +0000
-+++ file-4.20/magic/Makefile.am	2007-04-03 15:33:45.000000000 +0000
-@@ -80,6 +80,7 @@
+diff -Naurp file-4.23.orig/magic/Makefile.am file-4.23/magic/Makefile.am
+--- file-4.23.orig/magic/Makefile.am	2008-01-12 16:55:37.000000000 +0000
++++ file-4.23/magic/Makefile.am	2008-01-12 16:55:58.000000000 +0000
+@@ -82,6 +82,7 @@ Magdir/efi \
  Magdir/elf \
  Magdir/encore \
  Magdir/epoc \
@@ -36,10 +36,10 @@ diff -Naur file-4.20.orig/magic/Makefile.am file-4.20/magic/Makefile.am
  Magdir/esri \
  Magdir/fcs \
  Magdir/filesystems \
-diff -Naur file-4.20.orig/magic/Makefile.in file-4.20/magic/Makefile.in
---- file-4.20.orig/magic/Makefile.in	2007-03-01 23:21:09.000000000 +0000
-+++ file-4.20/magic/Makefile.in	2007-04-03 15:33:57.000000000 +0000
-@@ -220,6 +220,7 @@
+diff -Naurp file-4.23.orig/magic/Makefile.in file-4.23/magic/Makefile.in
+--- file-4.23.orig/magic/Makefile.in	2008-01-12 16:55:37.000000000 +0000
++++ file-4.23/magic/Makefile.in	2008-01-12 16:55:58.000000000 +0000
+@@ -221,6 +221,7 @@ Magdir/efi \
  Magdir/elf \
  Magdir/encore \
  Magdir/epoc \

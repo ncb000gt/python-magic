@@ -5,14 +5,13 @@
 
 @DPATCH@
 
-diff -Naur file-4.20.orig/magic/Magdir/msdos file-4.20/magic/Magdir/msdos
---- file-4.20.orig/magic/Magdir/msdos	2007-01-19 19:35:20.000000000 +0000
-+++ file-4.20/magic/Magdir/msdos	2007-04-03 16:35:15.000000000 +0000
-@@ -619,3 +619,11 @@
- # from http://filext.com by Derek M Jones <derek@knosof.co.uk>
- 0	string	\xD0\xCF\x11\xE0\xA1\xB1\x1A\xE1\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x3E\x00\x03\x00\xFE\xFF	Microsoft Installer
- 0	string	\320\317\021\340\241\261\032\341	Microsoft Office Document
-+
+diff -Naurp file-4.23.orig/magic/Magdir/msdos file-4.23/magic/Magdir/msdos
+--- file-4.23.orig/magic/Magdir/msdos	2007-12-28 15:14:13.000000000 +0000
++++ file-4.23/magic/Magdir/msdos	2008-01-12 16:53:00.000000000 +0000
+@@ -663,3 +663,10 @@
+ >23	string Dell			%s system BIOS
+ >48	string x			version %.3s
+ 
 +# Type: Microsoft DirectDraw Surface
 +# URL:  http://msdn.microsoft.com/library/default.asp?url=/library/en-us/directx9_c/directx/graphics/reference/DDSFileReference/ddsfileformat.asp
 +# From: Morten Hustveit <morten@debian.org>

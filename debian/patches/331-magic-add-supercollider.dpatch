@@ -6,10 +6,10 @@
 
 @DPATCH@
 
-diff -Naur file-4.21.orig/magic/Magdir/audio file-4.21/magic/Magdir/audio
---- file-4.21.orig/magic/Magdir/audio	2007-06-01 18:56:31.000000000 +0000
-+++ file-4.21/magic/Magdir/audio	2007-06-01 18:57:19.000000000 +0000
-@@ -568,3 +568,8 @@
+diff -Naurp file-4.23.orig/magic/Magdir/audio file-4.23/magic/Magdir/audio
+--- file-4.23.orig/magic/Magdir/audio	2008-01-12 17:39:01.000000000 +0000
++++ file-4.23/magic/Magdir/audio	2008-01-12 17:38:49.000000000 +0000
+@@ -576,3 +576,8 @@
  # URL:  http://filext.com/detaillist.php?extdetail=AMR
  # From: Russell Coker <russell@coker.com.au>
  0	string	#!AMR		Adaptive Multi-Rate Codec (GSM telephony)

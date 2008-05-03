@@ -1,3 +1,15 @@
+file (4.23-1) unstable; urgency=low
+
+  * New upstream release:
+    - Removing '101-magic-remove-awk.dpatch', went upstream.
+    - Removing '107-magic-remove-msi.dpatch', went upstream.
+    - Removing '202-magic-update-blender.dpatch', went upstream.
+    - Removing '205-magic-update-elf-a.dpatch', went upstream.
+    - Removing '212-magic-update-os2rexx.dpatch', went upstream.
+    - Removing '319-magic-add-ocfs.dpatch', went upstream.
+
+ -- Daniel Baumann <daniel@debian.org>  Sat, 12 Jan 2008 17:23:00 +0100
+
 file (4.21-4) unstable; urgency=low
 
   * Bumping to new policy.

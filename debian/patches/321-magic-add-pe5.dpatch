@@ -5,10 +5,10 @@
 
 @DPATCH@
 
-diff -Naur file-4.20.orig/magic/Magdir/images file-4.20/magic/Magdir/images
---- file-4.20.orig/magic/Magdir/images	2007-01-19 19:31:46.000000000 +0000
-+++ file-4.20/magic/Magdir/images	2007-03-27 16:14:16.000000000 +0000
-@@ -525,3 +525,8 @@
+diff -Naurp file-4.23.orig/magic/Magdir/images file-4.23/magic/Magdir/images
+--- file-4.23.orig/magic/Magdir/images	2007-05-03 15:11:33.000000000 +0000
++++ file-4.23/magic/Magdir/images	2008-01-12 17:33:52.000000000 +0000
+@@ -529,3 +529,8 @@
  # Xara (for a while: Corel Xara) is a graphic package, see
  # http://www.xara.com/ for Windows and as GPL application for
  0	string	XARA\243\243	Xara graphics file

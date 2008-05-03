@@ -5,19 +5,19 @@
 
 @DPATCH@
 
-diff -Naur file-4.20.orig/magic/Magdir/mathcad file-4.20/magic/Magdir/mathcad
---- file-4.20.orig/magic/Magdir/mathcad	1970-01-01 00:00:00.000000000 +0000
-+++ file-4.20/magic/Magdir/mathcad	2007-05-17 17:00:39.000000000 +0000
+diff -Naurp file-4.23.orig/magic/Magdir/mathcad file-4.23/magic/Magdir/mathcad
+--- file-4.23.orig/magic/Magdir/mathcad	1970-01-01 00:00:00.000000000 +0000
++++ file-4.23/magic/Magdir/mathcad	2008-01-12 17:09:40.000000000 +0000
 @@ -0,0 +1,5 @@
 +# Type:	Mathcad documents
 +# URL:	http://www.mathsoft.com/
 +# From:	Josh Triplett <josh@freedesktop.org>
 +
 +0	string	.MCAD\		Mathcad document
-diff -Naur file-4.20.orig/magic/Makefile.am file-4.20/magic/Makefile.am
---- file-4.20.orig/magic/Makefile.am	2007-05-17 16:59:17.000000000 +0000
-+++ file-4.20/magic/Makefile.am	2007-05-17 17:01:07.000000000 +0000
-@@ -125,6 +125,7 @@
+diff -Naurp file-4.23.orig/magic/Makefile.am file-4.23/magic/Makefile.am
+--- file-4.23.orig/magic/Makefile.am	2008-01-12 17:09:50.000000000 +0000
++++ file-4.23/magic/Makefile.am	2008-01-12 17:09:40.000000000 +0000
+@@ -127,6 +127,7 @@ Magdir/macintosh \
  Magdir/magic \
  Magdir/mail.news \
  Magdir/maple \
@@ -25,10 +25,10 @@ diff -Naur file-4.20.orig/magic/Makefile.am file-4.20/magic/Makefile.am
  Magdir/mathematica \
  Magdir/matroska \
  Magdir/mcrypt \
-diff -Naur file-4.20.orig/magic/Makefile.in file-4.20/magic/Makefile.in
---- file-4.20.orig/magic/Makefile.in	2007-05-17 16:59:17.000000000 +0000
-+++ file-4.20/magic/Makefile.in	2007-05-17 17:01:02.000000000 +0000
-@@ -265,6 +265,7 @@
+diff -Naurp file-4.23.orig/magic/Makefile.in file-4.23/magic/Makefile.in
+--- file-4.23.orig/magic/Makefile.in	2008-01-12 17:09:50.000000000 +0000
++++ file-4.23/magic/Makefile.in	2008-01-12 17:09:40.000000000 +0000
+@@ -266,6 +266,7 @@ Magdir/macintosh \
  Magdir/magic \
  Magdir/mail.news \
  Magdir/maple \

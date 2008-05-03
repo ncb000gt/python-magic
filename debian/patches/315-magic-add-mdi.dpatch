@@ -5,10 +5,10 @@
 
 @DPATCH@
 
-diff -Naur file-4.21.orig/magic/Magdir/msdos file-4.21/magic/Magdir/msdos
---- file-4.21.orig/magic/Magdir/msdos	2007-08-26 08:16:22.000000000 +0000
-+++ file-4.21/magic/Magdir/msdos	2007-08-26 08:18:07.000000000 +0000
-@@ -636,3 +636,8 @@
+diff -Naurp file-4.23.orig/magic/Magdir/msdos file-4.23/magic/Magdir/msdos
+--- file-4.23.orig/magic/Magdir/msdos	2008-01-12 17:11:42.000000000 +0000
++++ file-4.23/magic/Magdir/msdos	2008-01-12 17:11:33.000000000 +0000
+@@ -670,3 +670,8 @@
  >16	lelong	>0			%hd x
  >12	lelong	>0			%hd,
  >84	string	x			%.4s

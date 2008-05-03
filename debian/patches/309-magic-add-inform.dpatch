@@ -5,19 +5,19 @@
 
 @DPATCH@
 
-diff -Naur file-4.20.orig/magic/Magdir/inform file-4.20/magic/Magdir/inform
---- file-4.20.orig/magic/Magdir/inform	1970-01-01 00:00:00.000000000 +0000
-+++ file-4.20/magic/Magdir/inform	2007-04-03 15:16:07.000000000 +0000
+diff -Naurp file-4.23.orig/magic/Magdir/inform file-4.23/magic/Magdir/inform
+--- file-4.23.orig/magic/Magdir/inform	1970-01-01 00:00:00.000000000 +0000
++++ file-4.23/magic/Magdir/inform	2008-01-12 16:57:33.000000000 +0000
 @@ -0,0 +1,5 @@
 +# Type: Inform interactive fiction language
 +# URL:  http://www.inform-fiction.org/
 +# From: Reuben Thomas <rrt@sc3d.org>
 +
 +0	regex	[Cc]onstant[[:space:]]+[Ss]tory	Inform source text
-diff -Naur file-4.20.orig/magic/Makefile.am file-4.20/magic/Makefile.am
---- file-4.20.orig/magic/Makefile.am	2006-11-25 18:36:10.000000000 +0000
-+++ file-4.20/magic/Makefile.am	2007-04-03 15:16:24.000000000 +0000
-@@ -102,6 +103,7 @@
+diff -Naurp file-4.23.orig/magic/Makefile.am file-4.23/magic/Makefile.am
+--- file-4.23.orig/magic/Makefile.am	2008-01-12 16:56:46.000000000 +0000
++++ file-4.23/magic/Makefile.am	2008-01-12 16:57:33.000000000 +0000
+@@ -106,6 +106,7 @@ Magdir/ibm370 \
  Magdir/ibm6000 \
  Magdir/iff \
  Magdir/images \
@@ -25,10 +25,10 @@ diff -Naur file-4.20.orig/magic/Makefile.am file-4.20/magic/Makefile.am
  Magdir/intel \
  Magdir/interleaf \
  Magdir/island \
-diff -Naur file-4.20.orig/magic/Makefile.in file-4.20/magic/Makefile.in
---- file-4.20.orig/magic/Makefile.in	2007-03-01 23:21:09.000000000 +0000
-+++ file-4.20/magic/Makefile.in	2007-04-03 15:16:31.000000000 +0000
-@@ -242,6 +243,7 @@
+diff -Naurp file-4.23.orig/magic/Makefile.in file-4.23/magic/Makefile.in
+--- file-4.23.orig/magic/Makefile.in	2008-01-12 16:56:46.000000000 +0000
++++ file-4.23/magic/Makefile.in	2008-01-12 16:57:33.000000000 +0000
+@@ -245,6 +245,7 @@ Magdir/ibm370 \
  Magdir/ibm6000 \
  Magdir/iff \
  Magdir/images \
@@ -36,10 +36,10 @@ diff -Naur file-4.20.orig/magic/Makefile.in file-4.20/magic/Makefile.in
  Magdir/intel \
  Magdir/interleaf \
  Magdir/island \
-diff -Naur file-4.20.orig/magic/magic.mime file-4.20/magic/magic.mime
---- file-4.20.orig/magic/magic.mime	2007-01-25 22:10:35.000000000 +0000
-+++ file-4.20/magic/magic.mime	2007-04-03 15:18:29.000000000 +0000
-@@ -600,6 +600,11 @@
+diff -Naurp file-4.23.orig/magic/magic.mime file-4.23/magic/magic.mime
+--- file-4.23.orig/magic/magic.mime	2008-01-12 16:56:44.000000000 +0000
++++ file-4.23/magic/magic.mime	2008-01-12 16:57:33.000000000 +0000
+@@ -629,6 +629,11 @@
  0	search/400	\\chapter	text/x-tex
  0	search/400	\\documentclass	text/x-tex
  

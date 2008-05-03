@@ -5,13 +5,13 @@
 
 @DPATCH@
 
-diff -Naur file-4.21.orig/magic/Magdir/archive file-4.21/magic/Magdir/archive
---- file-4.21.orig/magic/Magdir/archive	2007-04-03 21:11:28.000000000 +0000
-+++ file-4.21/magic/Magdir/archive	2007-06-01 18:49:15.000000000 +0000
-@@ -731,3 +731,7 @@
- >4	lelong	0x1000006D	(EPOC release 3/4/5)
- >4	lelong	0x10003A12	(EPOC release 6)
- 0	lelong	0x10201A7A	Symbian installation file (Symbian OS 9.x)
+diff -Naurp file-4.23.orig/magic/Magdir/archive file-4.23/magic/Magdir/archive
+--- file-4.23.orig/magic/Magdir/archive	2007-12-27 16:18:28.000000000 +0000
++++ file-4.23/magic/Magdir/archive	2008-01-12 17:33:01.000000000 +0000
+@@ -748,3 +748,7 @@
+ # .kgb
+ 0	string KGB_arch		KGB Archiver file
+ >10	string x		with compression level %.1s
 +
 +# Type: Parity Archive
 +# From: Daniel van Eeden <daniel_e@dds.nl>

@@ -5,29 +5,18 @@
 
 @DPATCH@
 
-diff -Naur file-4.21.orig/magic/magic.mime file-4.21/magic/magic.mime
---- file-4.21.orig/magic/magic.mime	2007-06-01 19:04:43.000000000 +0000
-+++ file-4.21/magic/magic.mime	2007-06-01 19:18:52.000000000 +0000
-@@ -157,8 +157,7 @@
- # Creative Labs AUDIO stuff
- #					Standard MIDI data
- 0	string	MThd			audio/unknown
--#>9 	byte	>0			(format %d)
--#>11	byte	>1			using %d channels
+diff -Naurp file-4.23.orig/magic/magic.mime file-4.23/magic/magic.mime
+--- file-4.23.orig/magic/magic.mime	2008-01-12 18:23:14.000000000 +0000
++++ file-4.23/magic/magic.mime	2008-01-12 18:25:28.000000000 +0000
+@@ -184,6 +184,7 @@
+ 0	string	MThd			audio/x-midi
+ #>9 	byte	>0			(format %d)
+ #>11	byte	>1			using %d channels
 +0	string	MThd			audio/midi
  #					Creative Music (CMF) data
- 0	string	CTMF			audio/unknown
+ 0	string	CTMF			audio/x-unknown
  #					SoundBlaster instrument data
-@@ -273,7 +272,7 @@
- 0       string          #!/usr/bin/awk          application/x-awk
- 0       string          #!\ /usr/bin/awk        application/x-awk
- # update to distinguish from *.vcf files by Joerg Jenderek: joerg dot jenderek at web dot de
--0	regex		BEGIN[[:space:]]*[{]	application/x-awk
-+#0	regex		BEGIN[[:space:]]*[{]	application/x-awk
- 
- # For Larry Wall's perl language.  The ``eval'' line recognizes an
- # outrageously clever hack for USG systems.
-@@ -306,7 +305,7 @@
+@@ -332,7 +333,7 @@
  # because it tries to uncompress it to figure out what's inside.
  
  # standard unix compress
@@ -36,7 +25,7 @@ diff -Naur file-4.21.orig/magic/magic.mime file-4.21/magic/magic.mime
  
  # gzip (GNU zip, not to be confused with [Info-ZIP/PKWARE] zip archiver)
  0       string          \037\213        application/x-gzip
-@@ -408,18 +407,14 @@
+@@ -437,18 +438,14 @@
  #------------------------------------------------------------------------------
  # html:  file(1) magic for HTML (HyperText Markup Language) docs
  #
@@ -62,7 +51,7 @@ diff -Naur file-4.21.orig/magic/magic.mime file-4.21/magic/magic.mime
  
  #------------------------------------------------------------------------------
  # images:  file(1) magic for image formats (see also "c-lang" for XPM bitmaps)
-@@ -482,7 +477,7 @@
+@@ -511,7 +508,7 @@
  0	beshort		0xffd8		image/jpeg
  
  # PC bitmaps (OS/2, Windoze BMP files)  (Greg Roelofs, newt@uchicago.edu)
@@ -71,7 +60,7 @@ diff -Naur file-4.21.orig/magic/magic.mime file-4.21/magic/magic.mime
  #>14	byte		12		(OS/2 1.x format)
  #>14	byte		64		(OS/2 2.x format)
  #>14	byte		40		(Windows 3.x format)
-@@ -720,8 +715,10 @@
+@@ -749,8 +746,10 @@
  #------------------------------------------------------------------------------
  # Hierarchical Data Format, used to facilitate scientific data exchange
  # specifications at http://hdf.ncsa.uiuc.edu/
@@ -83,21 +72,31 @@ diff -Naur file-4.21.orig/magic/magic.mime file-4.21/magic/magic.mime
 +0	string		\211HDF\r\n\032		application/x-hdf
  
  # Adobe Photoshop
- 0	string		8BPS			image/x-photoshop
-@@ -791,21 +788,26 @@
+ 0	string		8BPS			image/vnd.adobe.photoshop
+@@ -820,21 +819,39 @@
  # Debian has entries for the old PGP formats:
  # pgp:  file(1) magic for Pretty Good Privacy
  # see http://lists.gnupg.org/pipermail/gnupg-devel/1999-September/016052.html
--0       beshort         0x9900                  text/PGP key public ring
--0       beshort         0x9501                  text/PGP key security ring
--0       beshort         0x9500                  text/PGP key security ring
--0       beshort         0xa600                  text/PGP encrypted data
+-0       beshort         0x9900                  application/x-pgp-keyring
+-0       beshort         0x9501                  application/x-pgp-keyring
+-0       beshort         0x9500                  application/x-pgp-keyring
+-0       beshort         0xa600                  application/pgp-encrypted
 -0       string          -----BEGIN\040PGP       text/PGP armored data
 ->15     string          PUBLIC\040KEY\040BLOCK- public key block
 ->15     string          MESSAGE-                message
 ->15     string          SIGNED\040MESSAGE-      signed message
 ->15     string          PGP\040SIGNATURE-       signature
 -0       beshort         0x8501                  data
++#0       beshort         0x9900                  application/x-pgp-keyring
++#0       beshort         0x9501                  application/x-pgp-keyring
++#0       beshort         0x9500                  application/x-pgp-keyring
++#0       beshort         0xa600                  application/pgp-encrypted
++#0       string          -----BEGIN\040PGP       text/PGP armored data
++#>15     string          PUBLIC\040KEY\040BLOCK- public key block
++#>15     string          MESSAGE-                message
++#>15     string          SIGNED\040MESSAGE-      signed message
++#>15     string          PGP\040SIGNATURE-       signature
++#0       beshort         0x8501                  data
 +#text/PGP key public ring
 +0	beshort		0x9900		application/pgp
 +#text/PGP key security ring
@@ -111,11 +110,14 @@ diff -Naur file-4.21.orig/magic/magic.mime file-4.21/magic/magic.mime
 +2	string	---BEGIN\ PGP\ PUBLIC\ KEY\ BLOCK-	application/pgp-keys
 +0	string	-----BEGIN\040PGP\40MESSAGE-		application/pgp
 +0	string	-----BEGIN\040PGP\40SIGNATURE-		application/pgp-signature
++
  #
  # GnuPG Magic:
  #
--0       beshort         0x9901                  text/GnuPG key public ring
+-0       beshort         0x9901                  application/x-gnupg-keyring
 -0       beshort         0x8501                  text/OpenPGP data
++#0       beshort         0x9901                  application/x-gnupg-keyring
++#0       beshort         0x8501                  text/OpenPGP data
 +#text/GnuPG key public ring
 +0	beshort		0x9901		application/pgp
 +#text/OpenPGP data
@@ -123,19 +125,19 @@ diff -Naur file-4.21.orig/magic/magic.mime file-4.21/magic/magic.mime
  
  # flash:        file(1) magic for Macromedia Flash file format
  #
-@@ -969,3 +971,8 @@
- # Symbian installation files
- 8	lelong	0x10000419	application/vnd.symbian.install
+@@ -1003,3 +1020,8 @@
  0	lelong	0x10201A7A	x-epoc/x-sisx-app
+ # FORTRAN source
+ 0	string/c	c\ 		text/x-fortran
 +
 +# Gnumeric spreadsheet
 +# This entry is only semi-helpful, as Gnumeric compresses its files, so
 +# they will ordinarily reported as "compressed", but at least -z helps
 +39	string	=<gmr:Workbook	application/x-gnumeric
-diff -Naur file-4.21.orig/src/file.c file-4.21/src/file.c
---- file-4.21.orig/src/file.c	2007-05-08 14:44:18.000000000 +0000
-+++ file-4.21/src/file.c	2007-06-01 19:19:33.000000000 +0000
-@@ -352,7 +352,7 @@
+diff -Naurp file-4.23.orig/src/file.c file-4.23/src/file.c
+--- file-4.23.orig/src/file.c	2007-12-27 16:35:58.000000000 +0000
++++ file-4.23/src/file.c	2008-01-12 18:25:28.000000000 +0000
+@@ -350,7 +350,7 @@ main(int argc, char *argv[])
  	}
  
  	magic_close(magic);
@@ -144,10 +146,10 @@ diff -Naur file-4.21.orig/src/file.c file-4.21/src/file.c
  }
  
  
-diff -Naur file-4.21.orig/src/fsmagic.c file-4.21/src/fsmagic.c
---- file-4.21.orig/src/fsmagic.c	2007-01-12 17:40:53.000000000 +0000
-+++ file-4.21/src/fsmagic.c	2007-06-01 19:19:33.000000000 +0000
-@@ -92,7 +92,8 @@
+diff -Naurp file-4.23.orig/src/fsmagic.c file-4.23/src/fsmagic.c
+--- file-4.23.orig/src/fsmagic.c	2007-11-07 21:33:23.000000000 +0000
++++ file-4.23/src/fsmagic.c	2008-01-12 18:25:28.000000000 +0000
+@@ -93,7 +93,8 @@ file_fsmagic(struct magic_set *ms, const
  		if (file_printf(ms, "cannot open `%s' (%s)",
  		    fn, strerror(errno)) == -1)
  			return -1;
@@ -156,4 +158,4 @@ diff -Naur file-4.21.orig/src/fsmagic.c file-4.21/src/fsmagic.c
 +		return -1;
  	}
  
- 	if ((ms->flags & MAGIC_MIME) != 0) {
+ 	if (mime) {

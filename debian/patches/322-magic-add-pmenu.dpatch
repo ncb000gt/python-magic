@@ -5,10 +5,10 @@
 
 @DPATCH@
 
-diff -Naur file-4.20.orig/magic/Magdir/commands file-4.20/magic/Magdir/commands
---- file-4.20.orig/magic/Magdir/commands	2007-01-19 19:28:01.000000000 +0000
-+++ file-4.20/magic/Magdir/commands	2007-04-03 13:21:02.000000000 +0000
-@@ -54,3 +54,8 @@
+diff -Naurp file-4.23.orig/magic/Magdir/commands file-4.23/magic/Magdir/commands
+--- file-4.23.orig/magic/Magdir/commands	2007-06-01 19:40:26.000000000 +0000
++++ file-4.23/magic/Magdir/commands	2008-01-12 17:34:41.000000000 +0000
+@@ -55,3 +55,8 @@
  0	string		Zend\x00		PHP script Zend Optimizer data
  
  0	string		$!			DCL command file
