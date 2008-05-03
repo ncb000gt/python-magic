@@ -1,3 +1,21 @@
+file (4.21-1) unstable; urgency=low
+
+  * New upstream release.
+  * Rediffed 211-magic-update-os2rexx.dpatch.
+  * Removed 302-magic-add-ape.dpatch, went upstream.
+  * Rediffed 304-magic-add-arm.dpatch.
+  * Rediffed 317-magic-add-ocfs.dpatch.
+  * Rediffed 318-magic-add-par2.dpatch.
+  * Rediffed 322-magic-add-scummvm.dpatch.
+  * Rediffed 325-magic-add-subversion.dpatch.
+  * Rediffed 326-magic-add-supercollider.dpatch.
+  * Rediffed 328-magic-add-xen.dpatch.
+  * Removed 999-upstream-reg-startend.dpatch, now included in upstream.
+  * Updated 905-file-segfault.dpatch.
+  * Rediffed 999-conglomeration.dpatch.
+
+ -- Daniel Baumann <daniel@debian.org>  Fri,  1 Jun 2007 20:29:00 +0200
+
 file (4.20-8) unstable; urgency=low
 
   * Build a python-magic-dbg package.
@@ -471,7 +489,7 @@ file (3.39-1) unstable; urgency=low
     - incorporates most Debian patches 
     - adds 9660 filesystem magic (closes: #157050; Upstream has
       a different magic than reporter.)
-    - adds MNG magic (closes 147264, see below)
+    - adds MNG magic (closes: #147264, see below)
     - adds PHP magic (closes: #145929)
     - detects UTF-8 and UTF-16 with BOM (closes: #102076)
     - some short string magic commented out (closes: #134266)

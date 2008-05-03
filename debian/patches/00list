@@ -22,7 +22,6 @@
 214-magic-update-sh.dpatch
 215-magic-update-spectrum.dpatch
 301-magic-add-adf.dpatch
-302-magic-add-ape.dpatch
 303-magic-add-apple2.dpatch
 304-magic-add-arm.dpatch
 305-magic-add-avg.dpatch
@@ -56,4 +55,3 @@
 905-file-segfault.dpatch
 998-doc-manpages.dpatch
 999-conglomeration.dpatch
-999-upstream-reg-startend.dpatch

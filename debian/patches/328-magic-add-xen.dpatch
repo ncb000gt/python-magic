@@ -5,14 +5,13 @@
 
 @DPATCH@
 
-diff -Naur file-4.20.orig/magic/Magdir/linux file-4.20/magic/Magdir/linux
---- file-4.20.orig/magic/Magdir/linux	2006-11-25 18:36:10.000000000 +0000
-+++ file-4.20/magic/Magdir/linux	2007-04-03 13:49:17.000000000 +0000
-@@ -236,3 +236,10 @@
- >20	lelong	1			MLS
- >24	lelong	x			%d symbols
- >28	lelong	x			%d ocons
-+
+diff -Naur file-4.21.orig/magic/Magdir/linux file-4.21/magic/Magdir/linux
+--- file-4.21.orig/magic/Magdir/linux	2007-04-23 14:32:39.000000000 +0000
++++ file-4.21/magic/Magdir/linux	2007-06-01 19:00:29.000000000 +0000
+@@ -246,3 +246,9 @@
+ >72	string	x		%s]
+ >168	string	x		UUID: %s
+ 
 +# Type: Xen, the virtual machine monitor
 +# From: Radek Vokal <rvokal@redhat.com>
 +0	string		LinuxGuestRecord	Xen saved domain

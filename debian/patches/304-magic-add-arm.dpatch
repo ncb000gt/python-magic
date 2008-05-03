@@ -5,15 +5,14 @@
 
 @DPATCH@
 
-diff -Naur file-4.20.orig/magic/Magdir/audio file-4.20/magic/Magdir/audio
---- file-4.20.orig/magic/Magdir/audio	2007-04-03 16:17:31.000000000 +0000
-+++ file-4.20/magic/Magdir/audio	2007-04-03 16:18:26.000000000 +0000
-@@ -557,3 +557,8 @@
- # URL:  <http://www.monkeysaudio.com/>
- # From: Robert Millan <rmh@aybabtu.com>
- 0	string	MAC\	Monkey's Audio file
-+
+diff -Naur file-4.21.orig/magic/Magdir/audio file-4.21/magic/Magdir/audio
+--- file-4.21.orig/magic/Magdir/audio	2007-03-13 13:57:59.000000000 +0000
++++ file-4.21/magic/Magdir/audio	2007-06-01 18:42:38.000000000 +0000
+@@ -556,3 +556,7 @@
+ # From: Matthew Flaschen <matthew.flaschen@gatech.edu>
+ 0	string	#EXTM3U 	M3U playlist text
+ 
 +# Type: Adaptive Multi-Rate Codec
 +# URL:  http://filext.com/detaillist.php?extdetail=AMR
 +# From: Russell Coker <russell@coker.com.au>
-+0	string	#!AMR	Adaptive Multi-Rate Codec (GSM telephony)
++0	string	#!AMR		Adaptive Multi-Rate Codec (GSM telephony)

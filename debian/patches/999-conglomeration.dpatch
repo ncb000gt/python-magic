@@ -5,21 +5,20 @@
 
 @DPATCH@
 
-diff -Naur file-4.20.orig/magic/magic.mime file-4.20/magic/magic.mime
---- file-4.20.orig/magic/magic.mime	2007-01-25 22:10:35.000000000 +0000
-+++ file-4.20/magic/magic.mime	2007-03-27 12:23:14.000000000 +0000
-@@ -156,9 +156,7 @@
- 
+diff -Naur file-4.21.orig/magic/magic.mime file-4.21/magic/magic.mime
+--- file-4.21.orig/magic/magic.mime	2007-06-01 19:04:43.000000000 +0000
++++ file-4.21/magic/magic.mime	2007-06-01 19:18:52.000000000 +0000
+@@ -157,8 +157,7 @@
  # Creative Labs AUDIO stuff
  #					Standard MIDI data
--0	string	MThd			audio/unknown
+ 0	string	MThd			audio/unknown
 -#>9 	byte	>0			(format %d)
 -#>11	byte	>1			using %d channels
 +0	string	MThd			audio/midi
  #					Creative Music (CMF) data
  0	string	CTMF			audio/unknown
  #					SoundBlaster instrument data
-@@ -273,7 +271,7 @@
+@@ -273,7 +272,7 @@
  0       string          #!/usr/bin/awk          application/x-awk
  0       string          #!\ /usr/bin/awk        application/x-awk
  # update to distinguish from *.vcf files by Joerg Jenderek: joerg dot jenderek at web dot de
@@ -28,7 +27,7 @@ diff -Naur file-4.20.orig/magic/magic.mime file-4.20/magic/magic.mime
  
  # For Larry Wall's perl language.  The ``eval'' line recognizes an
  # outrageously clever hack for USG systems.
-@@ -298,7 +296,7 @@
+@@ -306,7 +305,7 @@
  # because it tries to uncompress it to figure out what's inside.
  
  # standard unix compress
@@ -37,7 +36,7 @@ diff -Naur file-4.20.orig/magic/magic.mime file-4.20/magic/magic.mime
  
  # gzip (GNU zip, not to be confused with [Info-ZIP/PKWARE] zip archiver)
  0       string          \037\213        application/x-gzip
-@@ -400,18 +398,15 @@
+@@ -408,18 +407,14 @@
  #------------------------------------------------------------------------------
  # html:  file(1) magic for HTML (HyperText Markup Language) docs
  #
@@ -50,20 +49,20 @@ diff -Naur file-4.20.orig/magic/magic.mime file-4.20/magic/magic.mime
 -0	string		\<title	text/html
 -0       string          \<html	text/html
 -0       string          \<HTML	text/html
-+0	string/cB	\<!DOCTYPE\ html	text/html
-+0	string/cb	\<head	text/html
-+0	string/cb	\<title	text/html
-+0       string/bc	\<html	text/html
- 0	string		\<!--	text/html
+-0	string		\<!--	text/html
 -0	string		\<h1	text/html
 -0	string		\<H1	text/html
 -0	string/c	\<!doctype\ html	text/html
-+0	string/c	\<h1	text/html
-+
++0	string/cB	\<!DOCTYPE\ html	text/html
++0	string/cb	\<head			text/html
++0	string/cb	\<title			text/html
++0	string/bc	\<html			text/html
++0	string		\<!--			text/html
++0	string/c	\<h1			text/html
  
  #------------------------------------------------------------------------------
  # images:  file(1) magic for image formats (see also "c-lang" for XPM bitmaps)
-@@ -474,7 +469,7 @@
+@@ -482,7 +477,7 @@
  0	beshort		0xffd8		image/jpeg
  
  # PC bitmaps (OS/2, Windoze BMP files)  (Greg Roelofs, newt@uchicago.edu)
@@ -72,7 +71,7 @@ diff -Naur file-4.20.orig/magic/magic.mime file-4.20/magic/magic.mime
  #>14	byte		12		(OS/2 1.x format)
  #>14	byte		64		(OS/2 2.x format)
  #>14	byte		40		(Windows 3.x format)
-@@ -706,8 +701,10 @@
+@@ -720,8 +715,10 @@
  #------------------------------------------------------------------------------
  # Hierarchical Data Format, used to facilitate scientific data exchange
  # specifications at http://hdf.ncsa.uiuc.edu/
@@ -85,7 +84,7 @@ diff -Naur file-4.20.orig/magic/magic.mime file-4.20/magic/magic.mime
  
  # Adobe Photoshop
  0	string		8BPS			image/x-photoshop
-@@ -777,21 +774,25 @@
+@@ -791,21 +788,26 @@
  # Debian has entries for the old PGP formats:
  # pgp:  file(1) magic for Pretty Good Privacy
  # see http://lists.gnupg.org/pipermail/gnupg-devel/1999-September/016052.html
@@ -100,43 +99,42 @@ diff -Naur file-4.20.orig/magic/magic.mime file-4.20/magic/magic.mime
 ->15     string          PGP\040SIGNATURE-       signature
 -0       beshort         0x8501                  data
 +#text/PGP key public ring
-+0	beshort		0x9900			application/pgp
++0	beshort		0x9900		application/pgp
 +#text/PGP key security ring
-+0	beshort		0x9501			application/pgp
++0	beshort		0x9501		application/pgp
 +#text/PGP key security ring
-+0	beshort		0x9500			application/pgp
++0	beshort		0x9500		application/pgp
 +#text/PGP encrypted data
-+0	beshort		0xa600			application/pgp-encrypted
++0	beshort		0xa600		application/pgp-encrypted
 +#text/PGP armored data
 +##public key block
 +2	string	---BEGIN\ PGP\ PUBLIC\ KEY\ BLOCK-	application/pgp-keys
-+0	string	-----BEGIN\040PGP\40MESSAGE-			application/pgp
-+0	string	-----BEGIN\040PGP\40SIGNATURE-			application/pgp-signature
++0	string	-----BEGIN\040PGP\40MESSAGE-		application/pgp
++0	string	-----BEGIN\040PGP\40SIGNATURE-		application/pgp-signature
  #
  # GnuPG Magic:
--#
+ #
 -0       beshort         0x9901                  text/GnuPG key public ring
 -0       beshort         0x8501                  text/OpenPGP data
 +#text/GnuPG key public ring
-+0	beshort		0x9901			application/pgp
++0	beshort		0x9901		application/pgp
 +#text/OpenPGP data
-+0	beshort		0x8501			application/pgp-encrypted	
++0	beshort		0x8501		application/pgp-encrypted
  
  # flash:        file(1) magic for Macromedia Flash file format
  #
-@@ -951,3 +952,9 @@
- 
- # 
- 128	string		DICM		application/dicom
+@@ -969,3 +971,8 @@
+ # Symbian installation files
+ 8	lelong	0x10000419	application/vnd.symbian.install
+ 0	lelong	0x10201A7A	x-epoc/x-sisx-app
 +
 +# Gnumeric spreadsheet
 +# This entry is only semi-helpful, as Gnumeric compresses its files, so
 +# they will ordinarily reported as "compressed", but at least -z helps
-+39      string          =<gmr:Workbook           application/x-gnumeric
-+
-diff -Naur file-4.20.orig/src/file.c file-4.20/src/file.c
---- file-4.20.orig/src/file.c	2007-01-25 21:05:46.000000000 +0000
-+++ file-4.20/src/file.c	2007-03-27 12:23:14.000000000 +0000
++39	string	=<gmr:Workbook	application/x-gnumeric
+diff -Naur file-4.21.orig/src/file.c file-4.21/src/file.c
+--- file-4.21.orig/src/file.c	2007-05-08 14:44:18.000000000 +0000
++++ file-4.21/src/file.c	2007-06-01 19:19:33.000000000 +0000
 @@ -352,7 +352,7 @@
  	}
  
@@ -146,9 +144,9 @@ diff -Naur file-4.20.orig/src/file.c file-4.20/src/file.c
  }
  
  
-diff -Naur file-4.20.orig/src/fsmagic.c file-4.20/src/fsmagic.c
---- file-4.20.orig/src/fsmagic.c	2007-01-12 17:40:53.000000000 +0000
-+++ file-4.20/src/fsmagic.c	2007-03-27 12:23:14.000000000 +0000
+diff -Naur file-4.21.orig/src/fsmagic.c file-4.21/src/fsmagic.c
+--- file-4.21.orig/src/fsmagic.c	2007-01-12 17:40:53.000000000 +0000
++++ file-4.21/src/fsmagic.c	2007-06-01 19:19:33.000000000 +0000
 @@ -92,7 +92,8 @@
  		if (file_printf(ms, "cannot open `%s' (%s)",
  		    fn, strerror(errno)) == -1)

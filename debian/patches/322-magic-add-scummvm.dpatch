@@ -5,13 +5,13 @@
 
 @DPATCH@
 
-diff -Naur file-4.20.orig/magic/Magdir/console file-4.20/magic/Magdir/console
---- file-4.20.orig/magic/Magdir/console	2007-03-01 20:17:26.000000000 +0000
-+++ file-4.20/magic/Magdir/console	2007-04-03 13:24:22.000000000 +0000
-@@ -168,3 +168,8 @@
- # From Gürkan Sengün <gurkan@linuks.mine.nu>, www.linuks.mine.nu
- 0	string		GBS		Nintendo Gameboy Music/Audio Data
- 12	string		GameBoy\ Music\ Module	Nintendo Gameboy Music Module
+diff -Naur file-4.21.orig/magic/Magdir/console file-4.21/magic/Magdir/console
+--- file-4.21.orig/magic/Magdir/console	2007-03-18 21:45:28.000000000 +0000
++++ file-4.21/magic/Magdir/console	2007-06-01 18:51:01.000000000 +0000
+@@ -191,3 +191,8 @@
+ 0	string	PPF10			Playstation Patch File version 1.0
+ >5	byte	0			\b, Simple Encoding
+ >6	string	x			\b, description: %s
 +
 +# Type: scummVM savegame files
 +# From: Sven Hartge <debian@ds9.argh.org>

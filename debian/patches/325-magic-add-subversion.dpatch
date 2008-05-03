@@ -5,13 +5,13 @@
 
 @DPATCH@
 
-diff -Naur file-4.20.orig/magic/Magdir/revision file-4.20/magic/Magdir/revision
---- file-4.20.orig/magic/Magdir/revision	2003-05-25 23:04:55.000000000 +0000
-+++ file-4.20/magic/Magdir/revision	2007-04-03 13:28:01.000000000 +0000
-@@ -3,3 +3,8 @@
- # file(1) magic for revision control files
- # From Hendrik Scholz <hendrik@scholz.net>
- 0   string /1\ :pserver:    cvs password text file
+diff -Naur file-4.21.orig/magic/Magdir/revision file-4.21/magic/Magdir/revision
+--- file-4.21.orig/magic/Magdir/revision	2007-04-09 16:33:07.000000000 +0000
++++ file-4.21/magic/Magdir/revision	2007-06-01 18:52:52.000000000 +0000
+@@ -7,3 +7,8 @@
+ # Conary changesets
+ # From: Jonathan Smith <smithj@rpath.com>
+ 0	belong	0xea3f81bb	Conary changeset data
 +
 +# Type: Subversion (SVN) dumps
 +# From: Uwe Zeisberger <zeisberg@informatik.uni-freiburg.de>

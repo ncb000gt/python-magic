@@ -6,13 +6,13 @@
 
 @DPATCH@
 
-diff -Naur file-4.20.orig/magic/Magdir/audio file-4.20/magic/Magdir/audio
---- file-4.20.orig/magic/Magdir/audio	2007-04-03 16:21:12.000000000 +0000
-+++ file-4.20/magic/Magdir/audio	2007-04-03 16:21:57.000000000 +0000
-@@ -570,3 +570,8 @@
+diff -Naur file-4.21.orig/magic/Magdir/audio file-4.21/magic/Magdir/audio
+--- file-4.21.orig/magic/Magdir/audio	2007-06-01 18:56:31.000000000 +0000
++++ file-4.21/magic/Magdir/audio	2007-06-01 18:57:19.000000000 +0000
+@@ -568,3 +568,8 @@
  # URL:  http://filext.com/detaillist.php?extdetail=AMR
  # From: Russell Coker <russell@coker.com.au>
- 0	string	#!AMR	Adaptive Multi-Rate Codec (GSM telephony)
+ 0	string	#!AMR		Adaptive Multi-Rate Codec (GSM telephony)
 +
 +# Type: SuperCollider 3 Synth Definition File Format
 +# From: Mario Lang <mlang@debian.org>
