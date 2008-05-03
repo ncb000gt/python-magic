@@ -92,8 +92,7 @@ file_fsmagic(struct magic_set *ms, const char *fn, struct stat *sb)
 		if (file_printf(ms, "cannot open `%s' (%s)",
 		    fn, strerror(errno)) == -1)
 			return -1;
-		ms->haderr++;
-		return -1;
+		return 1;
 	}
 
 	if ((ms->flags & MAGIC_MIME) != 0) {

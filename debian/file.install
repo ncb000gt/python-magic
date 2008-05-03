@@ -1,4 +1,3 @@
-etc/magic
-etc/magic.mime
-usr/bin
-usr/share/man/man1
+/etc
+/usr/bin
+/usr/share/man/man1

@@ -196,7 +196,7 @@ MAGIC = $(pkgdatadir)/magic
 lib_LTLIBRARIES = libmagic.la
 include_HEADERS = magic.h
 EXTRA_DIST = test.c
-AM_CPPFLAGS = -DMAGIC='"/etc/magic:$(MAGIC)"'
+AM_CPPFLAGS = -DMAGIC='"$(MAGIC)"'
 libmagic_la_SOURCES = magic.c apprentice.c softmagic.c ascmagic.c \
 	compress.c is_tar.c readelf.c print.c fsmagic.c \
 	funcs.c file.h names.h patchlevel.h readelf.h tar.h apptype.c
@@ -296,7 +296,7 @@ clean-binPROGRAMS:
 	done
 file$(EXEEXT): $(file_OBJECTS) $(file_DEPENDENCIES) 
 	@rm -f file$(EXEEXT)
-	$(LINK) $(file_LDFLAGS) $(file_OBJECTS) $(file_LDADD)
+	$(LINK) $(file_LDFLAGS) $(file_OBJECTS) $(file_LDADD) $(LIBS)
 
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)

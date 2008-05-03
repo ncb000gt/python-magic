@@ -14,11 +14,11 @@
 >12     string          cmov            \b movie (fast start, compressed header)
 >12     string          rmra            \b multiple URLs
 4       string          mdat            Apple QuickTime movie (unoptimized)
-#4       string          wide            Apple QuickTime movie (unoptimized)
-#4       string          skip            Apple QuickTime movie (modified)
-#4       string          free            Apple QuickTime movie (modified)
+4       string          wide            Apple QuickTime movie (unoptimized)
+4       string          skip            Apple QuickTime movie (modified)
+4       string          free            Apple QuickTime movie (modified)
 4       string          idsc            Apple QuickTime image (fast start)
-#4       string          idat            Apple QuickTime image (unoptimized)
+4       string          idat            Apple QuickTime image (unoptimized)
 4       string          pckg            Apple QuickTime compressed archive
 4	string/B	jP		JPEG 2000 image
 4	string		ftyp		ISO Media

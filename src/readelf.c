@@ -396,14 +396,6 @@ donote(struct magic_set *ms, unsigned char *nbuf, size_t offset, size_t size,
 			if (file_printf(ms, "Solaris") == -1)
 				return size;
 			break;
-		case GNU_OS_KFREEBSD:
-			if (file_printf(ms, "kFreeBSD") == -1)
-				return size;
-			break;
-		case GNU_OS_KNETBSD:
-			if (file_printf(ms, "kNetBSD") == -1)
-				return size;
-			break;
 		default:
 			if (file_printf(ms, "<unknown>") == -1)
 				return size; 
@@ -915,19 +907,6 @@ file_tryelf(struct magic_set *ms, int fd, const unsigned char *buf,
 	off_t fsize;
 	int flags = 0;
 
-
-	/*
-	 * ELF executables have multiple section headers in arbitrary
-	 * file locations and thus file(1) cannot determine it from easily.
-	 * Instead we traverse thru all section headers until a symbol table
-	 * one is found or else the binary is stripped.
-	 * Return immediately if it's not ELF (so we avoid pipe2file unless needed).
-	 */
-	if (buf[EI_MAG0] != ELFMAG0
-	    || (buf[EI_MAG1] != ELFMAG1 && buf[EI_MAG1] != OLFMAG1)
-	    || buf[EI_MAG2] != ELFMAG2 || buf[EI_MAG3] != ELFMAG3)
-	    return 0;
-
 	/*
 	 * If we cannot seek, it must be a pipe, socket or fifo.
 	 */
@@ -939,6 +918,18 @@ file_tryelf(struct magic_set *ms, int fd, const unsigned char *buf,
 		return -1;
 	}
 	fsize = st.st_size;
+
+	/*
+	 * ELF executables have multiple section headers in arbitrary
+	 * file locations and thus file(1) cannot determine it from easily.
+	 * Instead we traverse thru all section headers until a symbol table
+	 * one is found or else the binary is stripped.
+	 */
+	if (buf[EI_MAG0] != ELFMAG0
+	    || (buf[EI_MAG1] != ELFMAG1 && buf[EI_MAG1] != OLFMAG1)
+	    || buf[EI_MAG2] != ELFMAG2 || buf[EI_MAG3] != ELFMAG3)
+	    return 0;
+
 
 	class = buf[EI_CLASS];
 

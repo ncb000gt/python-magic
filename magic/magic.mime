@@ -156,7 +156,9 @@
 
 # Creative Labs AUDIO stuff
 #					Standard MIDI data
-0	string	MThd			audio/midi
+0	string	MThd			audio/unknown
+#>9 	byte	>0			(format %d)
+#>11	byte	>1			using %d channels
 #					Creative Music (CMF) data
 0	string	CTMF			audio/unknown
 #					SoundBlaster instrument data
@@ -271,7 +273,7 @@
 0       string          #!/usr/bin/awk          application/x-awk
 0       string          #!\ /usr/bin/awk        application/x-awk
 # update to distinguish from *.vcf files by Joerg Jenderek: joerg dot jenderek at web dot de
-#0	regex		BEGIN[[:space:]]*[{]	application/x-awk
+0	regex		BEGIN[[:space:]]*[{]	application/x-awk
 
 # For Larry Wall's perl language.  The ``eval'' line recognizes an
 # outrageously clever hack for USG systems.
@@ -296,7 +298,7 @@
 # because it tries to uncompress it to figure out what's inside.
 
 # standard unix compress
-#0	string		\037\235	application/x-compress
+0	string		\037\235	application/x-compress
 
 # gzip (GNU zip, not to be confused with [Info-ZIP/PKWARE] zip archiver)
 0       string          \037\213        application/x-gzip
@@ -398,15 +400,18 @@
 #------------------------------------------------------------------------------
 # html:  file(1) magic for HTML (HyperText Markup Language) docs
 #
-# from Michael Piefel <piefel@debian.org>
+# from Daniel Quinlan <quinlan@yggdrasil.com>
 #
-0	string/cB	\<!DOCTYPE\ html	text/html
-0	string/cb	\<head	text/html
-0	string/cb	\<title	text/html
-0       string/bc	\<html	text/html
+0	string		\<HEAD	text/html
+0	string		\<head	text/html
+0	string		\<TITLE	text/html
+0	string		\<title	text/html
+0       string          \<html	text/html
+0       string          \<HTML	text/html
 0	string		\<!--	text/html
-0	string/c	\<h1	text/html
-
+0	string		\<h1	text/html
+0	string		\<H1	text/html
+0	string/c	\<!doctype\ html	text/html
 
 #------------------------------------------------------------------------------
 # images:  file(1) magic for image formats (see also "c-lang" for XPM bitmaps)
@@ -469,7 +474,7 @@
 0	beshort		0xffd8		image/jpeg
 
 # PC bitmaps (OS/2, Windoze BMP files)  (Greg Roelofs, newt@uchicago.edu)
-0	string		BM		image/x-ms-bmp
+0	string		BM		image/bmp
 #>14	byte		12		(OS/2 1.x format)
 #>14	byte		64		(OS/2 2.x format)
 #>14	byte		40		(Windows 3.x format)
@@ -701,10 +706,8 @@
 #------------------------------------------------------------------------------
 # Hierarchical Data Format, used to facilitate scientific data exchange
 # specifications at http://hdf.ncsa.uiuc.edu/
-#Hierarchical Data Format (version 4) data
-0	belong		0x0e031301		application/x-hdf
-#Hierarchical Data Format (version 5) data
-0	string		\211HDF\r\n\032		application/x-hdf
+0	belong		0x0e031301	Hierarchical Data Format (version 4) data
+0	string		\211HDF\r\n\032	Hierarchical Data Format (version 5) data
 
 # Adobe Photoshop
 0	string		8BPS			image/x-photoshop
@@ -774,25 +777,21 @@
 # Debian has entries for the old PGP formats:
 # pgp:  file(1) magic for Pretty Good Privacy
 # see http://lists.gnupg.org/pipermail/gnupg-devel/1999-September/016052.html
-#text/PGP key public ring
-0	beshort		0x9900			application/pgp
-#text/PGP key security ring
-0	beshort		0x9501			application/pgp
-#text/PGP key security ring
-0	beshort		0x9500			application/pgp
-#text/PGP encrypted data
-0	beshort		0xa600			application/pgp-encrypted
-#text/PGP armored data
-##public key block
-2	string	---BEGIN\ PGP\ PUBLIC\ KEY\ BLOCK-	application/pgp-keys
-0	string	-----BEGIN\040PGP\40MESSAGE-			application/pgp
-0	string	-----BEGIN\040PGP\40SIGNATURE-			application/pgp-signature
+0       beshort         0x9900                  text/PGP key public ring
+0       beshort         0x9501                  text/PGP key security ring
+0       beshort         0x9500                  text/PGP key security ring
+0       beshort         0xa600                  text/PGP encrypted data
+0       string          -----BEGIN\040PGP       text/PGP armored data
+>15     string          PUBLIC\040KEY\040BLOCK- public key block
+>15     string          MESSAGE-                message
+>15     string          SIGNED\040MESSAGE-      signed message
+>15     string          PGP\040SIGNATURE-       signature
+0       beshort         0x8501                  data
 #
 # GnuPG Magic:
-#text/GnuPG key public ring
-0	beshort		0x9901			application/pgp
-#text/OpenPGP data
-0	beshort		0x8501			application/pgp-encrypted	
+#
+0       beshort         0x9901                  text/GnuPG key public ring
+0       beshort         0x8501                  text/OpenPGP data
 
 # flash:        file(1) magic for Macromedia Flash file format
 #
@@ -952,9 +951,3 @@
 
 # 
 128	string		DICM		application/dicom
-
-# Gnumeric spreadsheet
-# This entry is only semi-helpful, as Gnumeric compresses its files, so
-# they will ordinarily reported as "compressed", but at least -z helps
-39      string          =<gmr:Workbook           application/x-gnumeric
-

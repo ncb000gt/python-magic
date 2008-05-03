@@ -1,0 +1,757 @@
+#!/bin/sh /usr/share/dpatch/dpatch-run
+## 01-conglomeration.dpatch
+##
+## DP: Needs to be broken out (FIXME).
+
+@DPATCH@
+
+diff -Naur file-4.20.orig/doc/file.man file-4.20/doc/file.man
+--- file-4.20.orig/doc/file.man	2007-01-25 21:05:46.000000000 +0000
++++ file-4.20/doc/file.man	2007-03-27 12:23:14.000000000 +0000
+@@ -47,9 +47,8 @@
+ or non-printable).
+ Exceptions are well-known file formats (core files, tar archives)
+ that are known to contain binary data.
+-When modifying the file
+-.Pa __MAGIC__
+-or the program itself, make sure to
++When adding local definitions to
++.Pa /etc/magic ,
+ .Em "preserve these keywords" .
+ People depend on knowing that all the readable files in a directory
+ have the word 
+@@ -99,12 +98,14 @@
+ has been applied by extension to data files.
+ Any file with some invariant identifier at a small fixed
+ offset into the file can usually be described in this way.
+-The information identifying these files is read from the compiled
++The information identifying these files is read from
++.Pa /etc/magic
++and the compiled
+ magic file
+ .Pa __MAGIC__.mgc ,
+ or 
+ .Pa __MAGIC__
+-if the compile file does not exist. In addition
++if the compiled file does not exist. In addition
+ .Nm
+ will look in
+ .Pa $HOME/.magic.mgc ,
+@@ -161,7 +162,8 @@
+ archives).
+ .Pp
+ Any file that cannot be identified as having been written
+-in any of the character sets listed above is simply said to be ``data''.
++in any of the character sets listed above is simply said to be
++.Dq data .
+ .Sh OPTIONS
+ .Bl -tag -width indent
+ .It Fl b , -brief
+@@ -239,7 +241,12 @@
+ .Dq FILES
+ section, below).
+ .It Fl k , -keep-going
+-Don't stop at the first match, keep going.
++Don't stop at the first match, keep going. Subsequent matches will be
++prepended by
++.Dq "\[rs]012\- ".
++(If you want a newline, see 
++.Dq "\-r"
++option.)
+ .It Fl L , -dereference
+ option causes symlinks to be followed, as the like-named option in
+ .Xr ls 1
+@@ -252,7 +259,8 @@
+ This can be a single file, or a colon-separated list of files.
+ If a compiled magic file is found alongside, it will be used instead.
+ With the 
+-.Fl i or 
++.Fl i
++or 
+ .Fl "mime"
+ option, the program adds
+ .Dq .mime
+@@ -339,6 +347,11 @@
+ and/or
+ .Dq .mgc
+ to the value of this variable as appropriate.
++However,
++.Pa file
++has to exist in order for
++.Pa file.mime
++to be considered.
+ The environment variable
+ .Dv POSIXLY_CORRECT
+ controls (on systems that support symbolic links), if
+@@ -413,12 +426,6 @@
+ The order of entries in the magic file is significant.
+ Depending on what system you are using, the order that
+ they are put together may be incorrect.
+-If your old
+-.Nm
+-command uses a magic file,
+-keep the old magic file around for comparison purposes
+-(rename it to 
+-.Pa __MAGIC__.orig ).
+ .Sh EXAMPLES
+ .Bd -literal -offset indent 
+ $ file file.c file /dev/{wd0a,hda}
+@@ -586,9 +593,17 @@
+ The new support for multiple character codes makes it even slower.
+ .Pp
+ This manual page, and particularly this section, is too long.
++.Sh RETURN CODE
++.Nm
++almost always returns 0. It returns a different code if it cannot open a file.
+ .Sh AVAILABILITY
+ You can obtain the original author's latest version by anonymous FTP
+ on
+ .Dv ftp.astron.com
+ in the directory
+ .Dv /pub/file/file-X.YZ.tar.gz
++.Pp
++This Debian version adds a number of new magix entries. It can be
++obtained from every site carrying a Debian distribution (that is
++.Dv ftp.debian.org
++and mirrors).
+diff -Naur file-4.20.orig/doc/libmagic.man file-4.20/doc/libmagic.man
+--- file-4.20.orig/doc/libmagic.man	2007-01-25 21:04:08.000000000 +0000
++++ file-4.20/doc/libmagic.man	2007-03-27 12:23:14.000000000 +0000
+@@ -39,7 +39,7 @@
+ .Nm magic_load
+ .Nd Magic number recognition library.
+ .Sh LIBRARY
+-.Lb libmagic
++.Lb libmagic1
+ .Sh SYNOPSIS
+ .In magic.h
+ .Ft magic_t
+diff -Naur file-4.20.orig/doc/magic.man file-4.20/doc/magic.man
+--- file-4.20.orig/doc/magic.man	2007-01-12 17:38:27.000000000 +0000
++++ file-4.20/doc/magic.man	2007-03-27 12:23:14.000000000 +0000
+@@ -65,7 +65,7 @@
+ .Dq c
+ flag, specifies case insensitive matching: lowercase
+ characters in the magic match both lower and upper case characters in the
+-targer, whereas upper case characters in the magic, only much uppercase
++target, whereas upper case characters in the magic, only much uppercase
+ characters in the target.
+ .It Dv pstring
+ A pascal style string where the first byte is interpreted as the an
+diff -Naur file-4.20.orig/magic/Header file-4.20/magic/Header
+--- file-4.20.orig/magic/Header	2000-08-05 17:36:46.000000000 +0000
++++ file-4.20/magic/Header	2007-03-27 12:23:14.000000000 +0000
+@@ -1,5 +1,5 @@
+-# Magic
+ # Magic data for file(1) command.
+-# Machine-generated from src/cmd/file/magdir/*; edit there only!
+-# Format is described in magic(files), where:
+-# files is 5 on V7 and BSD, 4 on SV, and ?? in the SVID.
++# Format is described in magic(5).
++# Don't edit this file, edit /etc/magic or send your suggested inclusions to
++# this file as a wishlist bug against file (using the reportbug utility).
++
+diff -Naur file-4.20.orig/magic/Magdir/animation file-4.20/magic/Magdir/animation
+--- file-4.20.orig/magic/Magdir/animation	2007-01-14 18:47:21.000000000 +0000
++++ file-4.20/magic/Magdir/animation	2007-03-27 12:23:14.000000000 +0000
+@@ -14,11 +14,11 @@
+ >12     string          cmov            \b movie (fast start, compressed header)
+ >12     string          rmra            \b multiple URLs
+ 4       string          mdat            Apple QuickTime movie (unoptimized)
+-4       string          wide            Apple QuickTime movie (unoptimized)
+-4       string          skip            Apple QuickTime movie (modified)
+-4       string          free            Apple QuickTime movie (modified)
++#4       string          wide            Apple QuickTime movie (unoptimized)
++#4       string          skip            Apple QuickTime movie (modified)
++#4       string          free            Apple QuickTime movie (modified)
+ 4       string          idsc            Apple QuickTime image (fast start)
+-4       string          idat            Apple QuickTime image (unoptimized)
++#4       string          idat            Apple QuickTime image (unoptimized)
+ 4       string          pckg            Apple QuickTime compressed archive
+ 4	string/B	jP		JPEG 2000 image
+ 4	string		ftyp		ISO Media
+diff -Naur file-4.20.orig/magic/Magdir/commands file-4.20/magic/Magdir/commands
+--- file-4.20.orig/magic/Magdir/commands	2007-01-19 19:28:01.000000000 +0000
++++ file-4.20/magic/Magdir/commands	2007-03-27 12:23:14.000000000 +0000
+@@ -28,7 +28,7 @@
+ 0	string/b	#!\ /bin/awk		awk script text executable
+ 0	string/b	#!\ /usr/bin/awk	awk script text executable
+ # update to distinguish from *.vcf files
+-0	regex		BEGIN[[:space:]]*[{]	awk script text
++#0	regex		BEGIN[[:space:]]*[{]	awk script text
+ 
+ # AT&T Bell Labs' Plan 9 shell
+ 0	string/b	#!\ /bin/rc	Plan 9 rc shell script text executable
+diff -Naur file-4.20.orig/magic/Magdir/compress file-4.20/magic/Magdir/compress
+--- file-4.20.orig/magic/Magdir/compress	2006-03-02 22:10:26.000000000 +0000
++++ file-4.20/magic/Magdir/compress	2007-03-27 12:23:14.000000000 +0000
+@@ -101,18 +101,18 @@
+ 
+ # bzip	a block-sorting file compressor
+ #	by Julian Seward <sewardj@cs.man.ac.uk> and others
+-#
+-0	string		BZ		bzip compressed data
+->2	byte		x		\b, version: %c
+->3	string		=1		\b, compression block size 100k
+->3	string		=2		\b, compression block size 200k
+->3	string		=3		\b, compression block size 300k
+->3	string		=4		\b, compression block size 400k
+->3	string		=5		\b, compression block size 500k
+->3	string		=6		\b, compression block size 600k
+->3	string		=7		\b, compression block size 700k
+->3	string		=8		\b, compression block size 800k
+->3	string		=9		\b, compression block size 900k
++# Disabled because it is too weak (MPi)
++#0	string		BZ		bzip compressed data
++#>2	byte		x		\b, version: %c
++#>3	string		=1		\b, compression block size 100k
++#>3	string		=2		\b, compression block size 200k
++#>3	string		=3		\b, compression block size 300k
++#>3	string		=4		\b, compression block size 400k
++#>3	string		=5		\b, compression block size 500k
++#>3	string		=6		\b, compression block size 600k
++#>3	string		=7		\b, compression block size 700k
++#>3	string		=8		\b, compression block size 800k
++#>3	string		=9		\b, compression block size 900k
+ 
+ # lzop from <markus.oberhumer@jk.uni-linz.ac.at>
+ 0	string		\x89\x4c\x5a\x4f\x00\x0d\x0a\x1a\x0a	lzop compressed data
+diff -Naur file-4.20.orig/magic/Magdir/cracklib file-4.20/magic/Magdir/cracklib
+--- file-4.20.orig/magic/Magdir/cracklib	2006-03-02 22:10:26.000000000 +0000
++++ file-4.20/magic/Magdir/cracklib	2007-03-27 12:23:14.000000000 +0000
+@@ -9,5 +9,5 @@
+ 0	belong	0x70775631	Cracklib password index, big endian
+ >4	belong	>-1		(%i words)
+ # really bellong 0x0000000070775631
+-4	belong	0x70775631	Cracklib password index, big endian ("64-bit")
++0	search/1	\0\0\0\0pwV1	Cracklib password index, big endian ("64-bit")
+ >12	belong	>0		(%i words)
+diff -Naur file-4.20.orig/magic/Magdir/elf file-4.20/magic/Magdir/elf
+--- file-4.20.orig/magic/Magdir/elf	2006-12-18 14:14:34.000000000 +0000
++++ file-4.20/magic/Magdir/elf	2007-03-27 12:23:14.000000000 +0000
+@@ -51,7 +51,7 @@
+ >>>>36  lelong&0xf0000000	0x20000000	MIPS-III
+ >>>>36  lelong&0xf0000000	0x30000000	MIPS-IV
+ >>>>36  lelong&0xf0000000	0x40000000	MIPS-V
+->>>>36  lelong&0xf0000000	0x60000000	MIPS32
++>>>>36  lelong&0xf0000000	0x5fffffff	MIPS32
+ >>>>36  lelong&0xf0000000	0x70000000	MIPS64
+ >>>>36  lelong&0xf0000000	0x80000000	MIPS32 rel2
+ >>>>36  lelong&0xf0000000	0x90000000	MIPS64 rel2
+diff -Naur file-4.20.orig/magic/Magdir/hp file-4.20/magic/Magdir/hp
+--- file-4.20.orig/magic/Magdir/hp	2003-02-08 18:30:39.000000000 +0000
++++ file-4.20/magic/Magdir/hp	2007-03-27 12:23:14.000000000 +0000
+@@ -203,33 +203,36 @@
+ >8	long		>0		%d messages
+ 
+ # addendum to /etc/magic with HP-48sx file-types by phk@data.fls.dk 1jan92
+-0	string		HPHP48-		HP48 binary
+->7	byte		>0		- Rev %c
+->8	beshort		0x1129		(ADR)
+->8	beshort		0x3329		(REAL)
+->8	beshort		0x5529		(LREAL)
+->8	beshort		0x7729		(COMPLX)
+->8	beshort		0x9d29		(LCOMPLX)
+->8	beshort		0xbf29		(CHAR)
+->8	beshort		0xe829		(ARRAY)
+->8	beshort		0x0a2a		(LNKARRAY)
+->8	beshort		0x2c2a		(STRING)
+->8	beshort		0x4e2a		(HXS)
+->8	beshort		0x742a		(LIST)
+->8	beshort		0x962a		(DIR)
+->8	beshort		0xb82a		(ALG)
+->8	beshort		0xda2a		(UNIT)
+->8	beshort		0xfc2a		(TAGGED)
+->8	beshort		0x1e2b		(GROB)
+->8	beshort		0x402b		(LIB)
+->8	beshort		0x622b		(BACKUP)
+->8	beshort		0x882b		(LIBDATA)
+->8	beshort		0x9d2d		(PROG)
+->8	beshort		0xcc2d		(CODE)
+->8	beshort		0x482e		(GNAME)
+->8	beshort		0x6d2e		(LNAME)
+->8	beshort		0x922e		(XLIB)
+-0	string		%%HP:		HP48 text
++0	string		HPHP4		HP
++>5	string		8		48 binary
++>5	string		9		49 binary
++>7	byte		>64		- Rev %c
++>8	leshort		0x2911		(ADR)
++>8	leshort		0x2933		(REAL)
++>8	leshort		0x2955		(LREAL)
++>8	leshort		0x2977		(COMPLX)
++>8	leshort		0x299d		(LCOMPLX)
++>8	leshort		0x29bf		(CHAR)
++>8	leshort		0x29e8		(ARRAY)
++>8	leshort		0x2a0a		(LNKARRAY)
++>8	leshort		0x2a2c		(STRING)
++>8	leshort		0x2a4e		(HXS)
++>8	leshort		0x2a74		(LIST)
++>8	leshort		0x2a96		(DIR)
++>8	leshort		0x2ab8		(ALG)
++>8	leshort		0x2ada		(UNIT)
++>8	leshort		0x2afc		(TAGGED)
++>8	leshort		0x2b1e		(GROB)
++>8	leshort		0x2b40		(LIB)
++>8	leshort		0x2b62		(BACKUP)
++>8	leshort		0x2b88		(LIBDATA)
++>8	leshort		0x2d9d		(PROG)
++>8	leshort		0x2dcc		(CODE)
++>8	leshort		0x2e48		(GNAME)
++>8	leshort		0x2e6d		(LNAME)
++>8	leshort		0x2e92		(XLIB)
++
++0	string		%%HP:		HP text
+ >6	string		T(0)		- T(0)
+ >6	string		T(1)		- T(1)
+ >6	string		T(2)		- T(2)
+@@ -240,6 +243,23 @@
+ >14	string		F(.)		F(.);
+ >14	string		F(,)		F(,);
+ 
++0	string		HP3		HP
++>3	string		8		38
++>3	string		9		39
++>4	string		Bin		binary
++>4	string		Asc		ASCII
++>7	string		A		(Directory List)
++>7	string		B		(Zaplet)
++>7	string		C		(Note)
++>7	string		D		(Program)
++>7	string		E		(Variable)
++>7	string		F		(List)
++>7	string		G		(Matrix)
++>7	string		H		(Library)
++>7	string		I		(Target List)
++>7	string		J		(ASCII Vector specification)
++>7	string		K		(wildcard)
++
+ # hpBSD magic numbers
+ 0	beshort		200		hp200 (68010) BSD
+ >2	beshort		0407		impure binary
+@@ -390,6 +410,3 @@
+ >>>>>>>>>0xC4	belong	33		- received SIGXCPU
+ >>>>>>>>>0xC4	belong	34		- received SIGXFSZ
+ 
+-# From: AMAKAWA Shuhei <sa264@cam.ac.uk>
+-0	string	HPHP49-			HP49 binary
+-
+diff -Naur file-4.20.orig/magic/Magdir/images file-4.20/magic/Magdir/images
+--- file-4.20.orig/magic/Magdir/images	2007-01-19 19:31:46.000000000 +0000
++++ file-4.20/magic/Magdir/images	2007-03-27 12:23:14.000000000 +0000
+@@ -130,8 +130,8 @@
+ # CGM image files
+ 0	string		BEGMF		clear text Computer Graphics Metafile
+ # XXX - questionable magic
+-0	beshort&0xffe0	0x0020		binary Computer Graphics Metafile
+-0	beshort		0x3020		character Computer Graphics Metafile
++#0	beshort&0xffe0	0x0020		binary Computer Graphics Metafile
++#0	beshort		0x3020		character Computer Graphics Metafile
+ 
+ # MGR bitmaps  (Michael Haardt, u31b3hs@pool.informatik.rwth-aachen.de)
+ 0	string	yz	MGR bitmap, modern format, 8-bit aligned
+@@ -505,9 +505,6 @@
+ # http://www.djvuzone.org/
+ 0	string	AT&TFORM		DjVu Image file
+ 
+-# From: Jason Bacon <bacon@smithers.neuro.mcw.edu>
+-0	beshort	0x3020			character Computer Graphics Metafile
+-
+ # From Marc Espie
+ 0	lelong	20000630		OpenEXR image data
+ 
+@@ -525,3 +522,10 @@
+ # Xara (for a while: Corel Xara) is a graphic package, see
+ # http://www.xara.com/ for Windows and as GPL application for
+ 0	string	XARA\243\243	Xara graphics file
++
++# The boot loaders syslinux and isolinux use a RLE based image format
++# called SLL16 to store splash screens.
++0	lelong		0x1413f33d	Syslinux SLL16 image data,
++>4	leshort		>0		%hd x
++>6	leshort		>0		%hd
++
+diff -Naur file-4.20.orig/magic/Magdir/msdos file-4.20/magic/Magdir/msdos
+--- file-4.20.orig/magic/Magdir/msdos	2007-01-19 19:35:20.000000000 +0000
++++ file-4.20/magic/Magdir/msdos	2007-03-27 12:23:14.000000000 +0000
+@@ -262,8 +262,9 @@
+ # Uncommenting only the first two lines will cover about 2/3 of COM files,
+ # but it isn't feasible to match all COM files since there must be at least
+ # two dozen different one-byte "magics".
+-0	byte		0xe9		DOS executable (COM)
+->0x1FE	leshort		0xAA55		\b, boot code
++# Disabled one-byte magic (MPi)
++#0	byte		0xe9		DOS executable (COM)
++#>0x1FE	leshort		0xAA55		\b, boot code
+ >6	string		SFX\ of\ LHarc	(%s)
+ 0	belong	0xffffffff		DOS executable (device driver)
+ #CMD640X2.SYS
+@@ -286,15 +287,16 @@
+ >>77	string	>\x40			
+ >>>77	string	<\x5B			
+ >>>>77	string	x			\b, name: %.8s
+-0	byte		0x8c		DOS executable (COM)
++# Disabled one-byte magic (MPi)
++#0	byte		0x8c		DOS executable (COM)
+ # 0xeb conflicts with "sequent" magic
+-0	byte		0xeb		DOS executable (COM)
+->0x1FE	leshort		0xAA55		\b, boot code
+->85	string		UPX		\b, UPX compressed
+->4	string		\ $ARX		\b, ARX self-extracting archive
+->4	string		\ $LHarc	\b, LHarc self-extracting archive
+->0x20e	string		SFX\ by\ LARC	\b, LARC self-extracting archive
+-0	byte		0xb8		COM executable
++#0	byte		0xeb		DOS executable (COM)
++#>0x1FE	leshort		0xAA55		\b, boot code
++#>85	string		UPX		\b, UPX compressed
++#>4	string		\ $ARX		\b, ARX self-extracting archive
++#>4	string		\ $LHarc	\b, LHarc self-extracting archive
++#>0x20e	string		SFX\ by\ LARC	\b, LARC self-extracting archive
++#0	byte		0xb8		COM executable
+ # modified by Joerg Jenderek
+ >1	lelong          !0x21cd4cff	for DOS
+ # http://syslinux.zytor.com/comboot.php
+@@ -572,24 +574,25 @@
+ >4	byte	=0x30			Offline database
+ 
+ 
+-# Windows Enhanced Metafile (EMF)
+-# See msdn.microsoft.com/archive/en-us/dnargdi/html/msdn_enhmeta.asp 
+-# for further information. Note that "0 lelong 1" should be true i.e.
+-# the first double word in the file should be 1. With the extended
+-# syntax available by some file commands you could write:
+-# 0 lelong 1
+-# &40 ulelong 0x464D4520 Windows Enhanced Metafile (EMF) image data
+-40	ulelong 0x464D4520	Windows Enhanced Metafile (EMF) image data
+->44	ulelong x		version 0x%x.
+-# If the description has a length greater than zero, it exists and is 
+-# found at offset (*64).
+->64	ulelong >0		Description available at offset 0x%x
+->>60	ulelong	>0		(length 0x%x)
+-# Note it would be better to print out the description, which is found 
+-# as below. Unfortunately the following only prints out the first couple
+-# of characters instead of all the "description length"
+-# number of characters -- indicated by the ulelong at offset 60.
+->>(64.l)  lestring16 >0 Description: %15.15s
++# This is pure ASCII magic, "EMF " at position 40 (MPi)
++## Windows Enhanced Metafile (EMF)
++## See msdn.microsoft.com/archive/en-us/dnargdi/html/msdn_enhmeta.asp 
++## for further information. Note that "0 lelong 1" should be true i.e.
++## the first double word in the file should be 1. With the extended
++## syntax available by some file commands you could write:
++## 0 lelong 1
++## &40 ulelong 0x464D4520 Windows Enhanced Metafile (EMF) image data
++#40	ulelong 0x464D4520	Windows Enhanced Metafile (EMF) image data
++#>44	ulelong x		version 0x%x.
++## If the description has a length greater than zero, it exists and is 
++## found at offset (*64).
++#>64	ulelong >0		Description available at offset 0x%x
++#>>60	ulelong	>0		(length 0x%x)
++## Note it would be better to print out the description, which is found 
++## as below. Unfortunately the following only prints out the first couple
++## of characters instead of all the "description length"
++## number of characters -- indicated by the ulelong at offset 60.
++#>>(64.l)  lestring16 >0 Description: %15.15s
+ 
+ # From: Alex Beregszaszi <alex@fsn.hu>
+ 0	string	COWD		VMWare3
+@@ -617,5 +620,6 @@
+ 0	lelong	0x02468ace			Bochs Sparse disk image
+ 
+ # from http://filext.com by Derek M Jones <derek@knosof.co.uk>
+-0	string	\xD0\xCF\x11\xE0\xA1\xB1\x1A\xE1\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x3E\x00\x03\x00\xFE\xFF	Microsoft Installer
++# False positive with PPT
++#0	string	\xD0\xCF\x11\xE0\xA1\xB1\x1A\xE1\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x3E\x00\x03\x00\xFE\xFF	Microsoft Installer
+ 0	string	\320\317\021\340\241\261\032\341	Microsoft Office Document
+diff -Naur file-4.20.orig/magic/Magdir/perl file-4.20/magic/Magdir/perl
+--- file-4.20.orig/magic/Magdir/perl	2007-03-01 23:20:19.000000000 +0000
++++ file-4.20/magic/Magdir/perl	2007-03-27 12:23:14.000000000 +0000
+@@ -9,8 +9,8 @@
+ 0	string		eval\ "exec\ /bin/perl		perl script text
+ 0	string/b	#!\ /usr/bin/perl		perl script text executable
+ 0	string		eval\ "exec\ /usr/bin/perl	perl script text
+-0	string/b	#!\ /usr/local/bin/perl		perl script text
+-0	string		eval\ "exec\ /usr/local/bin/perl	perl script text executable
++0	string/b	#!\ /usr/local/bin/perl		perl script text executable
++0	string		eval\ "exec\ /usr/local/bin/perl	perl script text
+ 0	string		eval\ '(exit\ $?0)'\ &&\ eval\ 'exec	perl script text
+ 
+ 
+diff -Naur file-4.20.orig/magic/Magdir/revision file-4.20/magic/Magdir/revision
+--- file-4.20.orig/magic/Magdir/revision	2003-05-25 23:04:55.000000000 +0000
++++ file-4.20/magic/Magdir/revision	2007-03-27 12:23:14.000000000 +0000
+@@ -3,3 +3,9 @@
+ # file(1) magic for revision control files
+ # From Hendrik Scholz <hendrik@scholz.net>
+ 0   string /1\ :pserver:    cvs password text file
++
++
++# Subversion (SVN) dumps
++# Uwe Zeisberger <zeisberg@informatik.uni-freiburg.de>
++0       string  SVN-fs-dump-format-version:     Subversion dumpfile
++>28     string  >\0                             (version: %s)
+diff -Naur file-4.20.orig/magic/magic.local file-4.20/magic/magic.local
+--- file-4.20.orig/magic/magic.local	1970-01-01 00:00:00.000000000 +0000
++++ file-4.20/magic/magic.local	2007-03-27 12:23:14.000000000 +0000
+@@ -0,0 +1,3 @@
++# Magic local data for file(1) command.
++# Insert here your local magic data. Format is described in magic(5).
++
+diff -Naur file-4.20.orig/magic/magic.mime file-4.20/magic/magic.mime
+--- file-4.20.orig/magic/magic.mime	2007-01-25 22:10:35.000000000 +0000
++++ file-4.20/magic/magic.mime	2007-03-27 12:23:14.000000000 +0000
+@@ -156,9 +156,7 @@
+ 
+ # Creative Labs AUDIO stuff
+ #					Standard MIDI data
+-0	string	MThd			audio/unknown
+-#>9 	byte	>0			(format %d)
+-#>11	byte	>1			using %d channels
++0	string	MThd			audio/midi
+ #					Creative Music (CMF) data
+ 0	string	CTMF			audio/unknown
+ #					SoundBlaster instrument data
+@@ -273,7 +271,7 @@
+ 0       string          #!/usr/bin/awk          application/x-awk
+ 0       string          #!\ /usr/bin/awk        application/x-awk
+ # update to distinguish from *.vcf files by Joerg Jenderek: joerg dot jenderek at web dot de
+-0	regex		BEGIN[[:space:]]*[{]	application/x-awk
++#0	regex		BEGIN[[:space:]]*[{]	application/x-awk
+ 
+ # For Larry Wall's perl language.  The ``eval'' line recognizes an
+ # outrageously clever hack for USG systems.
+@@ -298,7 +296,7 @@
+ # because it tries to uncompress it to figure out what's inside.
+ 
+ # standard unix compress
+-0	string		\037\235	application/x-compress
++#0	string		\037\235	application/x-compress
+ 
+ # gzip (GNU zip, not to be confused with [Info-ZIP/PKWARE] zip archiver)
+ 0       string          \037\213        application/x-gzip
+@@ -400,18 +398,15 @@
+ #------------------------------------------------------------------------------
+ # html:  file(1) magic for HTML (HyperText Markup Language) docs
+ #
+-# from Daniel Quinlan <quinlan@yggdrasil.com>
++# from Michael Piefel <piefel@debian.org>
+ #
+-0	string		\<HEAD	text/html
+-0	string		\<head	text/html
+-0	string		\<TITLE	text/html
+-0	string		\<title	text/html
+-0       string          \<html	text/html
+-0       string          \<HTML	text/html
++0	string/cB	\<!DOCTYPE\ html	text/html
++0	string/cb	\<head	text/html
++0	string/cb	\<title	text/html
++0       string/bc	\<html	text/html
+ 0	string		\<!--	text/html
+-0	string		\<h1	text/html
+-0	string		\<H1	text/html
+-0	string/c	\<!doctype\ html	text/html
++0	string/c	\<h1	text/html
++
+ 
+ #------------------------------------------------------------------------------
+ # images:  file(1) magic for image formats (see also "c-lang" for XPM bitmaps)
+@@ -474,7 +469,7 @@
+ 0	beshort		0xffd8		image/jpeg
+ 
+ # PC bitmaps (OS/2, Windoze BMP files)  (Greg Roelofs, newt@uchicago.edu)
+-0	string		BM		image/bmp
++0	string		BM		image/x-ms-bmp
+ #>14	byte		12		(OS/2 1.x format)
+ #>14	byte		64		(OS/2 2.x format)
+ #>14	byte		40		(Windows 3.x format)
+@@ -706,8 +701,10 @@
+ #------------------------------------------------------------------------------
+ # Hierarchical Data Format, used to facilitate scientific data exchange
+ # specifications at http://hdf.ncsa.uiuc.edu/
+-0	belong		0x0e031301	Hierarchical Data Format (version 4) data
+-0	string		\211HDF\r\n\032	Hierarchical Data Format (version 5) data
++#Hierarchical Data Format (version 4) data
++0	belong		0x0e031301		application/x-hdf
++#Hierarchical Data Format (version 5) data
++0	string		\211HDF\r\n\032		application/x-hdf
+ 
+ # Adobe Photoshop
+ 0	string		8BPS			image/x-photoshop
+@@ -777,21 +774,25 @@
+ # Debian has entries for the old PGP formats:
+ # pgp:  file(1) magic for Pretty Good Privacy
+ # see http://lists.gnupg.org/pipermail/gnupg-devel/1999-September/016052.html
+-0       beshort         0x9900                  text/PGP key public ring
+-0       beshort         0x9501                  text/PGP key security ring
+-0       beshort         0x9500                  text/PGP key security ring
+-0       beshort         0xa600                  text/PGP encrypted data
+-0       string          -----BEGIN\040PGP       text/PGP armored data
+->15     string          PUBLIC\040KEY\040BLOCK- public key block
+->15     string          MESSAGE-                message
+->15     string          SIGNED\040MESSAGE-      signed message
+->15     string          PGP\040SIGNATURE-       signature
+-0       beshort         0x8501                  data
++#text/PGP key public ring
++0	beshort		0x9900			application/pgp
++#text/PGP key security ring
++0	beshort		0x9501			application/pgp
++#text/PGP key security ring
++0	beshort		0x9500			application/pgp
++#text/PGP encrypted data
++0	beshort		0xa600			application/pgp-encrypted
++#text/PGP armored data
++##public key block
++2	string	---BEGIN\ PGP\ PUBLIC\ KEY\ BLOCK-	application/pgp-keys
++0	string	-----BEGIN\040PGP\40MESSAGE-			application/pgp
++0	string	-----BEGIN\040PGP\40SIGNATURE-			application/pgp-signature
+ #
+ # GnuPG Magic:
+-#
+-0       beshort         0x9901                  text/GnuPG key public ring
+-0       beshort         0x8501                  text/OpenPGP data
++#text/GnuPG key public ring
++0	beshort		0x9901			application/pgp
++#text/OpenPGP data
++0	beshort		0x8501			application/pgp-encrypted	
+ 
+ # flash:        file(1) magic for Macromedia Flash file format
+ #
+@@ -951,3 +952,9 @@
+ 
+ # 
+ 128	string		DICM		application/dicom
++
++# Gnumeric spreadsheet
++# This entry is only semi-helpful, as Gnumeric compresses its files, so
++# they will ordinarily reported as "compressed", but at least -z helps
++39      string          =<gmr:Workbook           application/x-gnumeric
++
+diff -Naur file-4.20.orig/src/Makefile.am file-4.20/src/Makefile.am
+--- file-4.20.orig/src/Makefile.am	2007-01-12 17:40:53.000000000 +0000
++++ file-4.20/src/Makefile.am	2007-03-27 12:23:14.000000000 +0000
+@@ -5,7 +5,7 @@
+ 
+ bin_PROGRAMS = file
+ 
+-AM_CPPFLAGS = -DMAGIC='"$(MAGIC)"'
++AM_CPPFLAGS = -DMAGIC='"/etc/magic:$(MAGIC)"'
+ 
+ libmagic_la_SOURCES = magic.c apprentice.c softmagic.c ascmagic.c \
+ 	compress.c is_tar.c readelf.c print.c fsmagic.c \
+diff -Naur file-4.20.orig/src/Makefile.in file-4.20/src/Makefile.in
+--- file-4.20.orig/src/Makefile.in	2007-03-01 23:21:09.000000000 +0000
++++ file-4.20/src/Makefile.in	2007-03-27 12:23:14.000000000 +0000
+@@ -196,7 +196,7 @@
+ lib_LTLIBRARIES = libmagic.la
+ include_HEADERS = magic.h
+ EXTRA_DIST = test.c
+-AM_CPPFLAGS = -DMAGIC='"$(MAGIC)"'
++AM_CPPFLAGS = -DMAGIC='"/etc/magic:$(MAGIC)"'
+ libmagic_la_SOURCES = magic.c apprentice.c softmagic.c ascmagic.c \
+ 	compress.c is_tar.c readelf.c print.c fsmagic.c \
+ 	funcs.c file.h names.h patchlevel.h readelf.h tar.h apptype.c
+@@ -296,7 +296,7 @@
+ 	done
+ file$(EXEEXT): $(file_OBJECTS) $(file_DEPENDENCIES) 
+ 	@rm -f file$(EXEEXT)
+-	$(LINK) $(file_LDFLAGS) $(file_OBJECTS) $(file_LDADD) $(LIBS)
++	$(LINK) $(file_LDFLAGS) $(file_OBJECTS) $(file_LDADD)
+ 
+ mostlyclean-compile:
+ 	-rm -f *.$(OBJEXT)
+diff -Naur file-4.20.orig/src/file.c file-4.20/src/file.c
+--- file-4.20.orig/src/file.c	2007-01-25 21:05:46.000000000 +0000
++++ file-4.20/src/file.c	2007-03-27 12:23:14.000000000 +0000
+@@ -352,7 +352,7 @@
+ 	}
+ 
+ 	magic_close(magic);
+-	return 0;
++	return magic->haderr ? -1 : 0;
+ }
+ 
+ 
+diff -Naur file-4.20.orig/src/fsmagic.c file-4.20/src/fsmagic.c
+--- file-4.20.orig/src/fsmagic.c	2007-01-12 17:40:53.000000000 +0000
++++ file-4.20/src/fsmagic.c	2007-03-27 12:23:14.000000000 +0000
+@@ -92,7 +92,8 @@
+ 		if (file_printf(ms, "cannot open `%s' (%s)",
+ 		    fn, strerror(errno)) == -1)
+ 			return -1;
+-		return 1;
++		ms->haderr++;
++		return -1;
+ 	}
+ 
+ 	if ((ms->flags & MAGIC_MIME) != 0) {
+diff -Naur file-4.20.orig/src/readelf.c file-4.20/src/readelf.c
+--- file-4.20.orig/src/readelf.c	2007-01-18 05:45:35.000000000 +0000
++++ file-4.20/src/readelf.c	2007-03-27 12:23:14.000000000 +0000
+@@ -396,6 +396,14 @@
+ 			if (file_printf(ms, "Solaris") == -1)
+ 				return size;
+ 			break;
++		case GNU_OS_KFREEBSD:
++			if (file_printf(ms, "kFreeBSD") == -1)
++				return size;
++			break;
++		case GNU_OS_KNETBSD:
++			if (file_printf(ms, "kNetBSD") == -1)
++				return size;
++			break;
+ 		default:
+ 			if (file_printf(ms, "<unknown>") == -1)
+ 				return size; 
+@@ -907,29 +915,30 @@
+ 	off_t fsize;
+ 	int flags = 0;
+ 
+-	/*
+-	 * If we cannot seek, it must be a pipe, socket or fifo.
+-	 */
+-	if((lseek(fd, (off_t)0, SEEK_SET) == (off_t)-1) && (errno == ESPIPE))
+-		fd = file_pipe2file(ms, fd, buf, nbytes);
+-
+-	if (fstat(fd, &st) == -1) {
+-  		file_badread(ms);
+-		return -1;
+-	}
+-	fsize = st.st_size;
+ 
+ 	/*
+ 	 * ELF executables have multiple section headers in arbitrary
+ 	 * file locations and thus file(1) cannot determine it from easily.
+ 	 * Instead we traverse thru all section headers until a symbol table
+ 	 * one is found or else the binary is stripped.
++	 * Return immediately if it's not ELF (so we avoid pipe2file unless needed).
+ 	 */
+ 	if (buf[EI_MAG0] != ELFMAG0
+ 	    || (buf[EI_MAG1] != ELFMAG1 && buf[EI_MAG1] != OLFMAG1)
+ 	    || buf[EI_MAG2] != ELFMAG2 || buf[EI_MAG3] != ELFMAG3)
+ 	    return 0;
+ 
++	/*
++	 * If we cannot seek, it must be a pipe, socket or fifo.
++	 */
++	if((lseek(fd, (off_t)0, SEEK_SET) == (off_t)-1) && (errno == ESPIPE))
++		fd = file_pipe2file(ms, fd, buf, nbytes);
++
++	if (fstat(fd, &st) == -1) {
++  		file_badread(ms);
++		return -1;
++	}
++	fsize = st.st_size;
+ 
+ 	class = buf[EI_CLASS];
+ 
+diff -Naur file-4.20.orig/src/readelf.h file-4.20/src/readelf.h
+--- file-4.20.orig/src/readelf.h	2007-01-12 17:40:53.000000000 +0000
++++ file-4.20/src/readelf.h	2007-03-27 12:23:14.000000000 +0000
+@@ -232,5 +232,7 @@
+ #define GNU_OS_LINUX	0
+ #define GNU_OS_HURD	1
+ #define GNU_OS_SOLARIS	2
++#define GNU_OS_KFREEBSD	3
++#define GNU_OS_KNETBSD	4
+ 
+ #endif

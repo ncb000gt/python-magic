@@ -65,7 +65,7 @@ Finally the
 .Dq c
 flag, specifies case insensitive matching: lowercase
 characters in the magic match both lower and upper case characters in the
-target, whereas upper case characters in the magic, only much uppercase
+targer, whereas upper case characters in the magic, only much uppercase
 characters in the target.
 .It Dv pstring
 A pascal style string where the first byte is interpreted as the an

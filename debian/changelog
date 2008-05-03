@@ -1,3 +1,10 @@
+file (4.20-2) unstable; urgency=low
+
+  * New maintainer (Closes: #416263).
+  * Redone debian directory.
+
+ -- Daniel Baumann <daniel@debian.org>  Tue, 27 Mar 2007 13:28:00 +0100
+
 file (4.20-1) unstable; urgency=high
 
   * New upstream version
@@ -851,4 +858,3 @@ file (3.19-1)
   * added debian.* files
   * modified Magdir/archive to add debian-split entry to ar archives
   * modified magdir/elf to add more entry for core file
-

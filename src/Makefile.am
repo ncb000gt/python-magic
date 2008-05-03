@@ -5,7 +5,7 @@ EXTRA_DIST = test.c
 
 bin_PROGRAMS = file
 
-AM_CPPFLAGS = -DMAGIC='"/etc/magic:$(MAGIC)"'
+AM_CPPFLAGS = -DMAGIC='"$(MAGIC)"'
 
 libmagic_la_SOURCES = magic.c apprentice.c softmagic.c ascmagic.c \
 	compress.c is_tar.c readelf.c print.c fsmagic.c \

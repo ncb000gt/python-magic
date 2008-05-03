@@ -130,8 +130,8 @@
 # CGM image files
 0	string		BEGMF		clear text Computer Graphics Metafile
 # XXX - questionable magic
-#0	beshort&0xffe0	0x0020		binary Computer Graphics Metafile
-#0	beshort		0x3020		character Computer Graphics Metafile
+0	beshort&0xffe0	0x0020		binary Computer Graphics Metafile
+0	beshort		0x3020		character Computer Graphics Metafile
 
 # MGR bitmaps  (Michael Haardt, u31b3hs@pool.informatik.rwth-aachen.de)
 0	string	yz	MGR bitmap, modern format, 8-bit aligned
@@ -505,6 +505,9 @@
 # http://www.djvuzone.org/
 0	string	AT&TFORM		DjVu Image file
 
+# From: Jason Bacon <bacon@smithers.neuro.mcw.edu>
+0	beshort	0x3020			character Computer Graphics Metafile
+
 # From Marc Espie
 0	lelong	20000630		OpenEXR image data
 
@@ -522,10 +525,3 @@
 # Xara (for a while: Corel Xara) is a graphic package, see
 # http://www.xara.com/ for Windows and as GPL application for
 0	string	XARA\243\243	Xara graphics file
-
-# The boot loaders syslinux and isolinux use a RLE based image format
-# called SLL16 to store splash screens.
-0	lelong		0x1413f33d	Syslinux SLL16 image data,
->4	leshort		>0		%hd x
->6	leshort		>0		%hd
-

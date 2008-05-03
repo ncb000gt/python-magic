@@ -39,7 +39,7 @@
 .Nm magic_load
 .Nd Magic number recognition library.
 .Sh LIBRARY
-.Lb libmagic1
+.Lb libmagic
 .Sh SYNOPSIS
 .In magic.h
 .Ft magic_t

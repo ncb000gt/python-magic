@@ -352,7 +352,7 @@ main(int argc, char *argv[])
 	}
 
 	magic_close(magic);
-	return magic->haderr ? -1 : 0;
+	return 0;
 }
 
 
