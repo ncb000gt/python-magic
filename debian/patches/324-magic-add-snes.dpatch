@@ -1,5 +1,5 @@
 #!/bin/sh /usr/share/dpatch/dpatch-run
-## 321-magic-add-snes.dpatch by Josh Triplett <josh@freedesktop.org>
+## 324-magic-add-snes.dpatch by Josh Triplett <josh@freedesktop.org>
 ##
 ## DP: New magic for SNES SPC700 sound files (Closes: #410847).
 

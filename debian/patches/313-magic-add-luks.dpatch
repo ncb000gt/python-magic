@@ -1,0 +1,43 @@
+#!/bin/sh /usr/share/dpatch/dpatch-run
+## 313-magic-add-luks.dpatch by Anthon van der Neut <anthon@mnt.org>
+##
+## DP: New magic for the Linux Unified Key Setup (Closes: #394246).
+
+@DPATCH@
+
+diff -Naur file-4.20.orig/magic/Magdir/luks file-4.20/magic/Magdir/luks
+--- file-4.20.orig/magic/Magdir/luks	1970-01-01 00:00:00.000000000 +0000
++++ file-4.20/magic/Magdir/luks	2007-05-17 16:22:35.000000000 +0000
+@@ -0,0 +1,10 @@
++# Type:	Linux Unified Key Setup
++# URL:	http://luks.endorphin.org/spec
++# From:	Anthon van der Neut <anthon@mnt.org>
++
++0	string		LUKS\xba\xbe	LUKS encrypted file,
++>6	beshort		x		ver %d
++>8	string		x		[%s,
++>40	string		x		%s,
++>72	string		x		%s]
++>168	string		x		UUID: %s
+diff -Naur file-4.20.orig/magic/Makefile.am file-4.20/magic/Makefile.am
+--- file-4.20.orig/magic/Makefile.am	2007-05-17 16:20:03.000000000 +0000
++++ file-4.20/magic/Makefile.am	2007-05-17 16:22:54.000000000 +0000
+@@ -119,6 +119,7 @@
+ Magdir/lisp \
+ Magdir/llvm \
+ Magdir/lua \
++Magdir/luks \
+ Magdir/mach \
+ Magdir/macintosh \
+ Magdir/magic \
+diff -Naur file-4.20.orig/magic/Makefile.in file-4.20/magic/Makefile.in
+--- file-4.20.orig/magic/Makefile.in	2007-05-17 16:20:03.000000000 +0000
++++ file-4.20/magic/Makefile.in	2007-05-17 16:22:48.000000000 +0000
+@@ -259,6 +259,7 @@
+ Magdir/lisp \
+ Magdir/llvm \
+ Magdir/lua \
++Magdir/luks \
+ Magdir/mach \
+ Magdir/macintosh \
+ Magdir/magic \

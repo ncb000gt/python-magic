@@ -1,5 +1,5 @@
 #!/bin/sh /usr/share/dpatch/dpatch-run
-## 316-magic-add-par2.dpatch by Daniel van Eeden <daniel_e@dds.nl>
+## 318-magic-add-par2.dpatch by Daniel van Eeden <daniel_e@dds.nl>
 ##
 ## DP: New magic for PAR2 archive files (Closes: #294070).
 

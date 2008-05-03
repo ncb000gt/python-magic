@@ -1,5 +1,5 @@
 #!/bin/sh /usr/share/dpatch/dpatch-run
-## 323-magic-add-supercollider.dpatch by Mario Lang <mlang@debian.org>
+## 326-magic-add-supercollider.dpatch by Mario Lang <mlang@debian.org>
 ##
 ## DP: Adds new magic for SuperCollider 3 Synth Definition File Format
 ## DP: (Closes: #284803).

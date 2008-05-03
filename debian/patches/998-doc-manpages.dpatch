@@ -1,5 +1,5 @@
 #!/bin/sh /usr/share/dpatch/dpatch-run
-## 905-doc-manpages.dpatch by Michael Piefel <piefel@debian.org>
+## 998-doc-manpages.dpatch by Michael Piefel <piefel@debian.org>
 ##
 ## DP: FIXME, and #417511.
 

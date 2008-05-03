@@ -1,5 +1,5 @@
 #!/bin/sh /usr/share/dpatch/dpatch-run
-## 317-magic-add-pe5.dpatch by Simon Horman <horms@debian.org>
+## 319-magic-add-pe5.dpatch by Simon Horman <horms@debian.org>
 ##
 ## DP: New magic for the Ulead Photo Explorer5 image format (Closes: #339397).
 

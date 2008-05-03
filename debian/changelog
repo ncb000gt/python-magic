@@ -1,3 +1,24 @@
+file (4.20-6) unstable; urgency=medium
+
+  * Fixed clean: target in rule (Closes: #424269).
+  * Added patch from Anthon van der Neut <anthon@mnt.org> to add magic for LUKS
+    (Closes: #394246).
+  * Added patch from Jelmer Vernooij <jelmer@samba.org> to add magic for
+    Power-Tab.
+  * Added patch from Sven Anders <anders@anduras.de> to fix a segfault with -c.
+  * Added patch from Kees Cook <kees@ubuntu.com> to work around regex DoS
+    (CVE-2007-2026) by disabling the respective magic.
+  * Added patch from Noel Torres <tecnico@ejerciciosresueltos.com> to add magic
+    for SVG (Closes: #417331).
+  * Added patch from Josh Triplett <josh@freedesktop.org> to add magic for
+    Mathcad documents (Closes: #421426).
+  * Added patch from Matthias Urlichs <smurf@debian.org> to update elf magic
+    with missing elf architectures (Closes: #424859).
+  * Added patch from Josef Spillner <2005@kuarepoti-dju.net> to update magic
+    for HFS+ partition table detection (Closes: #405313).
+
+ -- Daniel Baumann <daniel@debian.org>  Thu, 17 May 2007 18:15:00 +0200
+
 file (4.20-5) unstable; urgency=low
 
   * Added patch from Ralph Amissah <ralph.amissah@gmail.com> to update magic for

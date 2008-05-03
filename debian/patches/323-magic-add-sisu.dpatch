@@ -1,5 +1,5 @@
 #!/bin/sh /usr/share/dpatch/dpatch-run
-## 320-magic-add-sisu.dpatch by Ralph Amissah <ralph.amissah@gmail.com>
+## 323-magic-add-sisu.dpatch by Ralph Amissah <ralph.amissah@gmail.com>
 ##
 ## DP: New magic for SiSU Markup Language.
 

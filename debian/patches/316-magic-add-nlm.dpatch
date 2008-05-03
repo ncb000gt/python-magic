@@ -1,5 +1,5 @@
 #!/bin/sh /usr/share/dpatch/dpatch-run
-## 314-magic-add-nlm.dpatch by Mads Martin Joergensen <mmj@suse.de>
+## 316-magic-add-nlm.dpatch by Mads Martin Joergensen <mmj@suse.de>
 ##
 ## DP: New magic for NetWare Loadable Modules (NLMs).
 

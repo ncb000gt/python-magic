@@ -1,5 +1,5 @@
 #!/bin/sh /usr/share/dpatch/dpatch-run
-## 207-magic-update-hp.dpatch by Michael Piefel <piefel@debian.org>
+## 208-magic-update-hp.dpatch by Michael Piefel <piefel@debian.org>
 ##
 ## DP: Updated HP 38/39/40/48/49 magic (closes: #326680).
 

@@ -1,0 +1,33 @@
+#!/bin/sh /usr/share/dpatch/dpatch-run
+## 905-file-segfault.dpatch by Sven Anders <anders@anduras.de>
+##
+## DP: Fixes a segfault with -c.
+
+@DPATCH@
+
+diff -Naur file-4.20.orig/src/magic.c file-4.20/src/magic.c
+--- file-4.20.orig/src/magic.c	2007-03-01 22:14:55.000000000 +0000
++++ file-4.20/src/magic.c	2007-05-17 16:39:17.000000000 +0000
+@@ -109,6 +109,7 @@
+ 	ms->haderr = 0;
+ 	ms->error = -1;
+ 	ms->mlist = NULL;
++	ms->file = NULL;
+ 	return ms;
+ free3:
+ 	free(ms->o.pbuf);
+diff -Naur file-4.20.orig/src/print.c file-4.20/src/print.c
+--- file-4.20.orig/src/print.c	2007-01-18 05:45:35.000000000 +0000
++++ file-4.20/src/print.c	2007-05-17 16:39:17.000000000 +0000
+@@ -179,7 +179,10 @@
+ 	/* cuz we use stdout for most, stderr here */
+ 	(void) fflush(stdout); 
+ 
+-	(void) fprintf(stderr, "%s, %lu: Warning ", ms->file,
++	if (!ms->file)
++	  fprintf(stderr, "Warning ");
++	else
++	  (void) fprintf(stderr, "%s, %lu: Warning ", ms->file,
+ 	    (unsigned long)ms->line);
+ 	(void) vfprintf(stderr, f, va);
+ 	va_end(va);

@@ -1,0 +1,21 @@
+#!/bin/sh /usr/share/dpatch/dpatch-run
+## 108-magic-remove-os2rexx.dpatch by Kees Cook <kees@ubuntu.com>
+##
+## DP: Workaround regex DoS (CVE-2007-2026)
+
+@DPATCH@
+
+diff -Naur file-4.20.orig/magic/Magdir/msdos file-4.20/magic/Magdir/msdos
+--- file-4.20.orig/magic/Magdir/msdos	2007-01-19 19:35:20.000000000 +0000
++++ file-4.20/magic/Magdir/msdos	2007-05-17 16:44:41.000000000 +0000
+@@ -14,8 +14,8 @@
+ 
+ # OS/2 batch files are REXX. the second regex is a bit generic, oh well
+ # the matched commands seem to be common in REXX and uncommon elsewhere
+-100 regex/c =^\\s*call\\s+rxfuncadd.*sysloadfu OS/2 REXX batch file text
+-100 regex/c =^\\s*say\ ['"] OS/2 REXX batch file text
++#100 regex/c =^\\s*call\\s+rxfuncadd.*sysloadfu OS/2 REXX batch file text
++#100 regex/c =^\\s*say\ ['"] OS/2 REXX batch file text
+ 
+ 0	leshort		0x14c	MS Windows COFF Intel 80386 object file
+ #>4	ledate		x	stamp %s

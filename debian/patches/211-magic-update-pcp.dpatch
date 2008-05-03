@@ -1,5 +1,5 @@
 #!/bin/sh /usr/share/dpatch/dpatch-run
-## 209-magic-update-pcp.dpatch by Werner Fink <werner@suse.de>
+## 211-magic-update-pcp.dpatch by Werner Fink <werner@suse.de>
 ##
 ## DP: Correct PCP entries.
 

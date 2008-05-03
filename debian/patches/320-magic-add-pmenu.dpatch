@@ -1,5 +1,5 @@
 #!/bin/sh /usr/share/dpatch/dpatch-run
-## 318-magic-add-pmenu.dpatch by Edward Betts <edward@debian.org>
+## 320-magic-add-pmenu.dpatch by Edward Betts <edward@debian.org>
 ##
 ## DP: New magic for pmenu (Closes: #38543).
 

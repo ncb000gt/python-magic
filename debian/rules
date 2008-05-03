@@ -59,7 +59,7 @@ clean: unpatch
 	# Cleaning package
 	-$(MAKE) clean
 	-$(MAKE) distclean
-	rm -rf python-build
+	rm -rf python/build
 
 	dh_clean
 

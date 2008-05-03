@@ -1,5 +1,5 @@
 #!/bin/sh /usr/share/dpatch/dpatch-run
-## 313-magic-add-lzma.dpatch by Robert Millan <rmh@aybabtu.com>
+## 314-magic-add-lzma.dpatch by Robert Millan <rmh@aybabtu.com>
 ##
 ## DP: New magic for the LZMA compression format (Closes: #364260).
 

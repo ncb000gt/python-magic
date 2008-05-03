@@ -1,5 +1,5 @@
 #!/bin/sh /usr/share/dpatch/dpatch-run
-## 322-magic-add-subversion.dpatch by Michael Piefel <piefel@debian.org>
+## 325-magic-add-subversion.dpatch by Michael Piefel <piefel@debian.org>
 ##
 ## DP: New magic for SVN dumps (closes: #256652).
 

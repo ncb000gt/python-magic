@@ -1,5 +1,5 @@
 #!/bin/sh /usr/share/dpatch/dpatch-run
-## 324-magic-add-xen.dpatch by Radek Vokal <rvokal@redhat.com>
+## 328-magic-add-xen.dpatch by Radek Vokal <rvokal@redhat.com>
 ##
 ## DP: xen patch, recognizes Xen saved domain
 

@@ -1,5 +1,5 @@
 #!/bin/sh /usr/share/dpatch/dpatch-run
-## 319-magic-add-scummvm.dpatch by Sven Hartge <debian@ds9.argh.org>
+## 322-magic-add-scummvm.dpatch by Sven Hartge <debian@ds9.argh.org>
 ##
 ## DP: New magic for scummVM savegame files (Closes: #263488).
 

@@ -1,5 +1,5 @@
 #!/bin/sh /usr/share/dpatch/dpatch-run
-## 211-magic-update-sh.dpatch by Mark Hindley <mark@hindley.org.uk>
+## 213-magic-update-sh.dpatch by Mark Hindley <mark@hindley.org.uk>
 ##
 ## DP: Changing sh identifier from Bourne to POSIX (Closes: #368613).
 
