@@ -12,6 +12,7 @@
 331-magic-add-supercollider.dpatch
 333-magic-add-xen.dpatch
 334-magic-add-xcursor.dpatch
+335-magic-add-freemind.dpatch
 903-file-localmagic.dpatch
 904-file-make.dpatch
 906-file-hurd.dpatch
