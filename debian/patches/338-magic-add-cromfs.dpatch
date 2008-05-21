@@ -1,0 +1,26 @@
+#!/bin/sh /usr/share/dpatch/dpatch-run
+## 338-magic-add-cromfs.dpatch by Werner Fink <werner@suse.de>
+##
+## DP: Adds new magic for CROM filesystem.
+
+@DPATCH@
+
+diff -Naurp file-4.24.orig/magic/Magdir/filesystems file-4.24/magic/Magdir/filesystems
+--- file-4.24.orig/magic/Magdir/filesystems	2008-05-04 14:12:49.000000000 +0000
++++ file-4.24/magic/Magdir/filesystems	2008-05-21 09:40:38.000000000 +0000
+@@ -1289,3 +1289,15 @@
+ # really le32 operation,destination,payloadsize (but quite predictable)
+ # 01 00 00 00 00 00 00 c0 00 02 00 00
+ 0	string		\1\0\0\0\0\0\0\300\0\2\0\0	Marvell Libertas firmware
++
++# Type:	CROM filesystem
++# From:	Werner Fink <werner@suse.de>
++0	string	CROMFS	CROMFS
++>6	string	>\0	\b version %2.2s,
++>8	ulequad	>0	\b block data at %lld,
++>16	ulequad	>0	\b fblock table at %lld,
++>24	ulequad	>0	\b inode table at %lld,
++>32	ulequad	>0	\b root at %lld,
++>40	ulelong	>0	\b fblock size = %ld,
++>44	ulelong	>0	\b block size = %ld,
++>48	ulequad	>0	\b bytes = %lld
