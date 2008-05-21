@@ -17,5 +17,6 @@
 904-file-make.dpatch
 905-file-printf.dpatch
 906-file-hurd.dpatch
+907-file-funcs.dpatch
 998-doc-manpages.dpatch
 999-conglomeration.dpatch
