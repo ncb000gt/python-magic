@@ -15,6 +15,7 @@
 335-magic-add-freemind.dpatch
 903-file-localmagic.dpatch
 904-file-make.dpatch
+905-file-printf.dpatch
 906-file-hurd.dpatch
 998-doc-manpages.dpatch
 999-conglomeration.dpatch
