@@ -1,0 +1,18 @@
+#!/bin/sh /usr/share/dpatch/dpatch-run
+## 204-magic-update-asf.dpatch by Daniel Baumann <daniel@debian.org>
+##
+## DP: Add mime to asf magic.
+
+@DPATCH@
+
+diff -Naurp file.orig/magic/Magdir/animation file/magic/Magdir/animation
+--- file.orig/magic/Magdir/animation	2008-05-26 23:24:27.000000000 +0200
++++ file/magic/Magdir/animation	2008-05-31 15:03:45.000000000 +0200
+@@ -686,6 +686,7 @@
+ 
+ # Microsoft Advanced Streaming Format (ASF) <mpruett@sgi.com>
+ 0	belong			0x3026b275	Microsoft ASF
++!:mime	video/x-ms-asf
+ 
+ # MNG Video Format, <URL:http://www.libpng.org/pub/mng/spec/>
+ 0	string			\x8aMNG		MNG video data,
