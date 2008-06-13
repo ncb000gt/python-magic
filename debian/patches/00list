@@ -14,6 +14,7 @@
 334-magic-add-xcursor.dpatch
 335-magic-add-freemind.dpatch
 336-magic-add-qdbm.dpatch
+337-magic-add-tokyocabinet.dpatch
 903-file-localmagic.dpatch
 904-file-make.dpatch
 905-file-printf.dpatch
