@@ -1,0 +1,21 @@
+#!/bin/sh /usr/share/dpatch/dpatch-run
+## 206-magic-update-bash.dpatch
+##
+## DP: Add another shebang path for bash.
+
+@DPATCH@
+
+diff -Naurp file.orig/magic/Magdir/commands file/magic/Magdir/commands
+--- file.orig/magic/Magdir/commands	2008-06-13 14:56:16.000000000 +0200
++++ file/magic/Magdir/commands	2008-06-13 14:57:49.000000000 +0200
+@@ -59,6 +59,10 @@
+ # bash shell magic, from Peter Tobias (tobias@server.et-inf.fho-emden.de)
+ 0	string/b	#!\ /bin/bash	Bourne-Again shell script text executable
+ !:mime	application/x-shellscript
++0	string/b	#!\ /usr/bin/bash	Bourne-Again shell script text executable
++!:mime	application/x-shellscript
++0	string/b	#!\ /usr/local/bash	Bourne-Again shell script text executable
++!:mime	application/x-shellscript
+ 0	string/b	#!\ /usr/local/bin/bash	Bourne-Again shell script text executable
+ !:mime	application/x-shellscript
+ 
