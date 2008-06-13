@@ -6,6 +6,7 @@
 206-magic-update-bash.dpatch
 207-magic-update-zip.dpatch
 208-magic-update-real.dpatch
+209-magic-update-os2.dpatch
 320-magic-add-par2.dpatch
 321-magic-add-pe5.dpatch
 322-magic-add-pmenu.dpatch
