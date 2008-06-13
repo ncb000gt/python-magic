@@ -2,6 +2,7 @@
 202-magic-update-awk.dpatch
 203-magic-update-reiserfs.dpatch
 204-magic-update-asf.dpatch
+205-magic-update-tcsh.dpatch
 320-magic-add-par2.dpatch
 321-magic-add-pe5.dpatch
 322-magic-add-pmenu.dpatch
