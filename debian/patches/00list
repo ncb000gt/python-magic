@@ -9,6 +9,7 @@
 209-magic-update-os2.dpatch
 210-magic-update-digifax.dpatch
 211-magic-update-mono.dpatch
+212-magic-update-pfm.dpatch
 320-magic-add-par2.dpatch
 321-magic-add-pe5.dpatch
 322-magic-add-pmenu.dpatch
