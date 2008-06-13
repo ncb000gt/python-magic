@@ -4,6 +4,7 @@
 204-magic-update-asf.dpatch
 205-magic-update-tcsh.dpatch
 206-magic-update-bash.dpatch
+207-magic-update-zip.dpatch
 320-magic-add-par2.dpatch
 321-magic-add-pe5.dpatch
 322-magic-add-pmenu.dpatch
