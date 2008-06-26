@@ -1,3 +1,41 @@
+file (4.24-3) unstable; urgency=medium
+
+  * Rewriting copyright file in machine-interpretable format.
+  * Updating package to debhelper 7.
+  * Adding patch to update pfm magic.
+  * Adding patch to update mono magic.
+  * Adding patch to update Digifax magic.
+  * Adding patch to update OS/2 REXX magic.
+  * Adding patch to update real media magic.
+  * Adding patch to update zip magic.
+  * Updating bash magic to also look for /usr/bin/bash.
+  * Updating tcsh magic to also look for /usr/bin/tcsh.
+  * Adding patch from Russell Coker <russell@coker.com.au> to add new magic for
+    selinux (Closes: #485886).
+  * Updating to standards 3.8.0.
+  * Adding patch to add mime for asf magics (Closes: #483797).
+  * Adding patch from Werner Fink <werner@suse.de> to add new magic for scribus.
+  * Adding patch from Werner Fink <werner@suse.de> to update reiserfs magic also
+    detecting ReiserFS V3.6.19.
+  * Adding patch from Werner Fink <werner@suse.de> to add new magic for CROM
+    filesystem.
+  * Adding patch from Werner Fink <werner@suse.de> to update (and re-enabled)
+    awk magic.
+  * Adding patch from Werner Fink <werner@suse.de> to fix regressions with mp3
+    files (Closes: #480683, #481377).
+  * Adding patch for new TokyoCabinet database magic, thanks Benoit Sibaud
+    <bsibaud@april.org> (Closes: #481768).
+  * Adding patch for new QDBM Quick Database Manager magic, thanks Benoit Sibaud
+    <bsibaud@april.org> (Closes: #481717).
+  * Fixing regression in file 4.24 with file_printf(), thanks Martin Dorey
+    <mdorey@bluearc.com> (Closes: #481523).
+  * Removing annoying warnings when files can't be opened, thanks Martin Dorey
+    <mdorey@bluearc.com> (Closes: #481512).
+  * Adding new magic for freemind, thanks to Jamie Thompson
+    <debian-bugs@jamie-thompson.co.uk> (Closes: #472385).
+
+ -- Daniel Baumann <daniel@debian.org>  Thu, 26 Jun 2008 16:06:00 +0200
+
 file (4.24-2) unstable; urgency=medium
 
   * Adding plain magic files for compatibility.
