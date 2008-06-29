@@ -113,8 +113,15 @@ install: build
 	cat magic/Localstuff >> debian/libmagic1/usr/share/file/magic
 	set -e; for FILE in magic/Magdir/*; \
 	do \
+		echo "Reading magic from $$FILE"; \
 		grep -v "^!:" $$FILE >> debian/libmagic1/usr/share/file/magic; \
 	done
+
+	# Instead of the installed magic.mgc use the compiled form of the
+	# plain magic file, as a workaround for #488562 (avoiding RC bug
+	# #481247).
+	rm -f debian/libmagic1/usr/share/file/magic.mgc
+	( cd debian/libmagic1/usr/share/file && ../../../../../src/file -m magic -C )
 
 	# Installing bug congtrols
 	install -D -m 0644 debian/bug/presubj debian/file/usr/share/bug/file/presubj

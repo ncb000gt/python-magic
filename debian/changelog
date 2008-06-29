@@ -1,3 +1,13 @@
+file (4.24-3.1) unstable; urgency=low
+
+  * Non-maintainer upload from the Cambridge BSP.
+  * Work around bug #488562, that file assumes readdir() will return sorted
+    names - instead of compiling magic.mgc from Magdir directly, use the logic
+    already in debian/rules to build (the file that will become)
+    /usr/share/file/magic, then compile magic.mgc from that. (Closes: #481247)
+
+ -- Simon McVittie <smcv@debian.org>  Sun, 29 Jun 2008 19:32:24 +0000
+
 file (4.24-3) unstable; urgency=medium
 
   * Rewriting copyright file in machine-interpretable format.
