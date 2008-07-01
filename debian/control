@@ -37,7 +37,7 @@ Package: libmagic-dev
 Section: libdevel
 Priority: optional
 Architecture: any
-Depends: libmagic1 (= ${binary:Version})
+Depends: libmagic1 (= ${binary:Version}), zlib1g-dev
 Suggests: file
 Description: File type determination library using "magic" numbers (development)
  This library can be used to classify files according to magic number tests. It
