@@ -30,6 +30,7 @@
 338-magic-add-cromfs.dpatch
 339-magic-add-scribus.dpatch
 340-magic-add-selinux.dpatch
+901-file-mgc.dpatch
 903-file-localmagic.dpatch
 904-file-make.dpatch
 905-file-printf.dpatch
