@@ -1,3 +1,16 @@
+file (4.24-4) unstable; urgency=high
+
+  * Adding patch from Jelmer Vernooij <jelmer@samba.org> to add new
+    magics for bzr (Closes: #488742).
+  * Adding symlinks to /usr/share/misc to conform to the LSB, thanks to
+    Matthias Klose <doko@debian.org>.
+  * Adding zlibg1-dev to libmagic-dev depends (Closes: #472856).
+  * Adding patch to revert upstream change to stop build plain magic
+    files. This fixes #481247 correctly now (Closes: #481247).
+  * Reverting previous wrong NMU.
+
+ -- Daniel Baumann <daniel@debian.org>  Tue,  1 Jul 2008 18:46:00 +0200
+
 file (4.24-3.1) unstable; urgency=low
 
   * Non-maintainer upload from the Cambridge BSP.
