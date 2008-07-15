@@ -1,3 +1,27 @@
+file (4.25-1) unstable; urgency=low
+
+  * Adding patch from Russell Coker <russell@coker.com.au> to add volume label
+    and UUID support for linux ext (Closes: #489865).
+  * Adding patch from Russell Coker <russell@coker.com.au> to add volume label
+    and UUID support for linux swap (Closes: #489865).
+  * Adding patch from Eric Cooper <ecc@cmu.edu> to update ocaml magics
+    (Closes: #488992).
+  * Removing 907-file-funcs.dpatch, went upstream.
+  * Removing 905-file-printf.dpatch, went upstream.
+  * Updating 903-file-localmagic.dpatch for 4.25.
+  * Updating 901-file-mgc.dpatch for 4.25.
+  * Updating 338-magic-add-cromfs.dpatch for 4.25.
+  * Updating 325-magic-add-sgf.dpatch for 4.25.
+  * Updating 321-magic-add-pe5.dpatch for 4.25.
+  * Updating 212-magic-update-pfm.dpatch for 4.25.
+  * Updating 211-magic-update-mono.dpatch for 4.25.
+  * Updating 206-magic-update-bash.dpatch for 4.25.
+  * Updating 205-magic-update-tcsh.dpatch for 4.25.
+  * Removing 201-magic-update-mp3.dpatch, went upstream.
+  * Merging upstream version 4.25.
+
+ -- Daniel Baumann <daniel@debian.org>  Tue, 15 Jul 2008 16:26:00 +0200
+
 file (4.24-4) unstable; urgency=high
 
   * Adding patch from Jelmer Vernooij <jelmer@samba.org> to add new
