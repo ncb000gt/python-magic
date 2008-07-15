@@ -10,6 +10,7 @@
 211-magic-update-mono.dpatch
 212-magic-update-pfm.dpatch
 213-magic-update-ocaml.dpatch
+214-magic-update-linuxswap.dpatch
 320-magic-add-par2.dpatch
 321-magic-add-pe5.dpatch
 322-magic-add-pmenu.dpatch
