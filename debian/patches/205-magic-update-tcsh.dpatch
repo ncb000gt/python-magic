@@ -6,14 +6,14 @@
 @DPATCH@
 
 diff -Naurp file.orig/magic/Magdir/commands file/magic/Magdir/commands
---- file.orig/magic/Magdir/commands	2008-06-13 09:30:59.000000000 +0200
-+++ file/magic/Magdir/commands	2008-06-13 09:31:50.000000000 +0200
+--- file.orig/magic/Magdir/commands	2008-04-16 12:28:04.000000000 +0000
++++ file/magic/Magdir/commands	2008-07-15 13:28:19.000000000 +0000
 @@ -12,6 +12,8 @@
- !:mime	application/x-shellscript
+ !:mime	text/x-shellscript
  0	string/b 	#!\ /bin/tcsh		Tenex C shell script text executable
- !:mime	application/x-shellscript
+ !:mime	text/x-shellscript
 +0	string/b	#!\ /usr/bin/tcsh	Tenex C shell script text executable
-+!:mime application/x-shellscript
++!:mime	text/x-shellscript
  0	string/b 	#!\ /usr/local/tcsh	Tenex C shell script text executable
- !:mime	application/x-shellscript
+ !:mime	text/x-shellscript
  0	string/b	#!\ /usr/local/bin/tcsh	Tenex C shell script text executable
