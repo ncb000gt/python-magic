@@ -1,3 +1,6 @@
+#
+# $File: Makefile.am,v 1.41 2008/06/17 17:49:11 christos Exp $
+#
 MAGIC_FRAGMENT_BASE = Magdir
 MAGIC_FRAGMENT_DIR = $(top_srcdir)/magic/$(MAGIC_FRAGMENT_BASE)
 
@@ -160,6 +163,7 @@ $(MAGIC_FRAGMENT_DIR)/revision \
 $(MAGIC_FRAGMENT_DIR)/riff \
 $(MAGIC_FRAGMENT_DIR)/rpm \
 $(MAGIC_FRAGMENT_DIR)/rtf \
+$(MAGIC_FRAGMENT_DIR)/ruby \
 $(MAGIC_FRAGMENT_DIR)/sc \
 $(MAGIC_FRAGMENT_DIR)/sccs \
 $(MAGIC_FRAGMENT_DIR)/scientific \
@@ -201,6 +205,8 @@ $(MAGIC_FRAGMENT_DIR)/vms \
 $(MAGIC_FRAGMENT_DIR)/vmware \
 $(MAGIC_FRAGMENT_DIR)/vorbis \
 $(MAGIC_FRAGMENT_DIR)/vxl \
+$(MAGIC_FRAGMENT_DIR)/weak \
+$(MAGIC_FRAGMENT_DIR)/windows \
 $(MAGIC_FRAGMENT_DIR)/wordprocessors \
 $(MAGIC_FRAGMENT_DIR)/xdelta \
 $(MAGIC_FRAGMENT_DIR)/xenix \
@@ -217,10 +223,12 @@ CLEANFILES = ${MAGIC}
 # the target's magic file
 if IS_CROSS_COMPILE
 FILE_COMPILE = file
+FILE_COMPILE_DEP =
 else
 FILE_COMPILE = $(top_builddir)/src/file
+FILE_COMPILE_DEP = $(FILE_COMPILE)
 endif
 
-${MAGIC}: $(EXTRA_DIST) $(FILE_COMPILE)
+${MAGIC}: $(EXTRA_DIST) $(FILE_COMPILE_DEP)
 	$(FILE_COMPILE) -C -m $(MAGIC_FRAGMENT_DIR)
 	@mv $(MAGIC_FRAGMENT_BASE).mgc $@

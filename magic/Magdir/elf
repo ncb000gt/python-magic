@@ -7,7 +7,12 @@
 #
 # What're the correct byte orders for the nCUBE and the Fujitsu VPP500?
 #
-# updated by Daniel Quinlan (quinlan@yggdrasil.com)
+# Created by: unknown
+# Modified by (1): Daniel Quinlan <quinlan@yggdrasil.com>
+# Modified by (2): Peter Tobias <tobias@server.et-inf.fho-emden.de> (core support)
+# Modified by (3): Christian 'Dr. Disk' Hechelmann <drdisk@ds9.au.s.shuttle.de> (fix of core support)
+# Modified by (4): <gerardo.cacciari@gmail.com> (VMS Itanium)
+# Modified by (5): Matthias Urlichs <smurf@debian.org> (Listing of many architectures)
 0	string		\177ELF		ELF
 >4	byte		0		invalid class
 >4	byte		1		32-bit
@@ -15,6 +20,7 @@
 >5	byte		0		invalid byte order
 >5	byte		1		LSB
 >>16	leshort		0		no file type,
+!:strength *2
 !:mime	application/octet-stream
 >>16	leshort		1		relocatable,
 !:mime	application/x-object
@@ -22,8 +28,6 @@
 !:mime	application/x-executable
 >>16	leshort		3		shared object,
 !:mime	application/x-sharedlib
-# Core handling from Peter Tobias <tobias@server.et-inf.fho-emden.de>
-# corrections by Christian 'Dr. Disk' Hechelmann <drdisk@ds9.au.s.shuttle.de>
 >>16	leshort		4		core file
 !:mime	application/x-coredump
 # Core file detection is not reliable.
@@ -79,7 +83,7 @@
 >>>48	leshort		&0x0008		(LP64),
 >>18	leshort		16		nCUBE,
 >>18	leshort		17		Fujitsu VPP500,
->>18	leshort		18		SPARC32PLUS,
+>>18	leshort		18		SPARC32PLUS - invalid byte order,
 >>18	leshort		20		PowerPC,
 >>18	leshort		22		IBM S/390,
 >>18	leshort		36		NEC V800,
@@ -210,10 +214,10 @@
 >>18	beshort		16		nCUBE,
 >>18	beshort		17		Fujitsu VPP500,
 >>18	beshort		18		SPARC32PLUS,
->>>36	belong&0xffff00	&0x000100	V8+ Required,
->>>36	belong&0xffff00	&0x000200	Sun UltraSPARC1 Extensions Required,
->>>36	belong&0xffff00	&0x000400	HaL R1 Extensions Required,
->>>36	belong&0xffff00	&0x000800	Sun UltraSPARC3 Extensions Required,
+>>>36	belong&0xffff00	0x000100	V8+ Required,
+>>>36	belong&0xffff00	0x000200	Sun UltraSPARC1 Extensions Required,
+>>>36	belong&0xffff00	0x000400	HaL R1 Extensions Required,
+>>>36	belong&0xffff00	0x000800	Sun UltraSPARC3 Extensions Required,
 >>18	beshort		20		PowerPC or cisco 4500,
 >>18	beshort		21		64-bit PowerPC or cisco 7500,
 >>18	beshort		22		IBM S/390,
@@ -228,6 +232,12 @@
 >>18	beshort		41		Alpha,
 >>18	beshort		42		Renesas SH,
 >>18	beshort		43		SPARC V9,
+>>>48	belong&0xffff00	0x000200	Sun UltraSPARC1 Extensions Required,
+>>>48	belong&0xffff00	0x000400	HaL R1 Extensions Required,
+>>>48	belong&0xffff00	0x000800	Sun UltraSPARC3 Extensions Required,
+>>>48	belong&0x3	0		total store ordering,
+>>>48	belong&0x3	1		partial store ordering,
+>>>48	belong&0x3	2		relaxed memory ordering,
 >>18	beshort		44		Siemens Tricore Embedded Processor,
 >>18	beshort		45		Argonaut RISC Core, Argonaut Technologies Inc.,
 >>18	beshort		46		Renesas H8/300,
@@ -270,7 +280,6 @@
 >>7	byte		10		(Tru64)
 >>7	byte		11		(Novell Modesto)
 >>7	byte		12		(OpenBSD)
-# VMS Itanium added by gerardo.cacciari@gmail.com
 >8      string          \2
 >>7     byte            13              (OpenVMS)
 >>7	byte		97		(ARM)

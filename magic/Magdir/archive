@@ -577,8 +577,10 @@
 !:mime	application/zip
 
 # OpenOffice.org / KOffice / StarOffice documents
+# Listed here because they ARE zip files
+#
 # From: Abel Cheung <abel@oaka.org>
-# Listed here because they are basically zip files
+>4	byte		0x14
 >>30	string		mimetype
 
 # KOffice (1.2 or above) formats
@@ -608,6 +610,7 @@
 >>>>>69	byte	!0x2e			presentation
 >>>>>69	string	.template		template
 >>>>62	string	math			Math document
+>>>>62	string	base			Database file
 
 # OpenDocument formats (for OpenOffice 2.x / StarOffice >= 8)
 # http://lists.oasis-open.org/archives/office/200505/msg00006.html
@@ -775,9 +778,6 @@
 >4	lelong	0x10003A12	(EPOC release 6)
 0	lelong	0x10201A7A	Symbian installation file (Symbian OS 9.x)
 !:mime	x-epoc/x-sisx-app
-
-# Pack200 Java archives, http://jcp.org/en/jsr/detail?id=200
-0	belong	0xcafed00d	Pack200 Java archive
 
 # From "Nelson A. de Oliveira" <naoliv@gmail.com>
 0	string	MPQ\032		MoPaQ (MPQ) archive

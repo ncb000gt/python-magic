@@ -160,6 +160,10 @@ sysconfdir = @sysconfdir@
 target_alias = @target_alias@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
+
+#
+# $File: Makefile.am,v 1.41 2008/06/17 17:49:11 christos Exp $
+#
 MAGIC_FRAGMENT_BASE = Magdir
 MAGIC_FRAGMENT_DIR = $(top_srcdir)/magic/$(MAGIC_FRAGMENT_BASE)
 pkgdata_DATA = magic.mgc
@@ -320,6 +324,7 @@ $(MAGIC_FRAGMENT_DIR)/revision \
 $(MAGIC_FRAGMENT_DIR)/riff \
 $(MAGIC_FRAGMENT_DIR)/rpm \
 $(MAGIC_FRAGMENT_DIR)/rtf \
+$(MAGIC_FRAGMENT_DIR)/ruby \
 $(MAGIC_FRAGMENT_DIR)/sc \
 $(MAGIC_FRAGMENT_DIR)/sccs \
 $(MAGIC_FRAGMENT_DIR)/scientific \
@@ -361,6 +366,8 @@ $(MAGIC_FRAGMENT_DIR)/vms \
 $(MAGIC_FRAGMENT_DIR)/vmware \
 $(MAGIC_FRAGMENT_DIR)/vorbis \
 $(MAGIC_FRAGMENT_DIR)/vxl \
+$(MAGIC_FRAGMENT_DIR)/weak \
+$(MAGIC_FRAGMENT_DIR)/windows \
 $(MAGIC_FRAGMENT_DIR)/wordprocessors \
 $(MAGIC_FRAGMENT_DIR)/xdelta \
 $(MAGIC_FRAGMENT_DIR)/xenix \
@@ -377,6 +384,8 @@ CLEANFILES = ${MAGIC}
 # FIXME: Build file natively as well so that it can be used to compile
 # the target's magic file
 @IS_CROSS_COMPILE_TRUE@FILE_COMPILE = file
+@IS_CROSS_COMPILE_FALSE@FILE_COMPILE_DEP = $(FILE_COMPILE)
+@IS_CROSS_COMPILE_TRUE@FILE_COMPILE_DEP = 
 all: all-am
 
 .SUFFIXES:
@@ -566,7 +575,7 @@ uninstall-am: uninstall-pkgdataDATA
 	uninstall uninstall-am uninstall-pkgdataDATA
 
 
-${MAGIC}: $(EXTRA_DIST) $(FILE_COMPILE)
+${MAGIC}: $(EXTRA_DIST) $(FILE_COMPILE_DEP)
 	$(FILE_COMPILE) -C -m $(MAGIC_FRAGMENT_DIR)
 	@mv $(MAGIC_FRAGMENT_BASE).mgc $@
 # Tell versions [3.59,3.63) of GNU make to not export all variables.

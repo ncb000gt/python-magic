@@ -1,4 +1,74 @@
-	
+2008-07-02 11:15  Christos Zoulas  <christos@astron.com>
+
+	* add !:strength op to adjust magic strength (experimental)
+
+2008-06-16 21:41  Reuben Thomas  <rrt@sc3d.org>
+
+	* Fix automake error in configure.ac.
+
+	* Add MIME type for Psion Sketch files.
+
+2008-06-05 08:59  Christos Zoulas  <christos@astron.com>
+
+	* Don't print warnings about bad namesize in stripped
+	  binaries with PT_NOTE is still there, and the actual
+	  note is gone (Jakub Jelinek)
+
+2008-05-28 15:12  Robert Byrnes  <byrnes@wildpumpkin.net>
+
+	* magic/Magdir/elf:
+	  Note invalid byte order for little-endian SPARC32PLUS.
+	  Add SPARC V9 vendor extensions and memory model.
+
+	* src/elfclass.h:
+	  Pass target machine to doshn (for Solaris hardware capabilities).
+
+	* src/readelf.c (doshn):
+	  Add support for Solaris hardware/software capabilities.
+
+	* src/readelf.h:
+	  Ditto.
+
+	* src/vasprintf.c (dispatch):
+	  Add support for ll modifier.
+
+2008-05-16 10:25  Christos Zoulas  <christos@astron.com>
+
+	* Fix compiler warnings.
+
+	* remove stray printf, and fix a vprintf bug. (Martin Dorey)
+
+2008-05-06 00:13  Robert Byrnes  <byrnes@wildpumpkin.net>
+
+        * src/Makefile.am:
+	  Ensure that getopt_long and [v]asprintf are included in libmagic,
+	  as needed.
+
+	  Remove unnecessary EXTRA_DIST.
+
+        * src/Makefile.in:
+	  Rerun automake.
+
+        * src/vasprintf.c (dispatch):
+	  Fix variable precision bug: be sure to step past '*'.
+
+        * src/vasprintf.c (core):
+	  Remove unreachable code.
+
+        * src/apprentice.c (set_test_type):
+	  Add cast to avoid compiler warning.
+
+2008-04-22 23:45  Christos Zoulas  <christos@astron.com>
+
+	* Add magic submission guidelines (Abel Cheung)
+
+	* split msdos and windows magic (Abel Cheung)
+
+2008-04-04 11:00  Christos Zoulas  <christos@astron.com>
+
+        * >= <= is not supported, so fix the magic and warn about it.
+	  reported by: Thien-Thi Nguyen <ttn@gnuvola.org>
+
 2008-03-27 16:16  Robert Byrnes  <byrnes@wildpumpkin.net>
 
         * src/readelf.c (donote):

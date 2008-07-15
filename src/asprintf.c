@@ -1,6 +1,7 @@
 /*
- * Copyright (c) Christos Zoulas 2008.
- * All Rights Reserved.
+ * Copyright (c) Ian F. Darwin 1986-1995.
+ * Software written by Ian F. Darwin and others;
+ * maintained 1995-present by Christos Zoulas and others.
  * 
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -24,46 +25,19 @@
  * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
  * SUCH DAMAGE.
  */
-	if (nbytes <= sizeof(elfhdr))
-		return 0;
 
-	u.l = 1;
-	(void)memcpy(&elfhdr, buf, sizeof elfhdr);
-	swap = (u.c[sizeof(int32_t) - 1] + 1) != elfhdr.e_ident[EI_DATA];
+#include <stdarg.h>
 
-	type = elf_getu16(swap, elfhdr.e_type);
-	switch (type) {
-#ifdef ELFCORE
-	case ET_CORE:
-		if (dophn_core(ms, class, swap, fd,
-		    (off_t)elf_getu(swap, elfhdr.e_phoff),
-		    elf_getu16(swap, elfhdr.e_phnum), 
-		    (size_t)elf_getu16(swap, elfhdr.e_phentsize),
-		    fsize, &flags) == -1)
-			return -1;
-		break;
-#endif
-	case ET_EXEC:
-	case ET_DYN:
-		if (dophn_exec(ms, class, swap, fd,
-		    (off_t)elf_getu(swap, elfhdr.e_phoff),
-		    elf_getu16(swap, elfhdr.e_phnum), 
-		    (size_t)elf_getu16(swap, elfhdr.e_phentsize),
-		    fsize, &flags, elf_getu16(swap, elfhdr.e_shnum))
-		    == -1)
-			return -1;
-		/*FALLTHROUGH*/
-	case ET_REL:
-		if (doshn(ms, class, swap, fd,
-		    (off_t)elf_getu(swap, elfhdr.e_shoff),
-		    elf_getu16(swap, elfhdr.e_shnum),
-		    (size_t)elf_getu16(swap, elfhdr.e_shentsize),
-		    &flags,
-		    elf_getu16(swap, elfhdr.e_machine)) == -1)
-			return -1;
-		break;
+int vasprintf(char **ptr, const char *format_string, va_list vargs);
 
-	default:
-		break;
-	}
-	return 1;
+int asprintf(char **ptr, const char *fmt, ...)
+{
+  va_list vargs;
+  int retval;
+
+  va_start(vargs, fmt);
+  retval = vasprintf(ptr, fmt, vargs);
+  va_end(vargs);
+
+  return retval;
+}

@@ -83,7 +83,7 @@
 # Linux kernel boot images (i386 arch) (Wolfram Kleff)
 514	string		HdrS		Linux kernel
 >510	leshort		0xAA55		x86 boot executable
->>518	leshort		>=0x200
+>>518	leshort		>0x1ff
 >>529	byte		0		zImage,
 >>>529	byte		1		bzImage,
 >>>(526.s+0x200) string	>\0		version %s,
@@ -231,6 +231,14 @@
 0x618		 string	LVM2\ 001	LVM2 (Linux Logical Volume Manager)
 >(0x614.l+0x600) string	>\0		, UUID: %s
 
+# LVM snapshot
+# from Jason Farrel
+0	string	SnAp	LVM Snapshot (CopyOnWrite store)
+>4	lelong	!0	- valid,
+>4	lelong	0	- invalid,
+>8	lelong	x	version %d,
+>12	lelong	x	chunk_size %d
+
 # SE Linux policy database
 0	lelong	0xf97cff8c		SE Linux policy
 >16	lelong	x			v%d
@@ -246,4 +254,11 @@
 >40	string	x		%s,
 >72	string	x		%s]
 >168	string	x		UUID: %s
+
+
+# Summary: Xen saved domain file
+# Created by: Radek Vokal <rvokal@redhat.com>
+0	string		LinuxGuestRecord	Xen saved domain
+>20	search/256	(name			
+>>&1	string		x			(name %s)
 
