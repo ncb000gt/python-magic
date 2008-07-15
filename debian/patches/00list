@@ -34,6 +34,5 @@
 903-file-localmagic.dpatch
 904-file-make.dpatch
 906-file-hurd.dpatch
-907-file-funcs.dpatch
 998-doc-manpages.dpatch
 999-conglomeration.dpatch
