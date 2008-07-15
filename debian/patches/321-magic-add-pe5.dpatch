@@ -5,15 +5,15 @@
 
 @DPATCH@
 
-diff -Naurp file-4.24.orig/magic/Magdir/images file-4.24/magic/Magdir/images
---- file-4.24.orig/magic/Magdir/images	2008-03-07 14:58:54.000000000 +0000
-+++ file-4.24/magic/Magdir/images	2008-04-07 08:07:42.000000000 +0000
-@@ -588,3 +588,8 @@
- 0	string	\xed\xfe\xda\xbe	Cytovision FLEX file
- 0	string	\xed\xab\xed\xfe	Cytovision FLEX file
- 0	string	\xad\xfd\xea\xad	Cytovision RATS file
+diff -Naurp file.orig/magic/Magdir/images file/magic/Magdir/images
+--- file.orig/magic/Magdir/images	2008-07-02 15:16:52.000000000 +0000
++++ file/magic/Magdir/images	2008-07-15 13:39:37.000000000 +0000
+@@ -600,3 +600,8 @@
+ # Wavelet Scalar Quantization format used in gray-scale fingerprint images
+ # From Tano M Fotang <mfotang@quanteq.com>
+ 0	string	\xff\xa0\xff\xa8\x00	Wavelet Scalar Quantization image data
 +
-+# Type: Ulead Photo Explorer5 (.pe5)
-+# URL:  http://www.jisyo.com/cgibin/view.cgi?EXT=pe5 (Japanese)
-+# From: Simon Horman <horms@debian.org>
++# Type:	Ulead Photo Explorer5 (.pe5)
++# URL:	http://www.jisyo.com/cgibin/view.cgi?EXT=pe5 (Japanese)
++# From:	Simon Horman <horms@debian.org>
 +0	string	IIO2H	Ulead Photo Explorer5
