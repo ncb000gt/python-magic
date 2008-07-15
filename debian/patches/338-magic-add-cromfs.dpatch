@@ -5,13 +5,13 @@
 
 @DPATCH@
 
-diff -Naurp file-4.24.orig/magic/Magdir/filesystems file-4.24/magic/Magdir/filesystems
---- file-4.24.orig/magic/Magdir/filesystems	2008-05-04 14:12:49.000000000 +0000
-+++ file-4.24/magic/Magdir/filesystems	2008-05-21 09:40:38.000000000 +0000
-@@ -1289,3 +1289,15 @@
- # really le32 operation,destination,payloadsize (but quite predictable)
- # 01 00 00 00 00 00 00 c0 00 02 00 00
- 0	string		\1\0\0\0\0\0\0\300\0\2\0\0	Marvell Libertas firmware
+diff -Naurp file.orig/magic/Magdir/filesystems file/magic/Magdir/filesystems
+--- file.orig/magic/Magdir/filesystems	2008-07-02 13:47:23.000000000 +0000
++++ file/magic/Magdir/filesystems	2008-07-15 13:43:26.000000000 +0000
+@@ -1327,3 +1327,15 @@
+ # dvdisaster's .ecc
+ # From: "Nelson A. de Oliveira" <naoliv@gmail.com>
+ 0	string	*dvdisaster*	dvdisaster error correction file
 +
 +# Type:	CROM filesystem
 +# From:	Werner Fink <werner@suse.de>
