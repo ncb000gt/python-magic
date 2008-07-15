@@ -7,9 +7,9 @@
 @DPATCH@
 
 diff -Naurp file.orig/magic/Makefile.am file/magic/Makefile.am
---- file.orig/magic/Makefile.am	2008-07-01 18:24:19.000000000 +0200
-+++ file/magic/Makefile.am	2008-07-01 18:24:26.000000000 +0200
-@@ -1,7 +1,7 @@
+--- file.orig/magic/Makefile.am	2008-06-17 17:49:11.000000000 +0000
++++ file/magic/Makefile.am	2008-07-15 13:49:08.000000000 +0000
+@@ -4,7 +4,7 @@
  MAGIC_FRAGMENT_BASE = Magdir
  MAGIC_FRAGMENT_DIR = $(top_srcdir)/magic/$(MAGIC_FRAGMENT_BASE)
  
@@ -18,7 +18,7 @@ diff -Naurp file.orig/magic/Makefile.am file/magic/Makefile.am
  
  EXTRA_DIST = Header Localstuff \
  $(MAGIC_FRAGMENT_DIR)/acorn \
-@@ -210,8 +210,20 @@ $(MAGIC_FRAGMENT_DIR)/xwindows \
+@@ -216,8 +216,20 @@ $(MAGIC_FRAGMENT_DIR)/xwindows \
  $(MAGIC_FRAGMENT_DIR)/zilog \
  $(MAGIC_FRAGMENT_DIR)/zyxel 
  
@@ -40,12 +40,12 @@ diff -Naurp file.orig/magic/Makefile.am file/magic/Makefile.am
  
  # FIXME: Build file natively as well so that it can be used to compile
  # the target's magic file
-@@ -221,6 +233,5 @@ else
- FILE_COMPILE = $(top_builddir)/src/file
+@@ -229,6 +241,5 @@ FILE_COMPILE = $(top_builddir)/src/file
+ FILE_COMPILE_DEP = $(FILE_COMPILE)
  endif
  
--${MAGIC}: $(EXTRA_DIST) $(FILE_COMPILE)
+-${MAGIC}: $(EXTRA_DIST) $(FILE_COMPILE_DEP)
 -	$(FILE_COMPILE) -C -m $(MAGIC_FRAGMENT_DIR)
 -	@mv $(MAGIC_FRAGMENT_BASE).mgc $@
-+${MAGIC}: $(EXTRA_DIST) $(FILE_COMPILE) $(RAW)
++${MAGIC}: $(EXTRA_DIST) $(FILE_COMPILE_DEP) $(RAW)
 +	$(FILE_COMPILE) -C -m $(RAW)
