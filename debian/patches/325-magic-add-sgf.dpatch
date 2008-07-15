@@ -5,18 +5,16 @@
 
 @DPATCH@
 
-diff -Naurp file-4.24.orig/magic/Magdir/games file-4.24/magic/Magdir/games
---- file-4.24.orig/magic/Magdir/games	2008-02-19 17:27:30.000000000 +0000
-+++ file-4.24/magic/Magdir/games	2008-04-07 08:09:12.000000000 +0000
-@@ -151,3 +151,16 @@
- >4	lelong	x		containing %d lumps
- 0	string	=PWAD		doom patch PWAD data
- >4	lelong	x		containing %d lumps
-+
-+# Type: SGF Smart Game Format
-+# URL:  http://www.red-bean.com/sgf/
-+# From: Eduardo Sabbatella <eduardo_sabbatella@yahoo.com.ar>
-+
+diff -Naurp file.orig/magic/Magdir/games file/magic/Magdir/games
+--- file.orig/magic/Magdir/games	2008-04-23 19:00:59.000000000 +0000
++++ file/magic/Magdir/games	2008-07-15 13:41:19.000000000 +0000
+@@ -243,3 +243,14 @@
+ >&0		string		n\ 					NetImmerse game engine file
+ >>&0		regex		[0-9a-z.]+				\b, version %s
+ 
++# Type:	SGF Smart Game Format
++# URL:	http://www.red-bean.com/sgf/
++# From:	Eduardo Sabbatella <eduardo_sabbatella@yahoo.com.ar>
 +2	regex/c	\\(;.*GM\\[[0-9]{1,2}\\]	Smart Game Format
 +>2	regex/c	GM\\[1\\]			- Go Game
 +>2	regex/c	GM\\[6\\]			- BackGammon Game
