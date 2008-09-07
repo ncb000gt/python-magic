@@ -5,8 +5,8 @@ Maintainer: Daniel Baumann <daniel@debian.org>
 Build-Depends: debhelper (>= 7), dpatch, autotools-dev, autoconf, automake, libtool, python, python-all-dev, python-all-dbg, zlib1g-dev
 Standards-Version: 3.8.0
 Homepage: http://www.darwinsys.com/file/
-Vcs-Browser: http://git.debian.net/?p=file.git
-Vcs-Git: git://git.debian.net/git/file.git
+Vcs-Browser: http://git.debian.net/?p=debian/file.git
+Vcs-Git: git://git.debian.net/git/debian/file.git
 XS-Python-Version: all
 
 Package: file
