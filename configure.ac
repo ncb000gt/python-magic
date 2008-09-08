@@ -1,5 +1,5 @@
 dnl Process this file with autoconf to produce a configure script.
-AC_INIT(file, 4.25, christos@astron.com)
+AC_INIT(file, 4.26, christos@astron.com)
 AM_INIT_AUTOMAKE
 AM_CONFIG_HEADER(config.h)
 
@@ -45,8 +45,11 @@ fi], [
   AC_MSG_RESULT(no)
   fsect=4
 ])
+
 AC_SUBST(fsect)
 AM_CONDITIONAL(FSECT5, test x$fsect = x5)
+
+AC_SUBST(WARNINGS)
 AC_GNU_SOURCE
 
 dnl Checks for programs.
@@ -62,6 +65,7 @@ AC_HEADER_MAJOR
 AC_HEADER_SYS_WAIT
 AC_CHECK_HEADERS(stdint.h fcntl.h locale.h stdint.h inttypes.h unistd.h)
 AC_CHECK_HEADERS(utime.h wchar.h wctype.h limits.h)
+AC_CHECK_HEADERS(getopt.h err.h)
 AC_CHECK_HEADERS(sys/mman.h sys/stat.h sys/types.h sys/utime.h sys/time.h)
 AC_CHECK_HEADERS(zlib.h)
 
@@ -106,6 +110,30 @@ typedef long int64_t;
 #endif
 #endif
 ])
+
+AC_MSG_CHECKING(for gcc compiler warnings)
+AC_ARG_ENABLE(warnings,
+[  --disable-warnings	disable compiler warnings],
+[if test "${enableval}" = no -o $GCC = no; then
+   AC_MSG_RESULT(no)
+   WARNINGS=
+else
+   AC_MSG_RESULT(yes)
+   WARNINGS="-Wall -Wstrict-prototypes -Wmissing-prototypes -Wpointer-arith \
+       -Wmissing-declarations -Wredundant-decls -Wnested-externs \
+       -Wsign-compare -Wreturn-type -Wswitch -Wshadow \
+       -Wcast-qual -Wwrite-strings -Wextra -Wunused-parameter"
+fi], [
+if test $GCC = no; then
+   WARNINGS=
+   AC_MSG_RESULT(no)
+else
+   AC_MSG_RESULT(yes)
+   WARNINGS="-Wall -Wstrict-prototypes -Wmissing-prototypes -Wpointer-arith \
+       -Wmissing-declarations -Wredundant-decls -Wnested-externs \
+       -Wsign-compare -Wreturn-type -Wswitch -Wshadow \
+       -Wcast-qual -Wwrite-strings -Wextra -Wunused-parameter"
+fi])
 
 dnl Checks for functions
 AC_CHECK_FUNCS(mmap strerror strndup strtoul mbrtowc mkstemp utimes utime wcwidth strtof)

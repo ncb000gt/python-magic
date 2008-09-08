@@ -1,5 +1,5 @@
 #
-# $File: Makefile.am,v 1.41 2008/06/17 17:49:11 christos Exp $
+# $File: Makefile.am,v 1.43 2008/08/08 08:24:06 christos Exp $
 #
 MAGIC_FRAGMENT_BASE = Magdir
 MAGIC_FRAGMENT_DIR = $(top_srcdir)/magic/$(MAGIC_FRAGMENT_BASE)
@@ -79,6 +79,7 @@ $(MAGIC_FRAGMENT_DIR)/gnome-keyring \
 $(MAGIC_FRAGMENT_DIR)/gnu \
 $(MAGIC_FRAGMENT_DIR)/gnumeric \
 $(MAGIC_FRAGMENT_DIR)/grace \
+$(MAGIC_FRAGMENT_DIR)/graphviz \
 $(MAGIC_FRAGMENT_DIR)/gringotts \
 $(MAGIC_FRAGMENT_DIR)/hitachi-sh \
 $(MAGIC_FRAGMENT_DIR)/hp \
@@ -205,6 +206,7 @@ $(MAGIC_FRAGMENT_DIR)/vms \
 $(MAGIC_FRAGMENT_DIR)/vmware \
 $(MAGIC_FRAGMENT_DIR)/vorbis \
 $(MAGIC_FRAGMENT_DIR)/vxl \
+$(MAGIC_FRAGMENT_DIR)/warc \
 $(MAGIC_FRAGMENT_DIR)/weak \
 $(MAGIC_FRAGMENT_DIR)/windows \
 $(MAGIC_FRAGMENT_DIR)/wordprocessors \

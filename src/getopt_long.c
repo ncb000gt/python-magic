@@ -29,16 +29,30 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
+#ifdef HAVE_CONFIG_H
+#include "config.h"
+#endif
 #include <assert.h>
+#ifdef HAVE_ERR_H
 #include <err.h>
+#else
+#include <stdio.h>
+#define warnx printf
+#endif
 #include <errno.h>
+#ifdef HAVE_GETOPT_H
 #include <getopt.h>
+#else
+#include "mygetopt.h"
+#endif
 #include <stdlib.h>
 #include <string.h>
 
 #define REPLACE_GETOPT
 
+#ifndef _DIAGASSERT
 #define _DIAGASSERT assert
+#endif
 
 #ifdef REPLACE_GETOPT
 #ifdef __weak_alias
@@ -73,9 +87,9 @@ __weak_alias(getopt_long,_getopt_long)
 
 #define	EMSG	""
 
-static int getopt_internal __P((int, char **, const char *));
-static int gcd __P((int, int));
-static void permute_args __P((int, int, int, char **));
+static int getopt_internal(int, char **, const char *);
+static int gcd(int, int);
+static void permute_args(int, int, int, char **);
 
 static const char *place = EMSG; /* option letter processing */
 

@@ -38,7 +38,7 @@
 
 
 #ifndef	lint
-FILE_RCSID("@(#)$File: softmagic.c,v 1.117 2008/03/01 22:21:49 rrt Exp $")
+FILE_RCSID("@(#)$File: softmagic.c,v 1.120 2008/07/28 17:25:21 christos Exp $")
 #endif	/* lint */
 
 private int match(struct magic_set *, struct magic *, uint32_t,
@@ -660,13 +660,14 @@ mconvert(struct magic_set *ms, struct magic *m)
 	case FILE_STRING:
 	case FILE_BESTRING16:
 	case FILE_LESTRING16: {
-		size_t len;
-		
 		/* Null terminate and eat *trailing* return */
 		p->s[sizeof(p->s) - 1] = '\0';
+#if 0
+		/* Why? breaks magic numbers that end with \xa */
 		len = strlen(p->s);
 		if (len-- && p->s[len] == '\n')
 			p->s[len] = '\0';
+#endif
 		return 1;
 	}
 	case FILE_PSTRING: {
@@ -677,9 +678,12 @@ mconvert(struct magic_set *ms, struct magic *m)
 		while (len--)
 			*ptr1++ = *ptr2++;
 		*ptr1 = '\0';
+#if 0
+		/* Why? breaks magic numbers that end with \xa */
 		len = strlen(p->s);
 		if (len-- && p->s[len] == '\n')
 			p->s[len] = '\0';
+#endif
 		return 1;
 	}
 	case FILE_BESHORT:
@@ -906,8 +910,8 @@ mget(struct magic_set *ms, const unsigned char *s,
 	if (m->flag & INDIR) {
 		int off = m->in_offset;
 		if (m->in_op & FILE_OPINDIRECT) {
-			const union VALUETYPE *q =
-			    ((const void *)(s + offset + off));
+			const union VALUETYPE *q = CAST(const union VALUETYPE *,
+			    ((const void *)(s + offset + off)));
 			switch (m->in_type) {
 			case FILE_BYTE:
 				off = q->b;
