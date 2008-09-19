@@ -30,7 +30,7 @@ endif
 
 PYTHON_VERSIONS=$(shell pyversions -r debian/control)
 
-config.status: configure patch
+config.status: configure patch-stamp
 	dh_testdir
 
 	rm -f ltmain.sh
