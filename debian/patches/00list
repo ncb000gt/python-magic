@@ -13,6 +13,7 @@
 214-magic-update-linuxswap.dpatch
 215-magic-update-linuxext.dpatch
 216-magic-update-llvm.dpatch
+217-magic-update-ruby.dpatch
 320-magic-add-par2.dpatch
 321-magic-add-pe5.dpatch
 322-magic-add-pmenu.dpatch
