@@ -1,7 +1,7 @@
 #!/bin/sh /usr/share/dpatch/dpatch-run
 ## 322-magic-add-scummvm.dpatch by Sven Hartge <debian@ds9.argh.org>
 ##
-## DP: New magic for scummVM savegame files (Closes: #263488).
+## DP: New magic for ScummVM savegame files (Closes: #263488).
 
 @DPATCH@
 
@@ -14,5 +14,5 @@ diff -Naurp file-4.23.orig/magic/Magdir/console file-4.23/magic/Magdir/console
  
 +# Type: scummVM savegame files
 +# From: Sven Hartge <debian@ds9.argh.org>
-+0	string	SCVM	scummVM savegame
++0	string	SCVM	ScummVM savegame
 +>12	string	>\0	"%s"
