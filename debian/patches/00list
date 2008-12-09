@@ -15,6 +15,7 @@
 216-magic-update-llvm.dpatch
 217-magic-update-ruby.dpatch
 218-magic-update-gimp.dpatch
+219-magic-update-wav.dpatch
 320-magic-add-par2.dpatch
 321-magic-add-pe5.dpatch
 322-magic-add-pmenu.dpatch
