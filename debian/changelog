@@ -1,3 +1,18 @@
+file (4.26-2) unstable; urgency=medium
+
+  * Using patch-stamp rather than patch in rules file.
+  * Replacing obsolete dh_clean -k with dh_prep.
+  * Adding patch from Toeroek Edwin <edwintorok@gmail.com> to update llvm magics
+    (Closes: #505805).
+  * Adding patch to add mime entries for ruby (Closes: #502201).
+  * Adding patch from Ori Avtalion <ori@avtalion.name> to update gimp magics
+    (Closes: #501200).
+  * Corrected spelling of 'ScummVM' in magic-add-scummvm.dpatch.
+  * Adding patch from Adam Buchbinder <adam.buchbinder@gmail.com> to update wav
+    magics (Closes: #508174).
+
+ -- Daniel Baumann <daniel@debian.org>  Tue,  9 Dec 2008 13:28:00 +0100
+
 file (4.26-1) unstable; urgency=low
 
   * Updating vcs fields in control file.
