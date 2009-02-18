@@ -1,34 +1,31 @@
 #!/usr/bin/make -f
 
-# Uncomment this to turn on verbose mode.
-#export DH_VERBOSE=1
-
 include /usr/share/quilt/quilt.make
 
-# These are used for cross-compiling and for saving the configure script
-# from having to guess our platform (since we know it already)
-DEB_HOST_GNU_TYPE   ?= $(shell dpkg-architecture -qDEB_HOST_GNU_TYPE)
-DEB_BUILD_GNU_TYPE  ?= $(shell dpkg-architecture -qDEB_BUILD_GNU_TYPE)
+DEB_HOST_GNU_TYPE	?= $(shell dpkg-architecture -qDEB_HOST_GNU_TYPE)
+DEB_BUILD_GNU_TYPE	?= $(shell dpkg-architecture -qDEB_BUILD_GNU_TYPE)
 
 ifneq ($(DEB_HOST_GNU_TYPE),$(DEB_BUILD_GNU_TYPE))
-	CROSS= --build=$(DEB_BUILD_GNU_TYPE) --host=$(DEB_HOST_GNU_TYPE) \
-		CC=$(DEB_HOST_GNU_TYPE)-gcc LD=$(DEB_HOST_GNU_TYPE)-ld
+	CROSS= --build=$(DEB_BUILD_GNU_TYPE) --host=$(DEB_HOST_GNU_TYPE) CC=$(DEB_HOST_GNU_TYPE)-gcc LD=$(DEB_HOST_GNU_TYPE)-ld
 else
 	CROSS= --build=$(DEB_BUILD_GNU_TYPE)
 endif
 
 # HOWMANY is the number of bytes looked at by file
-CFLAGS = -DHOWMANY=0x18000
-
-CFLAGS += -Wall -g
-
-ifneq (,$(findstring noopt,$(DEB_BUILD_OPTIONS)))
-	CFLAGS += -O0
-else
-	CFLAGS += -O2
-endif
+CFLAGS += -DHOWMANY=0x18000
 
 PYTHON_VERSIONS=$(shell pyversions -r debian/control)
+
+clean: unpatch
+	dh_testdir
+	dh_testroot
+	rm -f build-stamp
+
+	[ ! -f Makefile ] || $(MAKE) clean
+	[ ! -f Makefile ] || $(MAKE) distclean
+	rm -rf python/build
+
+	dh_clean
 
 config.status: configure patch
 	dh_testdir
@@ -39,7 +36,6 @@ config.status: configure patch
 	automake
 	autoconf
 
-	# Configuring package
 	mv config.sub config.sub.upstream && ln -s /usr/share/misc/config.sub
 	mv config.guess config.guess.upstream && ln -s /usr/share/misc/config.guess
 	CFLAGS="$(CFLAGS)" ./configure $(CROSS) --prefix=/usr --datadir=\$${prefix}/share --mandir=\$${prefix}/share/man --enable-fsect-man5
@@ -50,7 +46,6 @@ build: build-stamp
 build-stamp: config.status
 	dh_testdir
 
-	# Building package
 	mv libtool libtool.upstream && ln -s /usr/bin/libtool libtool
 	$(MAKE)
 	rm libtool && mv libtool.upstream libtool
@@ -68,17 +63,6 @@ build-stamp: config.status
 
 	touch build-stamp
 
-clean: unpatch
-	dh_testdir
-	dh_testroot
-	rm -f build-stamp
-
-	# Cleaning package
-	[ ! -f Makefile ] || $(MAKE) clean
-	[ ! -f Makefile ] || $(MAKE) distclean
-	rm -rf python/build
-
-	dh_clean
 
 install: build
 	dh_testdir
@@ -122,9 +106,9 @@ install: build
 	install -D -m 0644 debian/bug/presubj-lib debian/libmagic1/usr/share/bug/libmagic1/presubj
 	install -D -m 0644 debian/bug/control debian/libmagic-dev/usr/share/bug/libmagic-dev/control
 
-binary-indep: build install
+binary: binary-arch
 
-binary-arch: build install
+binary-arch: install
 	dh_testdir
 	dh_testroot
 	dh_installchangelogs ChangeLog
@@ -132,8 +116,8 @@ binary-arch: build install
 	dh_installexamples
 	dh_install --sourcedir=debian/tmp
 	dh_lintian
-	dh_python
 	dh_link
+	dh_python
 ifeq (,$(findstring -i, $(DH_OPTIONS)))
 	dh_strip -Npython-magic -Npython-magic-dbg
 	DH_OPTIONS= dh_strip -ppython-magic --dbg-package=python-magic-dbg
@@ -151,5 +135,6 @@ endif
 	dh_md5sums
 	dh_builddeb
 
-binary: binary-indep binary-arch
-.PHONY: build clean binary-indep binary-arch binary install
+binary-indep:
+
+.PHONY: clean build install binary binary-arch binary-indep
