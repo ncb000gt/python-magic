@@ -1,0 +1,13 @@
+Author: Daniel van Eeden <daniel_e@dds.nl>
+Description: New magic for PAR2 archive files (Closes: #294070).
+
+diff -Naurp file.orig/magic/Magdir/archive file/magic/Magdir/archive
+--- file.orig/magic/Magdir/archive	2008-02-28 18:57:34.000000000 +0000
++++ file/magic/Magdir/archive	2008-04-07 08:05:47.000000000 +0000
+@@ -803,3 +803,6 @@
+ >24	belong	1		SHA-1 checksum
+ >24	belong	2		MD5 checksum
+ 
++# Type: Parity Archive
++# From: Daniel van Eeden <daniel_e@dds.nl>
++0	string	 PAR2		Parity Archive Volume Set

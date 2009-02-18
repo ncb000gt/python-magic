@@ -1,0 +1,14 @@
+Author: Daniel Baumann <daniel@debian.org>
+Description: Addding mime to asf magic.
+
+diff -Naurp file.orig/magic/Magdir/animation file/magic/Magdir/animation
+--- file.orig/magic/Magdir/animation	2008-11-07 22:49:20.000000000 +0000
++++ file/magic/Magdir/animation	2009-02-18 11:57:43.000000000 +0000
+@@ -697,6 +697,7 @@
+ 
+ # Microsoft Advanced Streaming Format (ASF) <mpruett@sgi.com>
+ 0	belong			0x3026b275	Microsoft ASF
++!:mime	video/x-ms-asf
+ 
+ # MNG Video Format, <URL:http://www.libpng.org/pub/mng/spec/>
+ 0	string			\x8aMNG		MNG video data,

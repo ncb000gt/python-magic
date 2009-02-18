@@ -1,0 +1,18 @@
+Author: Michael Casadevall <sonicmctails@gmail.com>
+Description: Fixes a FTBFS on hurd (Closes: #433716).
+
+diff -Naur file.orig/src/magic.c file/src/magic.c
+--- file.orig/src/magic.c	2007-03-26 17:59:50.000000000 +0000
++++ file/src/magic.c	2007-07-19 06:25:16.000000000 +0000
+@@ -58,6 +58,11 @@
+ #include <locale.h>
+ #endif
+ 
++#ifndef PIPE_BUF
++// Get the PIPE_BUF from pathconf
++#define PIPE_BUF pathconf(".", _PC_PIPE_BUF)
++#endif
++
+ #include <netinet/in.h>		/* for byte swapping */
+ 
+ #include "patchlevel.h"
