@@ -4,7 +4,7 @@ Download: ftp://ftp.astron.com/pub/file/
 Files: *
 Copyright:
  (C) 1985-1995 Ian F. Darwin
- (C) 1994-2008 Christos Zoulas <christos@zoulas.com>
+ (C) 1994-2009 Christos Zoulas <christos@zoulas.com>
 License: BSD
  This software is not subject to any export provision of the United States
  Department of Commerce, and may be exported to any country or planet.
@@ -67,7 +67,7 @@ License: BSD
  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Files: debian/*
-Copyright: (C) 2007-2008 Daniel Baumann <daniel@debian.org>
+Copyright: (C) 2007-2009 Daniel Baumann <daniel@debian.org>
 License: BSD
  This software is not subject to any export provision of the United States
  Department of Commerce, and may be exported to any country or planet.
