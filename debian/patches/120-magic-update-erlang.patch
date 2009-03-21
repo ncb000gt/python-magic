@@ -1,0 +1,20 @@
+Author: Adam Buchbinder <adam.buchbinder@gmail.com>
+Description:
+ Escape string sequences; this magic was previously in System V format, and was
+ thus overly broad. See "Standards Compliance" section of the file(1) manpage
+ (Closes: #514056).
+
+diff -Naurp file.orig/magic/Magdir/erlang file/magic/Magdir/erlang
+--- file.orig/magic/Magdir/erlang	2009-03-21 09:20:03.000000000 +0000
++++ file/magic/Magdir/erlang	2009-03-21 09:42:40.000000000 +0000
+@@ -12,7 +12,7 @@
+ >8	string	BEAM		Erlang BEAM file
+ 
+ # 4.2 version may have a copyright notice!
+-4	string	Tue Jan 22 14:32:44 MET 1991	Erlang JAM file - version 4.2
+-79	string	Tue Jan 22 14:32:44 MET 1991	Erlang JAM file - version 4.2
++4	string	Tue\ Jan\ 22\ 14:32:44\ MET\ 1991	Erlang JAM file - version 4.2
++79	string	Tue\ Jan\ 22\ 14:32:44\ MET\ 1991	Erlang JAM file - version 4.2
+ 
+-4	string	1.0 Fri Feb 3 09:55:56 MET 1995	Erlang JAM file - version 4.3
++4	string	1.0\ Fri\ Feb\ 3\ 09:55:56\ MET\ 1995	Erlang JAM file - version 4.3

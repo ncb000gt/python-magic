@@ -18,6 +18,7 @@
 117-magic-update-wav.patch
 118-magic-update-z-machine.patch
 119-magic-update-xwd.patch
+120-magic-update-erlang.patch
 200-magic-add-par2.patch
 201-magic-add-pe5.patch
 202-magic-add-pmenu.patch
