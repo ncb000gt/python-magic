@@ -1,3 +1,15 @@
+file (5.00-1) unstable; urgency=low
+
+  * Merging upstream version 5.00 (Closes: #520532).
+  * Using quilt rather than dpatch.
+  * Updating years in copyright file.
+  * Reordering rules file.
+  * Stopping to rebootstrap autofoo, it is not needed anymore.
+  * Updating to standards version 3.8.1.
+  * Updating conglomeration.patch.
+
+ -- Daniel Baumann <daniel@debian.org>  Sat, 21 Mar 2009 09:59:00 +0100
+
 file (4.26-2) unstable; urgency=medium
 
   * Using patch-stamp rather than patch in rules file.
