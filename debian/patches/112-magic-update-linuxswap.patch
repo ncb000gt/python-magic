@@ -20,12 +20,12 @@ diff -Naurp file.orig/magic/Magdir/linux file/magic/Magdir/linux
 +>0x404	long		x		size %d pages,
 +>1052	string		\0		no label,
 +>1052	string		>\0		LABEL=%s,
-+>0x40c	belong		x		UUID=%x
-+>0x410	beshort		x		\b-%x
-+>0x412	beshort		x		\b-%x
-+>0x414	beshort		x		\b-%x
-+>0x416	belong		x		\b-%x
-+>0x41a	beshort		x		\b%x
++>0x40c	belong		x		UUID=%08x
++>0x410	beshort		x		\b-%04x
++>0x412	beshort		x		\b-%04x
++>0x414	beshort		x		\b-%04x
++>0x416	belong		x		\b-%08x
++>0x41a	beshort		x		\b%04x
  # ECOFF magic for OSF/1 and Linux (only tested under Linux though)
  #
  #	from Erik Troan (ewt@redhat.com) examining od dumps, so this

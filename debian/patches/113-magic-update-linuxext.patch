@@ -19,12 +19,12 @@ diff -Naurp file.orig/magic/Magdir/filesystems file/magic/Magdir/filesystems
  #  else large INCOMPAT?
 ->>0x460 lelong          >0x000003f      ext4 filesystem data
 +>>0x460	lelong          >0x000003f      ext4 filesystem data
-+>0x468	belong		x		\b, UUID=%x
-+>0x46c	beshort		x		\b-%x
-+>0x46e	beshort		x		\b-%x
-+>0x470	beshort		x		\b-%x
-+>0x472	belong		x		\b-%x
-+>0x476	beshort		x		\b%x
++>0x468	belong		x		\b, UUID=%08x
++>0x46c	beshort		x		\b-%04x
++>0x46e	beshort		x		\b-%04x
++>0x470	beshort		x		\b-%04x
++>0x472	belong		x		\b-%08x
++>0x476	beshort		x		\b%04x
 +>0x478	string		>0		\b, volume name "%s"
  # General flags for any ext* fs
 ->0x460  lelong          &0x0000004      (needs journal recovery)
