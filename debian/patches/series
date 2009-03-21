@@ -16,6 +16,7 @@
 115-magic-update-ruby.patch
 116-magic-update-gimp.patch
 117-magic-update-wav.patch
+118-magic-update-z-machine.patch
 200-magic-add-par2.patch
 201-magic-add-pe5.patch
 202-magic-add-pmenu.patch
