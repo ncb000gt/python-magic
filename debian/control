@@ -61,7 +61,7 @@ Description: File type determination library using "magic" numbers (Python bindi
  given file in Python.
 
 Package: python-magic-dbg
-Section: python
+Section: debug
 Architecture: any
 Priority: extra
 Depends: python-magic (= ${binary:Version}), python-dbg, ${shlibs:Depends}
