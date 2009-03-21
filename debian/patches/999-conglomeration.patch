@@ -9,7 +9,7 @@ diff -Naurp file.orig/src/fsmagic.c file/src/fsmagic.c
  		    fn, strerror(errno)) == -1)
  			return -1;
 -		return 1;
-+		ms->haderr++;
++		ms->event_flags |= EVENT_HAD_ERR;
 +		return -1;
  	}
  
