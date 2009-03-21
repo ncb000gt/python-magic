@@ -20,6 +20,7 @@
 119-magic-update-xwd.patch
 120-magic-update-erlang.patch
 121-magic-update-utf.patch
+122-magic-update-spectrum.patch
 200-magic-add-par2.patch
 201-magic-add-pe5.patch
 202-magic-add-pmenu.patch
