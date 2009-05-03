@@ -1,3 +1,33 @@
+file (5.01-1) unstable; urgency=low
+
+  * Adding patch from  Adam Buchbinder <adam.buchbinder@gmail.com> to
+    fix false matches against Z-machine pattern (Closes: #499748).
+  * Adding patch from Adam Buchbinder <adam.buchbinder@gmail.com> to
+    improve XWD magic in order to not give false results on mp3 files
+    (Closes: #511764).
+  * Adding patch from Adam Buchbinder <adam.buchbinder@gmail.com> to fix
+    unescaped spaces in erlang magic (Closes: #514056).
+  * Updating UUID patches to cope with leading zeroes, thanks to Bjorn
+    Mork <bjorn@mork.no> (Closes: #515019).
+  * Updating section for python-magic-dbg.
+  * Adding patch from Adam Buchbinder <adam.buchbinder@gmail.com> to fix
+    a spacing error in the manpage (Closes: #515761).
+  * Adding patch from Adam Buchbinder <adam.buchbinder@gmail.com> to
+    updated utf-8 big-endian magic (Closes: #513526).
+  * Adding patch from Adam Buchbinder <adam.buchbinder@gmail.com> to add
+    new magic for git packs and indexes (Closes: #509942).
+  * Adding patch from Adam Buchbinder <adam.buchbinder@gmail.com> to
+    update magic for spectrum tap files (Closes: #501589).
+  * Merging upstream version 5.01.
+  * Removing magic-update-erlang.patch, went upstream.
+  * Rediffing magic-add-qdbm.patch.
+  * Rediffing magic-add-tokyocabinet.patch.
+  * Manually renaming magic directory in rules to correct name.
+  * Updating file-mgc.patch for file 5, produces raw magics again now
+    (Closes: #522433).
+
+ -- Daniel Baumann <daniel@debian.org>  Sun,  3 May 2009 11:02:00 +0200
+
 file (5.00-1) unstable; urgency=low
 
   * Merging upstream version 5.00 (Closes: #520532).
