@@ -68,6 +68,7 @@ install: build
 
 	# Installing package
 	$(MAKE) prefix=$(CURDIR)/debian/tmp/usr install
+	mv debian/tmp/usr/share/misc debian/tmp/usr/share/file
 
 	install -D -m 0644 magic/magic.local debian/tmp/etc/magic
 	install -D -m 0644 magic/magic.local debian/tmp/etc/magic.mime
