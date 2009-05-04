@@ -1,3 +1,11 @@
+file (5.02-1) unstable; urgency=high
+
+  * Using correct rfc-2822 date formats in changelog.
+  * Merging upstream version 5.02:
+    - Fixes a buffer overflow.
+
+ -- Daniel Baumann <daniel@debian.org>  Tue, 05 May 2009 00:05:44 +0200
+
 file (5.01-1) unstable; urgency=low
 
   * Adding patch from  Adam Buchbinder <adam.buchbinder@gmail.com> to
