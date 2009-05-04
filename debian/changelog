@@ -26,7 +26,7 @@ file (5.01-1) unstable; urgency=low
   * Updating file-mgc.patch for file 5, produces raw magics again now
     (Closes: #522433).
 
- -- Daniel Baumann <daniel@debian.org>  Sun,  3 May 2009 11:02:00 +0200
+ -- Daniel Baumann <daniel@debian.org>  Sun, 03 May 2009 11:02:00 +0200
 
 file (5.00-1) unstable; urgency=low
 
@@ -53,7 +53,7 @@ file (4.26-2) unstable; urgency=medium
   * Adding patch from Adam Buchbinder <adam.buchbinder@gmail.com> to update wav
     magics (Closes: #508174).
 
- -- Daniel Baumann <daniel@debian.org>  Tue,  9 Dec 2008 13:28:00 +0100
+ -- Daniel Baumann <daniel@debian.org>  Tue, 09 Dec 2008 13:28:00 +0100
 
 file (4.26-1) unstable; urgency=low
 
@@ -61,7 +61,7 @@ file (4.26-1) unstable; urgency=low
   * Merging upstream version 4.26.
   * Rediffing 903-file-localmagic.dpatch.
 
- -- Daniel Baumann <daniel@debian.org>  Mon,  8 Sep 2008 13:57:00 +0200
+ -- Daniel Baumann <daniel@debian.org>  Mon, 08 Sep 2008 13:57:00 +0200
 
 file (4.25-1) unstable; urgency=low
 
@@ -98,7 +98,7 @@ file (4.24-4) unstable; urgency=high
     files. This fixes #481247 correctly now (Closes: #481247).
   * Reverting previous wrong NMU.
 
- -- Daniel Baumann <daniel@debian.org>  Tue,  1 Jul 2008 18:46:00 +0200
+ -- Daniel Baumann <daniel@debian.org>  Tue, 01 Jul 2008 18:46:00 +0200
 
 file (4.24-3.1) unstable; urgency=low
 
@@ -157,7 +157,7 @@ file (4.24-2) unstable; urgency=medium
   * Adding vcs fields in control file.
   * Upgrading package to debhelper 6.
 
- -- Daniel Baumann <daniel@debian.org>  Sat,  3 May 2008 14:09:00 +0200
+ -- Daniel Baumann <daniel@debian.org>  Sat, 03 May 2008 14:09:00 +0200
 
 file (4.24-1) experimental; urgency=low
 
@@ -181,7 +181,7 @@ file (4.24-1) experimental; urgency=low
       998-doc-manpages and 999-conglomeration.
     - Thanks to Reuben Thomas <rrt@sc3d.org> to merge them.
 
- -- Daniel Baumann <daniel@debian.org>  Tue,  1 Apr 2008 11:30:00 +0200
+ -- Daniel Baumann <daniel@debian.org>  Tue, 01 Apr 2008 11:30:00 +0200
 
 file (4.23-2) unstable; urgency=low
 
@@ -256,7 +256,7 @@ file (4.21-1) unstable; urgency=low
   * Updated 905-file-segfault.dpatch.
   * Rediffed 999-conglomeration.dpatch.
 
- -- Daniel Baumann <daniel@debian.org>  Fri,  1 Jun 2007 20:29:00 +0200
+ -- Daniel Baumann <daniel@debian.org>  Fri, 01 Jun 2007 20:29:00 +0200
 
 file (4.20-8) unstable; urgency=low
 
@@ -337,7 +337,7 @@ file (4.20-4) unstable; urgency=low
   * Added patch from Nicolas François <nicolas.francois@centraliens.net>to
     fix wrong formating in manpage (Closes: #417511).
 
- -- Daniel Baumann <daniel@debian.org>  Tue,  3 Apr 2007 14:25:00 +0200
+ -- Daniel Baumann <daniel@debian.org>  Tue, 03 Apr 2007 14:25:00 +0200
 
 file (4.20-3) unstable; urgency=low
 
@@ -700,7 +700,7 @@ file (3.40-1.1) unstable; urgency=high
     - http://www.idefense.com/advisory/03.04.03.txt
     - Closes: #184204
 
- -- Matt Zimmerman <mdz@debian.org>  Thu,  3 Apr 2003 13:50:22 -0500
+ -- Matt Zimmerman <mdz@debian.org>  Thu, 03 Apr 2003 13:50:22 -0500
 
 file (3.40-1) unstable; urgency=low
 
@@ -830,7 +830,7 @@ file (3.37-1) unstable; urgency=low
   * Added two Palm file formats from
     John Gruenenfelder <johng@bach.as.arizona.edu> (closes:Bug#104034).
 
- -- Nicolás Lichtmaier <nick@debian.org>  Mon,  8 Oct 2001 19:49:42 -0300
+ -- Nicolás Lichtmaier <nick@debian.org>  Mon, 08 Oct 2001 19:49:42 -0300
 
 file (3.33-5) unstable; urgency=low
 
@@ -860,7 +860,7 @@ file (3.33-5) unstable; urgency=low
   * Added magic for Squish and JAM echomail/netmail Fidonet areas storage
     formats contributed by peter@softwolves.pp.se (closes:Bug#90172).
 
- -- Nicolás Lichtmaier <nick@debian.org>  Sun,  6 May 2001 02:13:10 -0300
+ -- Nicolás Lichtmaier <nick@debian.org>  Sun, 06 May 2001 02:13:10 -0300
 
 file (3.33-4) unstable; urgency=low
 
@@ -898,7 +898,7 @@ file (3.33-2) unstable; urgency=low
     everywhere in the file. The idea was from Adam Heath <adam@doogie.org>.
     (closes:Bug#28964,Bug#70629).
 
- -- Nicolás Lichtmaier <nick@debian.org>  Sun,  7 Jan 2001 23:38:58 -0300
+ -- Nicolás Lichtmaier <nick@debian.org>  Sun, 07 Jan 2001 23:38:58 -0300
 
 file (3.33-1) unstable; urgency=low
 
@@ -1050,7 +1050,7 @@ file (3.24-4.2) frozen unstable; urgency=HIGH
   * NMU:
     Fix critical bugs #31031 and #31057.
 
- -- Vincent Renardias <vincent@waw.com>  Wed,  6 Jan 1999 01:51:15 +0100
+ -- Vincent Renardias <vincent@waw.com>  Wed, 06 Jan 1999 01:51:15 +0100
 
 file (3.24-4.1) frozen unstable; urgency=low
 
@@ -1074,7 +1074,7 @@ file (3.24-3) unstable; urgency=low
   * Changed `Standards-version' to 2.4.0.0 (no changes required).
   * Moved /usr/share/magic to /usr/share/misc/magic, fixes bug #18639.
 
- -- Nicolás Lichtmaier <nick@feedback.net.ar>  Sun,  8 Mar 1998 14:28:45 -0300
+ -- Nicolás Lichtmaier <nick@feedback.net.ar>  Sun, 08 Mar 1998 14:28:45 -0300
 
 file (3.24-2) unstable; urgency=low
 
@@ -1128,7 +1128,7 @@ file (3.20.1-7) unstable; urgency=low
   * Added GIMP file formats, contributed
     by Kenneth MacDonald <kenny@ed.ac.uk>.
 
- -- Nicolás Lichtmaier <nick@feedback.net.ar>  Wed,  9 Jul 1997 00:22:38 -0300
+ -- Nicolás Lichtmaier <nick@feedback.net.ar>  Wed, 09 Jul 1997 00:22:38 -0300
 
 file (3.20.1-6) unstable; urgency=low
 
