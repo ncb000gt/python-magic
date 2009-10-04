@@ -43,6 +43,7 @@
 219-magic-add-selinux.patch
 220-magic-add-bzr.patch
 221-magic-add-git.patch
+222-magic-add-nut.patch
 223-magic-add-blcr.patch
 900-file-mgc.patch
 901-file-localmagic.patch
