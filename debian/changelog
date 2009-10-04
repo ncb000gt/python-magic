@@ -1,3 +1,15 @@
+file (5.03-2) unstable; urgency=low
+
+  * Adding patch from Adam Buchbinder <adam.buchbinder@gmail.com> to add
+    new magic for the NUT Container format (Closes: #528242).
+  * Adding patch from Alan Woodland <ajw05@aber.ac.uk> to add new magic
+    for BLCR context files (Closes: #538407).
+  * Updating standards version to 3.8.3.
+  * Updating maintainer field.
+  * Updating vcs fields.
+
+ -- Daniel Baumann <daniel@debian.org>  Sun, 04 Oct 2009 11:28:34 +0200
+
 file (5.03-1) unstable; urgency=high
 
   * Merging upstream version 5.03:
