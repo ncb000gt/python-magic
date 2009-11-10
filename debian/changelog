@@ -1,3 +1,14 @@
+file (5.03-3) unstable; urgency=low
+
+  * Updating tgif magic, thanks to Hugo Graumann <graumann@ucalgary.ca>
+    (Closes: #549601).
+  * Enabling nut magic patch.
+  * Correcting wrong vcs-browser field.
+  * Updating setup.py calls in rules for python2.6, thanks to Piotr
+    Ozarowski <piotr@debian.org> (Closes: #555208).
+
+ -- Daniel Baumann <daniel@debian.org>  Tue, 10 Nov 2009 19:46:51 +0100
+
 file (5.03-2) unstable; urgency=low
 
   * Adding patch from Adam Buchbinder <adam.buchbinder@gmail.com> to add
