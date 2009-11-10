@@ -77,13 +77,13 @@ install: build
 	for python in $(PYTHON_VERSIONS); \
 	do \
 		(cd python && $$python setup.py install --no-compile \
-			--root=$(CURDIR)/debian/python-magic); \
+			--root=$(CURDIR)/debian/python-magic --prefix=/usr); \
 	done
 
 	set -e; \
 	for python in $(PYTHON_VERSIONS); do \
 		(cd python && $$python-dbg setup.py install --no-compile \
-			--root=$(CURDIR)/debian/python-magic-dbg); \
+			--root=$(CURDIR)/debian/python-magic-dbg --prefix=/usr); \
 	done
 	find debian/python-*-dbg ! -type d ! -name '*.so' | xargs rm -f
 	find debian/python-*-dbg -depth -empty -exec rmdir {} \;
