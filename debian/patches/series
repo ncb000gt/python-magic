@@ -45,6 +45,7 @@
 221-magic-add-git.patch
 222-magic-add-nut.patch
 223-magic-add-blcr.patch
+224-magic-add-lyx.patch
 900-file-mgc.patch
 901-file-localmagic.patch
 902-file-make.patch
