@@ -21,6 +21,7 @@
 121-magic-update-utf.patch
 122-magic-update-spectrum.patch
 123-magic-update-tgif.patch
+124-magic-update-postscript-fonts.patch
 200-magic-add-par2.patch
 201-magic-add-pe5.patch
 202-magic-add-pmenu.patch
