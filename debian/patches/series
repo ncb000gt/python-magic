@@ -51,6 +51,7 @@
 226-magic-add-olympus.patch
 227-magic-add-gstreamer.patch
 228-magic-add-mdmp.patch
+229-magic-add-xfsdump.patch
 900-file-mgc.patch
 901-file-localmagic.patch
 902-file-make.patch
