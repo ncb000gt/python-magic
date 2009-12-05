@@ -1,0 +1,17 @@
+Author: Daniel Novotny <dnovotny@redhat.com>
+Description: Add new magic for ppc swapfiles.
+
+diff -Naurp file.orig/magic/Magdir/linux file/magic/Magdir/linux
+--- file.orig/magic/Magdir/linux	2009-12-05 17:44:07.000000000 +0100
++++ file/magic/Magdir/linux	2009-12-05 17:50:38.000000000 +0100
+@@ -69,6 +69,10 @@
+ >0x414	beshort		x		\b-%04x
+ >0x416	belong		x		\b-%08x
+ >0x41a	beshort		x		\b%04x
++
++# From: Daniel Novotny <dnovotny@redhat.com>
++65526	string		SWAPSPACE2	Linux/ppc swap file
++
+ # ECOFF magic for OSF/1 and Linux (only tested under Linux though)
+ #
+ #	from Erik Troan (ewt@redhat.com) examining od dumps, so this
