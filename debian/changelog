@@ -1,3 +1,43 @@
+file (5.03-4) unstable; urgency=low
+
+  * Adding README.source.
+  * Adding patch to add new magic for Lyx (Closes: #556194).
+  * Adding patch from Adam Buchbinder <adam.buchbinder@gmail.com> to add
+    new magic for bacula volumes (Closes: #556981).
+  * Adding patch from Adam Buchbinder <adam.buchbinder@gmail.com> to add
+    new magic for olympus orf files (Closes: #519305).
+  * Adding patch from Josh Triplett <josh@joshtriplett.org> to add new
+    magic for gstreamer binary registry files (Closes: #559117).
+  * Adding patch from Daniel Novotny <dnovotny@redhat.com> to add new
+    magic for MDMP crash report data files.
+  * Adding patch from Daniel Novotny <dnovotny@redhat.com> to add update
+    magic for postscript fonts.
+  * Adding patch from Daniel Novotny <dnovotny@redhat.com> to add new
+    magic for xfs dumps.
+  * Adding patch from Daniel Novotny <dnovotny@redhat.com> to add new
+    magic for ppc swapfiles.
+  * Adding patch from Daniel Novotny <dnovotny@redhat.com> to add new
+    magic for delta iso files.
+  * Adding patch from Daniel Novotny <dnovotny@redhat.com> to add new
+    magic for delta rpm files.
+  * Adding patch from Alexander Danilov <alexander.a.danilov@gmail.com>
+    to add new magic for AVCHD Clip Information files (Closes: #538847).
+  * Adding patch to add new magic for Chiasmus (Closes: #540368).
+  * Adding patch from Adam Buchbinder <adam.buchbinder@gmail.com> to
+    update magic for truetype collections (Closes: #545709).
+  * Adding patch from Joerg Friedrich <Joerg.Friedrich@friedrich-kn.de>
+    to add support for all flags from magic.h in python-magic (Closes:
+    #529354).
+  * Adding patch from Adam Buchbinder <adam.buchbinder@gmail.com> to add
+    new magic for HDR formats (Closes: #520416).
+  * Adding patch from Adam Buchbinder <adam.buchbinder@gmail.com> to add
+    new magic for Foveon X3F (Closes: #516800).
+  * Adding patch from Adam Buchbinder <adam.buchbinder@gmail.com> to add
+    new magic for Paint.NET images (Closes: #504779).
+  * Adding patch to add mime type for 7-zip files (Closes: #552742).
+
+ -- Daniel Baumann <daniel@debian.org>  Sat, 05 Dec 2009 19:04:48 +0100
+
 file (5.03-3) unstable; urgency=low
 
   * Updating tgif magic, thanks to Hugo Graumann <graumann@ucalgary.ca>
