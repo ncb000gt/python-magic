@@ -64,4 +64,5 @@
 903-file-hurd.patch
 904-doc-manpages.patch
 905-doc-manpages-typo.patch
+906-file-python.patch
 999-conglomeration.patch
