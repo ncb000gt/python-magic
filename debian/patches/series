@@ -56,6 +56,7 @@
 231-magic-add-delta-iso.patch
 232-magic-add-delta-rpm.patch
 233-magic-add-avchd.patch
+234-magic-add-chiasmus.patch
 900-file-mgc.patch
 901-file-localmagic.patch
 902-file-make.patch
