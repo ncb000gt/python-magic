@@ -23,6 +23,7 @@
 123-magic-update-tgif.patch
 124-magic-update-postscript-fonts.patch
 125-magic-update-truetype-fonts.patch
+126-magic-update-7zip.patch
 200-magic-add-par2.patch
 201-magic-add-pe5.patch
 202-magic-add-pmenu.patch
