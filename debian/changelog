@@ -1,3 +1,11 @@
+file (5.03-5) unstable; urgency=low
+
+  * Adding explicit debian source version 1.0 until switch to 3.0.
+  * Updating setup.py calls in rules for python2.6 again, thanks to
+    Jakub Wilk <ubanus@users.sf.net> (Closes: #555208).
+
+ -- Daniel Baumann <daniel@debian.org>  Sat, 19 Dec 2009 20:03:32 +0100
+
 file (5.03-4) unstable; urgency=low
 
   * Adding README.source.
