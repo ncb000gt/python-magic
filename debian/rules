@@ -1,6 +1,7 @@
 #!/usr/bin/make -f
 
 include /usr/share/quilt/quilt.make
+-include /usr/share/python/python.mk
 
 DEB_HOST_GNU_TYPE	?= $(shell dpkg-architecture -qDEB_HOST_GNU_TYPE)
 DEB_BUILD_GNU_TYPE	?= $(shell dpkg-architecture -qDEB_BUILD_GNU_TYPE)
@@ -77,13 +78,13 @@ install: build
 	for python in $(PYTHON_VERSIONS); \
 	do \
 		(cd python && $$python setup.py install --no-compile \
-			--root=$(CURDIR)/debian/python-magic --prefix=/usr); \
+			--root=$(CURDIR)/debian/python-magic $(py_setup_install_args)); \
 	done
 
 	set -e; \
 	for python in $(PYTHON_VERSIONS); do \
 		(cd python && $$python-dbg setup.py install --no-compile \
-			--root=$(CURDIR)/debian/python-magic-dbg --prefix=/usr); \
+			--root=$(CURDIR)/debian/python-magic-dbg $(py_setup_install_args)); \
 	done
 	find debian/python-*-dbg ! -type d ! -name '*.so' | xargs rm -f
 	find debian/python-*-dbg -depth -empty -exec rmdir {} \;
