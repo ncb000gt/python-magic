@@ -67,7 +67,7 @@ License: BSD
  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Files: debian/*
-Copyright: (C) 2007-2009 Daniel Baumann <daniel@debian.org>
+Copyright: (C) 2007-2010 Daniel Baumann <daniel@debian.org>
 License: BSD
  This software is not subject to any export provision of the United States
  Department of Commerce, and may be exported to any country or planet.
