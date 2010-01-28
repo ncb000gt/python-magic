@@ -4,7 +4,7 @@ Priority: standard
 Maintainer: Daniel Baumann <daniel@lists.debian-maintainers.org>
 Uploaders: Daniel Baumann <daniel@debian.org>
 Build-Depends: debhelper (>= 7), quilt, autotools-dev, python, python-all-dev, python-all-dbg, zlib1g-dev
-Standards-Version: 3.8.3
+Standards-Version: 3.8.4
 Homepage: http://www.darwinsys.com/file/
 Vcs-Browser: http://git.debian-maintainers.org/?p=daniel/file.git
 Vcs-Git: git://git.debian-maintainers.org/git/daniel/file.git
