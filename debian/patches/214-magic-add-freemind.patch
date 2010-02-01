@@ -11,5 +11,5 @@ diff -Naurp file.orig/magic/Magdir/wordprocessors file/magic/Magdir/wordprocesso
 +
 +# Type: Freemind mindmap documents
 +# From: Jamie Thompson <debian-bugs@jamie-thompson.co.uk>
-+0	string/cB	\<map\ version	Freemind document
++0	string/w	\<map\ version	Freemind document
 +!:mime	application/x-freemind
