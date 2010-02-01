@@ -2,14 +2,14 @@ Author: Daniel Baumann <daniel@debian.org>
 Description: Addding another shebang path for tcsh.
 
 diff -Naurp file.orig/magic/Magdir/commands file/magic/Magdir/commands
---- file.orig/magic/Magdir/commands	2008-04-16 12:28:04.000000000 +0000
-+++ file/magic/Magdir/commands	2008-07-15 13:28:19.000000000 +0000
-@@ -12,6 +12,8 @@
+--- file.orig/magic/Magdir/commands	2010-01-30 09:44:26.000000000 +0000
++++ file/magic/Magdir/commands	2010-02-01 11:57:33.000000000 +0000
+@@ -13,6 +13,8 @@
  !:mime	text/x-shellscript
- 0	string/b 	#!\ /bin/tcsh		Tenex C shell script text executable
+ 0	string/w 	#!\ /bin/tcsh		Tenex C shell script text executable
  !:mime	text/x-shellscript
-+0	string/b	#!\ /usr/bin/tcsh	Tenex C shell script text executable
++0	string/w	#!\ /usr/bin/tcsh	Tenex C shell script text executable
 +!:mime	text/x-shellscript
- 0	string/b 	#!\ /usr/local/tcsh	Tenex C shell script text executable
+ 0	string/w 	#!\ /usr/local/tcsh	Tenex C shell script text executable
  !:mime	text/x-shellscript
- 0	string/b	#!\ /usr/local/bin/tcsh	Tenex C shell script text executable
+ 0	string/w	#!\ /usr/local/bin/tcsh	Tenex C shell script text executable
