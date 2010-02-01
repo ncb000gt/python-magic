@@ -2,25 +2,25 @@ Author: Daniel Baumann <daniel@debian.org>
 Description: Reverting upstream change of stopping to build plain magic file (Closes: #481247).
 
 diff -Naurp file.orig/magic/Makefile.am file/magic/Makefile.am
---- file.orig/magic/Makefile.am	2009-05-03 00:07:11.000000000 +0000
-+++ file/magic/Makefile.am	2009-05-03 08:51:56.000000000 +0000
-@@ -4,7 +4,7 @@
- MAGIC_FRAGMENT_BASE = Magdir
- MAGIC_FRAGMENT_DIR = $(top_srcdir)/magic/$(MAGIC_FRAGMENT_BASE)
+--- file.orig/magic/Makefile.am	2010-02-01 12:16:29.000000000 +0000
++++ file/magic/Makefile.am	2010-02-01 12:21:54.000000000 +0000
+@@ -5,7 +5,7 @@ MAGIC_FRAGMENT_BASE = Magdir
+ MAGIC_DIR = $(top_srcdir)/magic
+ MAGIC_FRAGMENT_DIR = $(MAGIC_DIR)/$(MAGIC_FRAGMENT_BASE)
  
 -pkgdata_DATA = magic.mgc
 +pkgdata_DATA = magic.mgc magic
  
- EXTRA_DIST = Header Localstuff \
- $(MAGIC_FRAGMENT_DIR)/acorn \
-@@ -220,8 +220,20 @@ $(MAGIC_FRAGMENT_DIR)/xwindows \
+ EXTRA_DIST = \
+ $(MAGIC_DIR)/Header \
+@@ -229,8 +229,20 @@ $(MAGIC_FRAGMENT_DIR)/xwindows \
  $(MAGIC_FRAGMENT_DIR)/zilog \
  $(MAGIC_FRAGMENT_DIR)/zyxel 
  
 +RAW   = magic
  MAGIC = magic.mgc
--CLEANFILES = ${MAGIC}
-+CLEANFILES = ${MAGIC} ${RAW}
+-CLEANFILES = ${MAGIC} $(MAGIC_FRAGMENT_DIR)/Localstuff
++CLEANFILES = ${RAW} ${MAGIC} $(MAGIC_FRAGMENT_DIR)/Localstuff
 +
 +${RAW}: Header Localstuff $(EXTRA_DIST)
 +	cat /dev/null > $@
@@ -35,36 +35,37 @@ diff -Naurp file.orig/magic/Makefile.am file/magic/Makefile.am
  
  # FIXME: Build file natively as well so that it can be used to compile
  # the target's magic file
-@@ -233,6 +245,5 @@ FILE_COMPILE = $(top_builddir)/src/file
+@@ -242,7 +254,5 @@ FILE_COMPILE = $(top_builddir)/src/file
  FILE_COMPILE_DEP = $(FILE_COMPILE)
  endif
  
 -${MAGIC}: $(EXTRA_DIST) $(FILE_COMPILE_DEP)
--	$(FILE_COMPILE) -C -m $(MAGIC_FRAGMENT_DIR)
--	@mv $(MAGIC_FRAGMENT_BASE).mgc $@
+-	@mkdir magic && cp -p $(EXTRA_DIST) magic
+-	$(FILE_COMPILE) -C -m magic
+-	@rm -fr magic
 +${MAGIC}: $(EXTRA_DIST) $(FILE_COMPILE_DEP) $(RAW)
 +	$(FILE_COMPILE) -C -m $(RAW)
 diff -Naurp file.orig/magic/Makefile.in file/magic/Makefile.in
---- file.orig/magic/Makefile.in	2009-05-03 00:07:11.000000000 +0000
-+++ file/magic/Makefile.in	2009-05-03 08:55:09.000000000 +0000
-@@ -170,7 +170,7 @@ top_srcdir = @top_srcdir@
- #
+--- file.orig/magic/Makefile.in	2010-02-01 12:16:29.000000000 +0000
++++ file/magic/Makefile.in	2010-02-01 12:24:46.000000000 +0000
+@@ -171,7 +171,7 @@ top_srcdir = @top_srcdir@
  MAGIC_FRAGMENT_BASE = Magdir
- MAGIC_FRAGMENT_DIR = $(top_srcdir)/magic/$(MAGIC_FRAGMENT_BASE)
+ MAGIC_DIR = $(top_srcdir)/magic
+ MAGIC_FRAGMENT_DIR = $(MAGIC_DIR)/$(MAGIC_FRAGMENT_BASE)
 -pkgdata_DATA = magic.mgc
 +pkgdata_DATA = magic.mgc magic
- EXTRA_DIST = Header Localstuff \
- $(MAGIC_FRAGMENT_DIR)/acorn \
- $(MAGIC_FRAGMENT_DIR)/adi \
-@@ -385,8 +385,21 @@ $(MAGIC_FRAGMENT_DIR)/xwindows \
+ EXTRA_DIST = \
+ $(MAGIC_DIR)/Header \
+ $(MAGIC_DIR)/Localstuff \
+@@ -394,10 +394,22 @@ $(MAGIC_FRAGMENT_DIR)/xwindows \
  $(MAGIC_FRAGMENT_DIR)/zilog \
  $(MAGIC_FRAGMENT_DIR)/zyxel 
  
 +RAW = magic
  MAGIC = magic.mgc
--CLEANFILES = ${MAGIC}
-+CLEANFILES = ${MAGIC} ${RAW}
-+
+ CLEANFILES = ${MAGIC} $(MAGIC_FRAGMENT_DIR)/Localstuff
+ @IS_CROSS_COMPILE_FALSE@FILE_COMPILE = $(top_builddir)/src/file
+ 
 +${RAW}: Header Localstuff $(EXTRA_DIST)
 +	cat /dev/null > $@
 +	for frag in $(EXTRA_DIST); do \
@@ -76,17 +77,18 @@ diff -Naurp file.orig/magic/Makefile.in file/magic/Makefile.in
 +	  cat $$f; \
 +	done >> $@
 +
- @IS_CROSS_COMPILE_FALSE@FILE_COMPILE = $(top_builddir)/src/file
- 
  # FIXME: Build file natively as well so that it can be used to compile
-@@ -582,10 +595,8 @@ uninstall-am: uninstall-pkgdataDATA
+ # the target's magic file
+ @IS_CROSS_COMPILE_TRUE@FILE_COMPILE = file
+@@ -591,11 +603,8 @@ uninstall-am: uninstall-pkgdataDATA
  	mostlyclean-generic mostlyclean-libtool pdf pdf-am ps ps-am \
  	uninstall uninstall-am uninstall-pkgdataDATA
  
 -
 -${MAGIC}: $(EXTRA_DIST) $(FILE_COMPILE_DEP)
--	$(FILE_COMPILE) -C -m $(MAGIC_FRAGMENT_DIR)
--	@mv $(MAGIC_FRAGMENT_BASE).mgc $@
+-	@mkdir magic && cp -p $(EXTRA_DIST) magic
+-	$(FILE_COMPILE) -C -m magic
+-	@rm -fr magic
 +${MAGIC}: $(EXTRA_DIST) $(FILE_COMPILE_DEP) $(RAW)
 +	$(FILE_COMPILE) -C -m $(RAW)
  # Tell versions [3.59,3.63) of GNU make to not export all variables.
