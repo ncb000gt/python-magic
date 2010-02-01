@@ -12,7 +12,6 @@
 112-magic-update-linuxswap.patch
 113-magic-update-linuxext.patch
 114-magic-update-llvm.patch
-115-magic-update-ruby.patch
 116-magic-update-gimp.patch
 117-magic-update-wav.patch
 118-magic-update-z-machine.patch
