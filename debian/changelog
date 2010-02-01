@@ -1,3 +1,29 @@
+file (5.04-1) unstable; urgency=low
+
+  * Updating year in copyright file.
+  * Updating to standards 3.8.4.
+  * Merging upstream version 5.04.
+  * Removing magic-update-asf.patch, went upstream.
+  * Rediffing magic-update-awk.patch.
+  * Rediffing magic-update-bash.patch.
+  * Rediffing magic-update-tcsh.patch.
+  * Rediffing magic-update-linuxswap.patch.
+  * Removing magic-update-ruby.patch, went upstream.
+  * Removing magic-update-postscript-fonts.patch, went upstream.
+  * Rediffing magic-add-par2.patch.
+  * Rediffing magic-add-cromfs.patch.
+  * Rediffing magic-add-bacula.patch.
+  * Removing magic-add-ppc-swapfile.patch, went upstream.
+  * Rediffing file-mgc.patch.
+  * Removing file-hurd.patch, went upstream.
+  * Updating magic-add-freemind.patch for new upstream.
+  * Using debhhelper bug files rather than manual installing in rules
+    file.
+  * Renaming directory for storing local debian additions to more common
+    name.
+
+ -- Daniel Baumann <daniel@debian.org>  Mon, 01 Feb 2010 14:26:27 +0100
+
 file (5.03-5) unstable; urgency=low
 
   * Adding explicit debian source version 1.0 until switch to 3.0.
