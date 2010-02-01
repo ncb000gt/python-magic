@@ -96,12 +96,6 @@ install: build
 	# Installing plain magic.mime for compatibility
 	install -D -m 0644 debian/legacy/magic.mime debian/libmagic1/usr/share/file/magic.mime
 
-	# Installing bug congtrols
-	install -D -m 0644 debian/bug/presubj debian/file/usr/share/bug/file/presubj
-	install -D -m 0644 debian/bug/control debian/libmagic1/usr/share/bug/libmagic1/control
-	install -D -m 0644 debian/bug/presubj-lib debian/libmagic1/usr/share/bug/libmagic1/presubj
-	install -D -m 0644 debian/bug/control debian/libmagic-dev/usr/share/bug/libmagic-dev/control
-
 binary: binary-arch
 
 binary-arch: install
@@ -110,6 +104,7 @@ binary-arch: install
 	dh_installchangelogs ChangeLog
 	dh_installdocs
 	dh_installexamples
+	dh_bugfiles
 	dh_install --sourcedir=debian/tmp
 	dh_lintian
 	dh_link
