@@ -2,9 +2,9 @@ Author: Russell Coker <russell@coker.com.au>
 Description: Adding volume label and UUID support for linux swap (Closes: #489865).
 
 diff -Naurp file.orig/magic/Magdir/linux file/magic/Magdir/linux
---- file.orig/magic/Magdir/linux	2008-06-04 18:02:25.000000000 +0000
-+++ file/magic/Magdir/linux	2008-07-15 14:16:43.000000000 +0000
-@@ -56,11 +56,19 @@
+--- file.orig/magic/Magdir/linux	2010-01-30 09:44:26.000000000 +0000
++++ file/magic/Magdir/linux	2010-02-01 12:02:18.000000000 +0000
+@@ -58,11 +58,19 @@
  # Linux swap file with swsusp1 image, from Jeff Bailey <jbailey@ubuntu.com>
  4076	string		SWAPSPACE2S1SUSPEND	Linux/i386 swap file (new style) with SWSUSP1 image
  # according to man page of mkswap (8) March 1999
@@ -26,6 +26,6 @@ diff -Naurp file.orig/magic/Magdir/linux file/magic/Magdir/linux
 +>0x414	beshort		x		\b-%04x
 +>0x416	belong		x		\b-%08x
 +>0x41a	beshort		x		\b%04x
- # ECOFF magic for OSF/1 and Linux (only tested under Linux though)
- #
- #	from Erik Troan (ewt@redhat.com) examining od dumps, so this
+ # From Daniel Novotny <dnovotny@redhat.com>
+ # swap file for PowerPC
+ 65526	string		SWAPSPACE2	Linux/ppc swap file
