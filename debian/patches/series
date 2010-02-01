@@ -51,7 +51,6 @@
 227-magic-add-gstreamer.patch
 228-magic-add-mdmp.patch
 229-magic-add-xfsdump.patch
-230-magic-add-ppc-swapfile.patch
 231-magic-add-delta-iso.patch
 232-magic-add-delta-rpm.patch
 233-magic-add-avchd.patch
