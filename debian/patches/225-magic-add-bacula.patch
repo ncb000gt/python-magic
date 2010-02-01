@@ -2,12 +2,12 @@ Author: Adam Buchbinder <adam.buchbinder@gmail.com>
 Description: Add Bacula volume support (Closes: #556981).
 
 diff -Naurp file.orig/magic/Magdir/archive file/magic/Magdir/archive
---- file.orig/magic/Magdir/archive	2009-11-18 19:44:34.000000000 +0000
-+++ file/magic/Magdir/archive	2009-11-18 19:45:51.000000000 +0000
-@@ -806,3 +806,9 @@
+--- file.orig/magic/Magdir/archive	2010-02-01 12:13:41.000000000 +0000
++++ file/magic/Magdir/archive	2010-02-01 12:14:07.000000000 +0000
+@@ -834,3 +834,9 @@
  # Type: Parity Archive
  # From: Daniel van Eeden <daniel_e@dds.nl>
- 0	string	 PAR2		Parity Archive Volume Set
+ 0	string	PAR2		Parity Archive Volume Set
 +
 +# Bacula volume format. (Volumes always start with a block header.)
 +# URL: http://bacula.org/3.0.x-manuals/en/developers/developers/Block_Header.html
