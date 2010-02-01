@@ -2,13 +2,12 @@ Author: Werner Fink <werner@suse.de>
 Description: Adds new magic for CROM filesystem.
 
 diff -Naurp file.orig/magic/Magdir/filesystems file/magic/Magdir/filesystems
---- file.orig/magic/Magdir/filesystems	2008-07-02 13:47:23.000000000 +0000
-+++ file/magic/Magdir/filesystems	2008-07-15 13:43:26.000000000 +0000
-@@ -1327,3 +1327,15 @@
- # dvdisaster's .ecc
- # From: "Nelson A. de Oliveira" <naoliv@gmail.com>
- 0	string	*dvdisaster*	dvdisaster error correction file
-+
+--- file.orig/magic/Magdir/filesystems	2010-02-01 12:11:02.000000000 +0000
++++ file/magic/Magdir/filesystems	2010-02-01 12:12:16.000000000 +0000
+@@ -1500,3 +1500,14 @@
+ 0	string XFSM
+ >0x200	string XFSB	XFS filesystem metadump image
+ 
 +# Type:	CROM filesystem
 +# From:	Werner Fink <werner@suse.de>
 +0	string	CROMFS	CROMFS
