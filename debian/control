@@ -20,9 +20,6 @@ Description: Determines file type using "magic" numbers
  tests, performed in this order: filesystem tests, magic number tests, and
  language tests. The first test that succeeds causes the file type to be
  printed.
- .
- Starting with version 4, the file command is not much more than a wrapper
- around the "magic" library.
 
 Package: libmagic1
 Section: libs
@@ -58,8 +55,7 @@ Description: File type determination library using "magic" numbers (Python bindi
  This library can be used to classify files according to magic number tests. It
  implements the core functionality of the file command.
  .
- This package contains the Python bindings to query /etc/magic information for a
- given file in Python.
+ This package contains the Python bindings.
 
 Package: python-magic-dbg
 Section: debug
@@ -70,5 +66,5 @@ Description: File type determination library using "magic" numbers (Python bindi
  This library can be used to classify files according to magic number tests. It
  implements the core functionality of the file command.
  .
- This package contains the Python bindings to query /etc/magic information for a
- given file in Python, built for the Python debug interpreter.
+ This package contains the Python bindings, built for the Python debug
+ interpreter.
