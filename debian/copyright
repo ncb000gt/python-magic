@@ -1,10 +1,12 @@
-Author: Christos Zoulas <christos@zoulas.com>
-Download: ftp://ftp.astron.com/pub/file/
+Upstream-Contact: Christos Zoulas <christos@zoulas.com>
+Upstream-Homepage: http://www.darwinsys.com/file/
+Maintainer-Contact: Daniel Baumann <daniel@lists.debian-maintainers.org>
+Maintainer-Homepage: http://daniel.debian-maintainers.org/
 
 Files: *
 Copyright:
  (C) 1985-1995 Ian F. Darwin
- (C) 1994-2009 Christos Zoulas <christos@zoulas.com>
+ (C) 1994-2010 Christos Zoulas <christos@zoulas.com>
 License: BSD
  This software is not subject to any export provision of the United States
  Department of Commerce, and may be exported to any country or planet.
